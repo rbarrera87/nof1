@@ -7,7 +7,6 @@ This is a N-Of-1 R package under development. Can use devtools to install the pa
 ```{r}
 library(devtools)
 install_github("MikeJSeo/nof1")
-library(nof1)
 ```
 
 # To Run
