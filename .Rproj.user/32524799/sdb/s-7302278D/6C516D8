@@ -1,0 +1,20 @@
+{
+    "collab_server" : "",
+    "contents" : "# N-Of-1 (Single Subject Design)\n\nThis is a N-Of-1 R package under development. Can use devtools to install the package.\n\n# To Install\n\n```{r}\nlibrary(devtools)\ninstall_github(\"MikeJSeo/nof1\")\nlibrary(nof1)\n```\n\n# To Run\n\n```{r}\nlibrary(jsonlite)\nlibrary(nof1)\n\nwrap(\"sample input.json\")\n```\n\nThank you,    \nMichael Seo\n",
+    "created" : 1505920598096.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "3925889310",
+    "id" : "6C516D8",
+    "lastKnownWriteTime" : 1505921870,
+    "last_content_update" : 1505921870753,
+    "path" : "C:/Users/Michael Seo/Desktop/GitHub/nof1/README.rmd",
+    "project_path" : "README.rmd",
+    "properties" : {
+    },
+    "relative_order" : 1,
+    "source_on_save" : false,
+    "source_window" : "",
+    "type" : "r_markdown"
+}

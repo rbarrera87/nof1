@@ -1,14 +1,23 @@
-# Network Meta-Analysis 
+# N-Of-1 (Single Subject Design)
 
-This is a network meta-analysis R package under development. Can use devtools to install the package.
+This is a N-Of-1 R package under development. Can use devtools to install the package.
+
+# To Install
 
 ```{r}
 library(devtools)
-install_github("MikeJSeo/network-meta")
-library(mcnet)
+install_github("MikeJSeo/nof1")
+library(nof1)
 ```
 
-More details on how to use this package is described in mcnet-manual.pdf.
+# To Run
+
+```{r}
+library(jsonlite)
+library(nof1)
+
+wrap("sample input.json")
+```
 
 Thank you,    
 Michael Seo
