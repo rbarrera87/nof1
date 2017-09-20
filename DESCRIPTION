@@ -6,8 +6,9 @@ Depends: R (>= 2.10)
 Imports: rjags (>= 4-6), splines, combinat, MASS, jsonlite, coda (>= 0.13)
 Authors@R: c( 
 	person("Michael", "Seo", email = "michael_seo@brown.edu", role = c("aut", "cre")),
-	person("Christopher", "Schmid", email = "christopher_schmid@brown.edu", role = "aut")) 
+	person("Christopher", "Schmid", email = "christopher_schmid@brown.edu", role = "aut"))
 Description: Using a series of N-of-1 trials to determine the effectiveness of the specific carbohydrate diet for an individual patient with inflammatory bowel disease
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 6.0.1
