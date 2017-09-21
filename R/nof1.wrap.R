@@ -188,30 +188,32 @@ wrap <- function(json.file){
     ifelse(is.list(x), TRUE, x)
   }
 
-  tryCatch({
-  metadata <- list(enough_stool_consistency = check_enough_data(read_data$Treatment, read_data$stool_consistency),
-                   enough_stool_frequency = check_enough_data(read_data$Treatment, read_data$stool_frequency),
-                   enough_pain_interference = check_enough_data(read_data$Treatment_weekly, read_data$pain_interference),
-                   enough_gi_symptoms = check_enough_data(read_data$Treatment_weekly, read_data$gi_symptoms),
-                   successful_input_reading = check_success(read_data),
+  metadata <- list(successful_input_reading = check_success(read_data),
                    successful_run_stool_frequency = check_success(stool_frequency),
                    successful_run_stool_consistency = check_success(stool_consistency),
                    successful_run_pain_interference = check_success(pain_interference),
                    successful_run_gi_symptoms = check_success(gi_symptoms),
+                   enough_stool_consistency = check_enough_data(read_data$Treatment, read_data$stool_consistency),
+                   enough_stool_frequency = check_enough_data(read_data$Treatment, read_data$stool_frequency),
+                   enough_pain_interference = check_enough_data(read_data$Treatment_weekly, read_data$pain_interference),
+                   enough_gi_symptoms = check_enough_data(read_data$Treatment_weekly, read_data$gi_symptoms),
                    user_id = 325,
                    timestamp_trialist_completed = Sys.time(),
                    trialist_version_id = 1,
                    trialist_version_date = "8/15/2017",
                    trialist_version_note = "")
 
-  base_vs_scd <- find_summary_graph(metadata, "base_vs_scd", stool_frequency, stool_consistency, pain_interference, gi_symptoms)
-  base_vs_mscd <- find_summary_graph(metadata, "base_vs_mscd", stool_frequency, stool_consistency, pain_interference, gi_symptoms)
-  mscd_vs_scd <- find_summary_graph(metadata, "mscd_vs_scd", stool_frequency, stool_consistency, pain_interference, gi_symptoms)
+  summary_graph <- tryCatch({
+    base_vs_scd <- find_summary_graph(metadata, "base_vs_scd", stool_frequency, stool_consistency, pain_interference, gi_symptoms)
+    base_vs_mscd <- find_summary_graph(metadata, "base_vs_mscd", stool_frequency, stool_consistency, pain_interference, gi_symptoms)
+    mscd_vs_scd <- find_summary_graph(metadata, "mscd_vs_scd", stool_frequency, stool_consistency, pain_interference, gi_symptoms)
+    list(base_vs_scd = base_vs_scd, base_vs_mscd = base_vs_mscd, mscd_vs_scd = mscd_vs_scd)
   }, error = function(error){
     return(paste("error in summary step:", error))
   })
 
-  summary_graph <- list(base_vs_scd = base_vs_scd, base_vs_mscd = base_vs_mscd, mscd_vs_scd = mscd_vs_scd)
+  metadata2 <- list(successful_summary_graph = check_success(summary_graph))
+  metadata <- c(metadata2, metadata)
 
   final <- list(metadata = metadata, stool_frequency = stool_frequency, stool_consistency = stool_consistency,
                 pain_interference = pain_interference, gi_symptoms = gi_symptoms, summary_graph = summary_graph)
