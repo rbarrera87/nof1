@@ -115,6 +115,11 @@ summarize_nof1 <- function(nof1, result, outcome){
   })
 }
 
+#' Make a network object containing data, priors, and a jags model file
+#'
+#' @param json.file input json data
+#' @export
+
 wrap <- function(json.file){
 
   read_data <- tryCatch({
