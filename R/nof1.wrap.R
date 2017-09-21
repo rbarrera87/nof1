@@ -1,5 +1,5 @@
 check_enough_data <- function(Treatment, x){
-  length(table(Treatment[is.na(x)])) == 3
+  length(table(Treatment[!is.na(x)])) == 3
 }
 
 comparison <- function(x, response){

@@ -15,12 +15,12 @@ install_github("MikeJSeo/nof1")
 library(jsonlite)
 library(nof1)
 
-json.file <- "sample input-inverse.json" 
-json.file <- "sample input-inverse.json" 
-json.file <- "sample input-inverse.json" 
-json.file <- "sample input-inverse.json" 
-json.file <- "sample input-inverse.json" 
-json.file <- "sample input-inverse.json" 
+json.file <- "sample input.json" 
+#json.file <- "sample input-with some NA.json"
+#json.file <- "sample input-same data.json"
+#json.file <- "sample input-missing baseline.json" 
+#json.file <- "sample input-minimum data.json" 
+#json.file <- "sample input-inverse.json" 
 result <- wrap(json.file)
 result
 ```
