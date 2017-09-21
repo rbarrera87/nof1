@@ -6,10 +6,10 @@
         "daily_stool_consistency": [null, 2, null, 7, null, 2, 7],
         "daily_stool_frequency": [5, 3, 4, 1, null, 1, 3],
         "promis_pain_interference": {
-          "t-score": null
+          "t-score": 50.6769
         },
         "promis_gi_symptoms": {
-          "t-score": null
+          "t-score": 47.7792
         }
       },
       "child_response": {

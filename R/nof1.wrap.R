@@ -115,7 +115,7 @@ summarize_nof1 <- function(nof1, result, outcome){
   })
 }
 
-#' Make a network object containing data, priors, and a jags model file
+#' Wrapper function that runs the n-of-1 model
 #'
 #' @param json.file input json data
 #' @export
