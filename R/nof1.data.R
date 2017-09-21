@@ -1,3 +1,8 @@
+#' Read json data in as an R object
+#'
+#' @param json.file input data
+#' @export
+
 read_input_data <- function(json.file){
 
   data <- fromJSON(json.file, flatten = TRUE)
@@ -34,10 +39,10 @@ read_input_data <- function(json.file){
 
 #' Make a network object containing data, priors, and a jags model file
 #'
-#' @param Y input data
+#' @param Y Outcome
 #' @export
 
-nof1.data <- function(Y, Treat, Time=NULL, ncat = NULL, knots = NULL, baseline = NULL, response = NULL,
+nof1.data <- function(Y, Treat, Time=NULL, ncat = NULL, knots = NULL, baseline = "baseline", response = NULL,
                       alpha.prior = NULL, beta.prior = NULL, gamma.prior = NULL, dc.prior = NULL, c1.prior = NULL,
                       rho.prior = NULL, hy.prior = NULL){
 

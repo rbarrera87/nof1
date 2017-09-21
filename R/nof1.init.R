@@ -1,18 +1,31 @@
+#' Generate initial values
+#'
+#' @param n.chains number of chains you want
+#' @export
+
 nof1.inits <- function(nof1, n.chains){
 
   response <- nof1$response
   inits <- tryCatch({
-    if(response == "normal"){
+    value <- if(response == "normal"){
       nof1.inits.normal(nof1, n.chains)
     } else if(response == "ordinal"){
       nof1.inits.ordinal(nof1, n.chains)
     } else if(response == "binomial" || response == "poisson"){
       nof1.inits.binom.poisson(nof1, n.chains)
     }
+    if(any(is.nan(unlist(value)))) value <- NULL
+
+    #if initial value generated is too big (i.e. model didn't work because of sparse data), just set inital value to be NULL
+    if(!is.null(value)){
+      if(any(abs(unlist(value)) > 100)) value <- NULL
+    }
+    value
   }, error = function(err){
     print(paste("Initial value not working: ",err))
     return(NULL)
   })
+
   return(inits)
 }
 

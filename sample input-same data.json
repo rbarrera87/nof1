@@ -1,0 +1,79 @@
+{
+  "data": [
+    {
+      "treatment": "baseline",
+      "parent_response": {
+        "daily_stool_consistency": [7, 7, 7, 7, 7, 7, 7], 
+        "daily_stool_frequency": [1, 1, 1, 1, 1, 1, 1],
+        "promis_pain_interference": {
+          "t-score": 50
+        },
+        "promis_gi_symptoms": {
+          "t-score": 50
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 2, 2, 7, 2, 2, 7],
+        "daily_stool_frequency": [2, 4, 2, 2, 1, 5, 4],
+        "promis_pain_interference": {
+          "t-score": 49.9243
+        },
+        "promis_gi_symptoms": {
+          "t-score": 47.6431
+        }
+      }
+    },
+    {
+      "treatment": "strict",
+      "parent_response": {
+        "daily_stool_consistency": [7, 7, 7, 7, 7, 7, 7],
+        "daily_stool_frequency": [1, 1, 1, 1, 1, 1, 1],
+        "promis_pain_interference": {
+          "t-score": 50
+        },
+        "promis_gi_symptoms": {
+          "t-score": 50
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 7, 7, 7, 7, 7, 2],
+        "daily_stool_frequency": [4, 5, 12, 6, 10, 5, 7],
+        "promis_pain_interference": {
+          "t-score": 61.3717
+        },
+        "promis_gi_symptoms": {
+          "t-score": 60.1713
+        }
+      }
+    },
+    {
+      "treatment": "liberalized",
+      "parent_response": {
+        "daily_stool_consistency": [7, 7, 7, 7, 7, 7, 7],
+        "daily_stool_frequency": [1, 1, 1, 1, 1, 1, 1],
+        "promis_pain_interference": {
+          "t-score": 50
+        },
+        "promis_gi_symptoms": {
+          "t-score": 50
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [2, 2, 7, 2, 7, 7, 2],
+        "daily_stool_frequency": [20, 17, 25, 22, 19, 23, 26],
+        "promis_pain_interference": {
+          "t-score": 69.8121
+        },
+        "promis_gi_symptoms": {
+          "t-score": 67.8234
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "user_id": 300000,
+    "user_age": 15,
+    "trial_start_date": "2017-01-01",
+    "trial_end_date": "2017-08-26"
+  }
+} 

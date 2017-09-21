@@ -33,6 +33,10 @@ find_mean_difference <- function(coef, response, raw_mean){
 
   } else if (response == "binomial"){
 
+    # can't divide by 0
+    if(raw_mean[1] == 1) raw_mean[1] = 0.99
+    if(raw_mean[3] == 1) raw_mean[3] = 0.99
+
     round(
     c(base_vs_scd = (raw_mean[1]/(1-raw_mean[1]) * exp(coef["beta_A"])) / (1 + raw_mean[1]/(1-raw_mean[1]) * exp(coef["beta_A"])) - raw_mean[1],
       base_vs_mscd = (raw_mean[1]/(1-raw_mean[1]) * exp(coef["beta_B"])) / (1 + raw_mean[1]/(1-raw_mean[1]) * exp(coef["beta_B"])) - raw_mean[1],
@@ -94,7 +98,11 @@ calculate_p_threshold <- function(samples, response){
   return(list(base_vs_scd = base_vs_scd, base_vs_mscd = base_vs_mscd, mscd_vs_scd = mscd_vs_scd))
 }
 
-summarize_nof1 <- function(nof1, result, outcome){
+#' Summarizes the result from the model into json format
+#'
+#' @export
+
+summarize_nof1 <- function(nof1, result){
 
   with(c(nof1, result),{
 
@@ -131,10 +139,10 @@ wrap <- function(json.file){
   stool_frequency <- tryCatch({
     data <- list(Treat = read_data$Treatment, Y = read_data$stool_frequency)
     nof1 <- with(data, {
-      nof1.data(Y, Treat, baseline = "baseline", response = "poisson")
+      nof1.data(Y, Treat, response = "poisson")
     })
     result <- nof1.run(nof1)
-    summarize_nof1(nof1, result, "stool_frequency")
+    summarize_nof1(nof1, result)
   }, error = function(error){
     return(paste("stool_frequency run error: ", error))
   })
@@ -142,10 +150,10 @@ wrap <- function(json.file){
   stool_consistency <- tryCatch({
     data <- list(Treat = read_data$Treatment, Y = read_data$stool_consistency)
     nof1 <- with(data, {
-      nof1.data(Y, Treat, baseline = "baseline", response = "binomial")
+      nof1.data(Y, Treat, response = "binomial")
     })
     result <- nof1.run(nof1)
-    summarize_nof1(nof1, result, "stool_consistency")
+    summarize_nof1(nof1, result)
   }, error = function(error){
     return(paste("stool_consistency run error: ", error))
   })
@@ -153,10 +161,10 @@ wrap <- function(json.file){
   pain_interference <- tryCatch({
     data <- list(Treat = read_data$Treatment_weekly, Y = read_data$pain_interference)
     nof1 <- with(data, {
-      nof1.data(Y, Treat, baseline = "baseline", response = "normal")
+      nof1.data(Y, Treat, response = "normal")
     })
     result <- nof1.run(nof1)
-    summarize_nof1(nof1, result, "pain_interference")
+    summarize_nof1(nof1, result)
   }, error = function(error){
     return(paste("pain_interference run error: ", error))
   })
@@ -164,10 +172,10 @@ wrap <- function(json.file){
   gi_symptoms <- tryCatch({
     data <- list(Treat = read_data$Treatment_weekly, Y = read_data$gi_symptoms)
     nof1 <- with(data, {
-      nof1.data(Y, Treat, baseline = "baseline", response = "normal")
+      nof1.data(Y, Treat, response = "normal")
     })
     result <- nof1.run(nof1)
-    summarize_nof1(nof1, result, "gi_symptoms")
+    summarize_nof1(nof1, result)
   }, error = function(error){
     return(paste("gi_symptoms run error: ", error))
   })

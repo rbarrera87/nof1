@@ -2,7 +2,7 @@
 % Please edit documentation in R/nof1.wrap.R
 \name{wrap}
 \alias{wrap}
-\title{Make a network object containing data, priors, and a jags model file}
+\title{Wrapper function that runs the n-of-1 model}
 \usage{
 wrap(json.file)
 }
@@ -10,5 +10,5 @@ wrap(json.file)
 \item{json.file}{input json data}
 }
 \description{
-Make a network object containing data, priors, and a jags model file
+Wrapper function that runs the n-of-1 model
 }

@@ -15,7 +15,9 @@ install_github("MikeJSeo/nof1")
 library(jsonlite)
 library(nof1)
 
-wrap("sample input.json")
+json.file <- "sample input-inverse.json" 
+result <- wrap(json.file)
+result
 ```
 
 Thank you,    
