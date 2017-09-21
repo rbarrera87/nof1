@@ -16,6 +16,11 @@ library(jsonlite)
 library(nof1)
 
 json.file <- "sample input-inverse.json" 
+json.file <- "sample input-inverse.json" 
+json.file <- "sample input-inverse.json" 
+json.file <- "sample input-inverse.json" 
+json.file <- "sample input-inverse.json" 
+json.file <- "sample input-inverse.json" 
 result <- wrap(json.file)
 result
 ```

@@ -1,3 +1,7 @@
+check_enough_data <- function(Treatment, x){
+  length(table(Treatment[is.na(x)])) == 3
+}
+
 comparison <- function(x, response){
   answer <-
     if(response == "poisson" || response == "binomial"){
@@ -185,7 +189,11 @@ wrap <- function(json.file){
   }
 
   tryCatch({
-  metadata <- list(successful_input_reading = check_success(read_data),
+  metadata <- list(enough_stool_consistency = check_enough_data(read_data$Treatment, read_data$stool_consistency),
+                   enough_stool_frequency = check_enough_data(read_data$Treatment, read_data$stool_frequency),
+                   enough_pain_interference = check_enough_data(read_data$Treatment_weekly, read_data$pain_interference),
+                   enough_gi_symptoms = check_enough_data(read_data$Treatment_weekly, read_data$gi_symptoms),
+                   successful_input_reading = check_success(read_data),
                    successful_run_stool_frequency = check_success(stool_frequency),
                    successful_run_stool_consistency = check_success(stool_consistency),
                    successful_run_pain_interference = check_success(pain_interference),
