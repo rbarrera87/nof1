@@ -11,7 +11,7 @@
     "enough_pain_interference": true,
     "enough_gi_symptoms": true,
     "user_id": 325,
-    "timestamp_trialist_completed": "2017-09-21 23:54:55",
+    "timestamp_trialist_completed": "2017-09-22 00:01:54",
     "trialist_version_id": 1,
     "trialist_version_date": "8/15/2017",
     "trialist_version_note": ""
@@ -20,27 +20,27 @@
     "three_group_comparison": {
       "raw_mean": {
         "base": 1,
-        "scd": 1,
-        "mscd": 1
+        "scd": 5,
+        "mscd": 17
       },
       "mean_difference": {
-        "base_vs_scd": 0,
-        "base_vs_mscd": 0,
-        "mscd_vs_scd": 0
+        "base_vs_scd": 7,
+        "base_vs_mscd": 28.4,
+        "mscd_vs_scd": -12.4
       }
     },
     "gauge_graph": {
       "base_vs_scd": {
-        "greater_than_threshold": 43,
-        "lower_than_threshold": 42
+        "greater_than_threshold": 96,
+        "lower_than_threshold": 2
       },
       "base_vs_mscd": {
-        "greater_than_threshold": 43,
-        "lower_than_threshold": 42
+        "greater_than_threshold": 99,
+        "lower_than_threshold": 1
       },
       "mscd_vs_scd": {
-        "greater_than_threshold": 43,
-        "lower_than_threshold": 42
+        "greater_than_threshold": 1,
+        "lower_than_threshold": 99
       }
     }
   },
@@ -49,103 +49,103 @@
       "raw_mean": {
         "base": 100,
         "scd": 100,
-        "mscd": 100
+        "mscd": 0
       },
       "mean_difference": {
         "base_vs_scd": 1,
-        "base_vs_mscd": 1,
+        "base_vs_mscd": -99,
         "mscd_vs_scd": 1
       }
     },
     "gauge_graph": {
       "base_vs_scd": {
-        "greater_than_threshold": 65,
-        "lower_than_threshold": 35
+        "greater_than_threshold": 75,
+        "lower_than_threshold": 25
       },
       "base_vs_mscd": {
-        "greater_than_threshold": 65,
-        "lower_than_threshold": 35
+        "greater_than_threshold": 1,
+        "lower_than_threshold": 99
       },
       "mscd_vs_scd": {
-        "greater_than_threshold": 50,
-        "lower_than_threshold": 50
+        "greater_than_threshold": 99,
+        "lower_than_threshold": 1
       }
     }
   },
   "pain_interference": {
     "three_group_comparison": {
       "raw_mean": {
-        "base": 50,
-        "scd": 50,
-        "mscd": 50
+        "base": 49.9,
+        "scd": 59.8,
+        "mscd": 69.4
       },
       "mean_difference": {
-        "base_vs_scd": 3.3,
-        "base_vs_mscd": 3.3,
-        "mscd_vs_scd": -0.1
+        "base_vs_scd": 10.6,
+        "base_vs_mscd": 19.3,
+        "mscd_vs_scd": -8.7
       }
     },
     "gauge_graph": {
       "base_vs_scd": {
-        "greater_than_threshold": 44,
-        "lower_than_threshold": 26
+        "greater_than_threshold": 80,
+        "lower_than_threshold": 11
       },
       "base_vs_mscd": {
-        "greater_than_threshold": 44,
-        "lower_than_threshold": 26
+        "greater_than_threshold": 92,
+        "lower_than_threshold": 4
       },
       "mscd_vs_scd": {
-        "greater_than_threshold": 35,
-        "lower_than_threshold": 35
+        "greater_than_threshold": 15,
+        "lower_than_threshold": 74
       }
     }
   },
   "gi_symptoms": {
     "three_group_comparison": {
       "raw_mean": {
-        "base": 50,
-        "scd": 50,
-        "mscd": 50
+        "base": 47.6,
+        "scd": 59.8,
+        "mscd": 69.4
       },
       "mean_difference": {
-        "base_vs_scd": 3.3,
-        "base_vs_mscd": 3.3,
-        "mscd_vs_scd": -0
+        "base_vs_scd": 12.2,
+        "base_vs_mscd": 21,
+        "mscd_vs_scd": -8.7
       }
     },
     "gauge_graph": {
       "base_vs_scd": {
-        "greater_than_threshold": 44,
-        "lower_than_threshold": 26
+        "greater_than_threshold": 83,
+        "lower_than_threshold": 9
       },
       "base_vs_mscd": {
-        "greater_than_threshold": 44,
-        "lower_than_threshold": 25
+        "greater_than_threshold": 93,
+        "lower_than_threshold": 4
       },
       "mscd_vs_scd": {
-        "greater_than_threshold": 35,
-        "lower_than_threshold": 35
+        "greater_than_threshold": 15,
+        "lower_than_threshold": 75
       }
     }
   },
   "summary_graph": {
     "base_vs_scd": {
-      "stool_frequency": -43,
-      "stool_consistency": -65,
-      "pain_interference": -44,
-      "gi_symptoms": -44
+      "stool_frequency": -96,
+      "stool_consistency": -75,
+      "pain_interference": -80,
+      "gi_symptoms": -83
     },
     "base_vs_mscd": {
-      "stool_frequency": -43,
-      "stool_consistency": -65,
-      "pain_interference": -44,
-      "gi_symptoms": -44
+      "stool_frequency": -99,
+      "stool_consistency": 99,
+      "pain_interference": -92,
+      "gi_symptoms": -93
     },
     "mscd_vs_scd": {
-      "stool_frequency": -43,
-      "stool_consistency": -50,
-      "pain_interference": -35,
-      "gi_symptoms": -35
+      "stool_frequency": 99,
+      "stool_consistency": -99,
+      "pain_interference": 74,
+      "gi_symptoms": 75
     }
   }
 } 
