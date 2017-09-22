@@ -3,37 +3,36 @@
 #' @param json.file input data
 #' @export
 
-read_input_data <- function(json.file){
+read_input_data <- function(data, metadata){
 
-  data <- fromJSON(json.file, flatten = TRUE)
-
-  if(data$metadata$user_age < 14){
-    selection_names <- c("treatment", "parent_response.daily_stool_consistency", "parent_response.daily_stool_frequency",
-                         "parent_response.promis_pain_interference.t-score", "parent_response.promis_gi_symptoms.t-score")
-    dataset <- data$data[,selection_names]
+  if(metadata$user_age < 14){
+    Outcome <- data$parent_response
   }else{
-
-    #null_count <- apply(data$data, 2, function(x){ sum(is.na(unlist(x)))})
-    selection_names <- c("treatment", "parent_response.daily_stool_consistency", "parent_response.daily_stool_frequency",
-                         "parent_response.promis_pain_interference.t-score", "parent_response.promis_gi_symptoms.t-score")
-    dataset <- data$data[,selection_names]
+    if(sum(is.na(data$parent_response)) < sum(is.na(data$child_response))){
+      Outcome <- data$parent_response
+    }else{
+      Outcome <- data$child_response
+    }
   }
 
-  Treatment <- dataset[,"treatment"]
+  Treatment <- data[,"treatment"]
   Treatment <- unlist(Treatment)
   Treatment[Treatment == "strict"] = "A"
   Treatment[Treatment == "liberalized"] = "B"
 
-  length_each <- sapply(dataset[,"parent_response.daily_stool_consistency"], length)
+  length_each <- sapply(Outcome[,"daily_stool_consistency"], length)
   Treat <- rep(Treatment, times = length_each)
 
   Treatment_weekly <- Treatment[seq(1, length(Treatment), 7)]
 
-  Outcome <- dataset[, !(names(dataset) %in% "treatment")]
-  Outcome <- apply(Outcome, 2, unlist)
-  Outcome[["parent_response.daily_stool_consistency"]] <- ifelse(1 < Outcome[["parent_response.daily_stool_consistency"]] & Outcome[["parent_response.daily_stool_consistency"]] < 7, 0, 1)
+  stool_consistency <- unlist(Outcome$daily_stool_consistency)
+  stool_consistency <- ifelse(1 < stool_consistency & stool_consistency < 7, 0, 1)
 
-  list(Treatment = Treat, Treatment_weekly = Treatment, stool_consistency = Outcome$parent_response.daily_stool_consistency, stool_frequency = Outcome$parent_response.daily_stool_frequency, pain_interference =  Outcome$parent_response.promis_pain_interference,  gi_symptoms = Outcome$parent_response.promis_gi_symptoms)
+  stool_frequency <- unlist(Outcome$daily_stool_frequency)
+  pain_interference <- as.vector(unlist(Outcome$promis_pain_interference))
+  gi_symptoms <- as.vector(unlist(Outcome$promis_gi_symptoms))
+
+  list(Treatment = Treat, Treatment_weekly = Treatment, stool_consistency = stool_consistency, stool_frequency = stool_frequency, pain_interference = pain_interference,  gi_symptoms = gi_symptoms)
 }
 
 

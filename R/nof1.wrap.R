@@ -132,10 +132,10 @@ summarize_nof1 <- function(nof1, result){
 #' @param json.file input json data
 #' @export
 
-wrap <- function(json.file){
+wrap <- function(data, metadata){
 
   read_data <- tryCatch({
-    read_input_data(json.file)
+    read_input_data(data, metadata)
   }, error = function(error){
     return(paste("input read error: ", error))
   })
