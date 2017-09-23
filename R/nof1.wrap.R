@@ -218,8 +218,7 @@ wrap <- function(data, metadata){
   final <- list(metadata = metadata, stool_frequency = stool_frequency, stool_consistency = stool_consistency,
                 pain_interference = pain_interference, gi_symptoms = gi_symptoms, summary_graph = summary_graph)
 
-  output <- toJSON(final, pretty = TRUE, UTC = TRUE, auto_unbox = TRUE)
-  return(output)
+  return(final)
 }
 
 find_summary_graph <- function(metadata, treatment_comparison,stool_frequency, stool_consistency, pain_interference, gi_symptoms){

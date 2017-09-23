@@ -22,7 +22,8 @@ json.file <- fromJSON("sample input.json")
 #json.file <- fromJSON("sample input-minimum data.json")
 #json.file <- fromJSON("sample input-inverse.json")
 result <- do.call(wrap, json.file)
-result
+output <- toJSON(result, pretty = TRUE, UTC = TRUE, auto_unbox = TRUE)
+output
 ```
 
 Thank you,    
