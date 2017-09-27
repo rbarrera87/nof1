@@ -17,8 +17,12 @@ nof1.run <- function(nof1, inits = NULL, n.chains = 3, max.run = 100000, setsize
   with(nof1, {
 
   #pars.save <- c("logprec", "rho")
-
   pars.save <- ifelse(response == "ordinal", "c", "alpha")
+
+  #missing values
+  for(i in which(is.na(nof1$Y))){
+    pars.save <- c(pars.save, paste0("Y[", i, "]"))
+  }
 
   if(response == "normal"){
     pars.save <- c(pars.save, "logprec")

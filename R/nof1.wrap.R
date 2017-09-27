@@ -127,6 +127,17 @@ summarize_nof1 <- function(nof1, result){
   })
 }
 
+# washout <- function(read_data){
+#
+#   with(read_data,{
+#     delete_obs <- rle(Treatment)
+#     rle(Treatment)
+#
+#   })
+#
+#
+# }
+
 #' Wrapper function that runs the n-of-1 model
 #'
 #' @param json.file input json data
@@ -139,6 +150,9 @@ wrap <- function(data, metadata){
   }, error = function(error){
     return(paste("input read error: ", error))
   })
+
+  # washout(read_data)
+
 
   stool_frequency <- tryCatch({
     data <- list(Treat = read_data$Treatment, Y = read_data$stool_frequency)

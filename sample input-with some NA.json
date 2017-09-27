@@ -13,13 +13,13 @@
         }
       },
       "child_response": {
-        "daily_stool_consistency": [7, 2, 2, 7, 2, 2, 7],
-        "daily_stool_frequency": [2, 4, 2, 2, 1, 5, 4],
+        "daily_stool_consistency": [null, 2, 2, 7, null, 2, 7],
+        "daily_stool_frequency": [2, null, 2, 2, 1, 5, 4],
         "promis_pain_interference": {
-          "t-score": 49.9243
+          "t-score": null
         },
         "promis_gi_symptoms": {
-          "t-score": 47.6431
+          "t-score": null
         }
       }
     },
