@@ -4,14 +4,14 @@
     "successful_input_reading": true,
     "successful_run_stool_frequency": true,
     "successful_run_stool_consistency": true,
-    "successful_run_pain_interference": true,
+    "successful_run_pain_interference": "pain_interference run error:  Error in jags.fit(nof1, data, pars.save, inits, n.chains, max.run, setsize, : code didn't converge according to gelman-rubin diagnostics\n",
     "successful_run_gi_symptoms": true,
     "enough_stool_consistency": true,
     "enough_stool_frequency": true,
     "enough_pain_interference": false,
     "enough_gi_symptoms": false,
     "user_id": 325,
-    "timestamp_trialist_completed": "2017-09-21 23:59:55",
+    "timestamp_trialist_completed": "2017-09-28 20:27:22",
     "trialist_version_id": 1,
     "trialist_version_date": "8/15/2017",
     "trialist_version_note": ""
@@ -20,13 +20,13 @@
     "three_group_comparison": {
       "raw_mean": {
         "base": 3.1,
-        "scd": 7.4,
-        "mscd": 20
+        "scd": 7.5,
+        "mscd": 20.1
       },
       "mean_difference": {
-        "base_vs_scd": 4.4,
-        "base_vs_mscd": 17.3,
-        "mscd_vs_scd": -12.6
+        "base_vs_scd": 4.5,
+        "base_vs_mscd": 17.2,
+        "mscd_vs_scd": -12.5
       }
     },
     "gauge_graph": {
@@ -47,80 +47,53 @@
   "stool_consistency": {
     "three_group_comparison": {
       "raw_mean": {
-        "base": 67,
-        "scd": 69,
-        "mscd": 82
+        "base": 64,
+        "scd": 71,
+        "mscd": 71
       },
       "mean_difference": {
-        "base_vs_scd": 1,
-        "base_vs_mscd": 14,
-        "mscd_vs_scd": -14
+        "base_vs_scd": 6,
+        "base_vs_mscd": 7,
+        "mscd_vs_scd": -1
       }
     },
     "gauge_graph": {
       "base_vs_scd": {
-        "greater_than_threshold": 47,
+        "greater_than_threshold": 62,
+        "lower_than_threshold": 26
+      },
+      "base_vs_mscd": {
+        "greater_than_threshold": 65,
+        "lower_than_threshold": 24
+      },
+      "mscd_vs_scd": {
+        "greater_than_threshold": 32,
         "lower_than_threshold": 42
-      },
-      "base_vs_mscd": {
-        "greater_than_threshold": 81,
-        "lower_than_threshold": 13
-      },
-      "mscd_vs_scd": {
-        "greater_than_threshold": 1,
-        "lower_than_threshold": 98
       }
     }
   },
-  "pain_interference": {
-    "three_group_comparison": {
-      "raw_mean": {
-        "base": "NaN",
-        "scd": 60,
-        "mscd": 69.6
-      },
-      "mean_difference": {
-        "base_vs_scd": 18.6,
-        "base_vs_mscd": 28.2,
-        "mscd_vs_scd": -9.6
-      }
-    },
-    "gauge_graph": {
-      "base_vs_scd": {
-        "greater_than_threshold": 80,
-        "lower_than_threshold": 14
-      },
-      "base_vs_mscd": {
-        "greater_than_threshold": 91,
-        "lower_than_threshold": 5
-      },
-      "mscd_vs_scd": {
-        "greater_than_threshold": 1,
-        "lower_than_threshold": 99
-      }
-    }
-  },
+  "pain_interference": "pain_interference run error:  Error in jags.fit(nof1, data, pars.save, inits, n.chains, max.run, setsize, : code didn't converge according to gelman-rubin diagnostics\n",
   "gi_symptoms": {
     "three_group_comparison": {
       "raw_mean": {
         "base": "NaN",
         "scd": 59.8,
-        "mscd": 70.2
+        "mscd": 70.7
       },
       "mean_difference": {
-        "base_vs_scd": 12.6,
-        "base_vs_mscd": 23,
-        "mscd_vs_scd": -10.3
+        "base_vs_scd": 20.2,
+        "base_vs_mscd": 31.1,
+        "mscd_vs_scd": -10.9
       }
     },
     "gauge_graph": {
       "base_vs_scd": {
-        "greater_than_threshold": 73,
-        "lower_than_threshold": 16
+        "greater_than_threshold": 81,
+        "lower_than_threshold": 15
       },
       "base_vs_mscd": {
-        "greater_than_threshold": 91,
-        "lower_than_threshold": 4
+        "greater_than_threshold": 89,
+        "lower_than_threshold": 7
       },
       "mscd_vs_scd": {
         "greater_than_threshold": 1,
@@ -131,21 +104,18 @@
   "summary_graph": {
     "base_vs_scd": {
       "stool_frequency": -99,
-      "stool_consistency": -47,
-      "pain_interference": -80,
-      "gi_symptoms": -73
+      "stool_consistency": -62,
+      "gi_symptoms": -81
     },
     "base_vs_mscd": {
       "stool_frequency": -99,
-      "stool_consistency": -81,
-      "pain_interference": -91,
-      "gi_symptoms": -91
+      "stool_consistency": -65,
+      "gi_symptoms": -89
     },
     "mscd_vs_scd": {
       "stool_frequency": 99,
-      "stool_consistency": 98,
-      "pain_interference": 99,
+      "stool_consistency": 42,
       "gi_symptoms": 99
     }
   }
-} 
+}

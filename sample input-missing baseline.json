@@ -16,10 +16,10 @@
         "daily_stool_consistency": [7, 2, 2, 7, 2, 2, 7],
         "daily_stool_frequency": [2, 4, 2, 2, 1, 5, 4],
         "promis_pain_interference": {
-          "t-score": 49.9243
+          "t-score": null
         },
         "promis_gi_symptoms": {
-          "t-score": 47.6431
+          "t-score": null
         }
       }
     },
@@ -39,10 +39,10 @@
         "daily_stool_consistency": [7, 7, 7, 2, 7, 7, 7],
         "daily_stool_frequency": [2, 6, 3, 4, 3, 3, 3],
         "promis_pain_interference": {
-          "t-score": 48.847
+          "t-score": null
         },
         "promis_gi_symptoms": {
-          "t-score": 49.8334
+          "t-score": null
         }
       }
     },
