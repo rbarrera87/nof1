@@ -26,6 +26,29 @@
     {
       "treatment": "strict",
       "parent_response": {
+        "daily_stool_consistency": [null, null, null, null, null, null, 7],
+        "daily_stool_frequency": [null, null, null, null, null, null, 12],
+        "promis_pain_interference": {
+          "t-score": null
+        },
+        "promis_gi_symptoms": {
+          "t-score": null
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [null, null, null, null, null, null, 7],
+        "daily_stool_frequency": [null, null, null, null, null, null, 12],
+        "promis_pain_interference": {
+          "t-score": null
+        },
+        "promis_gi_symptoms": {
+          "t-score": null
+        }
+      }
+    },
+	{
+      "treatment": "strict",
+      "parent_response": {
         "daily_stool_consistency": [null, null, null, null, null, 7, null],
         "daily_stool_frequency": [null, null, null, null, null, null, 5],
         "promis_pain_interference": {
@@ -36,8 +59,8 @@
         }
       },
       "child_response": {
-        "daily_stool_consistency": [7, 7, 7, 7, 7, 7, 2],
-        "daily_stool_frequency": [4, 5, 12, 6, 10, 5, 7],
+        "daily_stool_consistency": [7, null, null, null, null, null, null],
+        "daily_stool_frequency": [4, null, null, null, null, null, null],
         "promis_pain_interference": {
           "t-score": 61.3717
         },
@@ -61,6 +84,29 @@
       "child_response": {
         "daily_stool_consistency": [2, 2, 7, 2, 7, 7, 2],
         "daily_stool_frequency": [20, 17, 25, 22, 19, 23, 26],
+        "promis_pain_interference": {
+          "t-score": 69.8121
+        },
+        "promis_gi_symptoms": {
+          "t-score": 67.8234
+        }
+      }
+    },
+	{
+      "treatment": "liberalized",
+      "parent_response": {
+        "daily_stool_consistency": [null, null, null, null, null, 2, null],
+        "daily_stool_frequency": [null, null, null, null, null, null, 17],
+        "promis_pain_interference": {
+          "t-score": 69.3749
+        },
+        "promis_gi_symptoms": {
+          "t-score": 69.4321
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [2, null, null, null, null, null, null],
+        "daily_stool_frequency": [20, null, null, null, null, null, null],
         "promis_pain_interference": {
           "t-score": 69.8121
         },

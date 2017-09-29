@@ -23,8 +23,6 @@ read_input_data <- function(data, metadata){
   length_each <- sapply(Outcome[,"daily_stool_consistency"], length)
   Treat <- rep(Treatment, times = length_each)
 
-  Treatment_weekly <- Treatment[seq(1, length(Treatment), 7)]
-
   stool_consistency <- unlist(Outcome$daily_stool_consistency)
   stool_consistency <- ifelse(1 < stool_consistency & stool_consistency < 7, 0, 1)
 
@@ -168,18 +166,23 @@ summarize_nof1 <- function(nof1, result){
 washout <- function(read_data){
 
   with(read_data,{
-    change_point <- cumsum(rle(Treatment)$lengths)[-5]
+    change_point <- cumsum(rle(Treatment)$lengths)
+    change_point <- change_point[-length(change_point)]
+
     delete_obs_daily <- NULL
     for(i in 1:length(change_point)){
       delete_obs_daily <- c(delete_obs_daily, (change_point[i]+1):(change_point[i]+7))
     }
+    delete_obs_daily
 
 
-    change_point2 <- cumsum(rle(Treatment_weekly)$lengths)[-5]
+    change_point2 <- cumsum(rle(Treatment_weekly)$lengths)
+    change_point2 <- change_point2[-length(change_point2)]
     delete_obs_weekly <- NULL
     for(i in 1:length(change_point2)){
       delete_obs_weekly <- c(delete_obs_weekly, (change_point2[i]+1))
     }
+    delete_obs_weekly
 
     stool_consistency[delete_obs_daily] <- NA
     stool_frequency[delete_obs_daily] <- NA
