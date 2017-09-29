@@ -165,16 +165,30 @@ summarize_nof1 <- function(nof1, result){
   })
 }
 
-# washout <- function(read_data){
-#
-#   with(read_data,{
-#     delete_obs <- rle(Treatment)
-#     rle(Treatment)
-#
-#   })
-#
-#
-# }
+washout <- function(read_data){
+
+  with(read_data,{
+    change_point <- cumsum(rle(Treatment)$lengths)[-5]
+    delete_obs_daily <- NULL
+    for(i in 1:length(change_point)){
+      delete_obs_daily <- c(delete_obs_daily, (change_point[i]+1):(change_point[i]+7))
+    }
+
+
+    change_point2 <- cumsum(rle(Treatment_weekly)$lengths)[-5]
+    delete_obs_weekly <- NULL
+    for(i in 1:length(change_point2)){
+      delete_obs_weekly <- c(delete_obs_weekly, (change_point2[i]+1))
+    }
+
+    stool_consistency[delete_obs_daily] <- NA
+    stool_frequency[delete_obs_daily] <- NA
+    pain_interference[delete_obs_weekly] <- NA
+    gi_symptoms[delete_obs_weekly] <- NA
+
+    list(Treatment = Treatment, Treatment_weekly = Treatment_weekly, stool_consistency = stool_consistency, stool_frequency = stool_frequency, pain_interference = pain_interference, gi_symptoms = gi_symptoms)
+  })
+}
 
 #' Wrapper function that runs the n-of-1 model
 #'
@@ -184,13 +198,13 @@ summarize_nof1 <- function(nof1, result){
 wrap <- function(data, metadata){
 
   read_data <- tryCatch({
-    read_input_data(data, metadata)
+    read_dummy <- read_input_data(data, metadata)
+    washout(read_dummy)
   }, error = function(error){
     return(paste("input read error: ", error))
   })
 
-  # washout(read_data)
-
+  print(read_data)
 
   stool_frequency <- tryCatch({
     data <- list(Treat = read_data$Treatment, Y = read_data$stool_frequency)
