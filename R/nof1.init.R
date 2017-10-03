@@ -28,7 +28,6 @@ nof1.inits <- function(nof1, n.chains){
     print(paste("Warning: ", warning))
     return(NULL)
   })
-  print(inits)
   return(inits)
 }
 
