@@ -3,667 +3,230 @@
     {
       "treatment": "baseline",
       "parent_response": {
-        "daily_stool_consistency": [2, 7, 7, 7, 2, 7, 7],
-        "daily_stool_frequency": [56, 54, 49, 50, 48, 58, 52],
+        "daily_stool_consistency": [7, 7, 2, 7, 2, 7, 7],
+        "daily_stool_frequency": [47, 47, 65, 55, 49, 53, 51],
         "promis_pain_interference": {
-          "t-score": 50.3166
+          "t-score": 48.1064
         },
         "promis_gi_symptoms": {
-          "t-score": 49.1782
+          "t-score": 50.3874
         }
       },
       "child_response": {
-        "daily_stool_consistency": [7, 7, 7, 7, 2, 2, 7],
-        "daily_stool_frequency": [52, 57, 48, 64, 54, 66, 52],
+        "daily_stool_consistency": [2, 7, 7, 7, 2, 2, 7],
+        "daily_stool_frequency": [68, 52, 57, 58, 50, 69, 52],
         "promis_pain_interference": {
-          "t-score": 52.4696
+          "t-score": 50.7769
         },
         "promis_gi_symptoms": {
-          "t-score": 51.2632
+          "t-score": 49.6421
         }
       }
     },
     {
       "treatment": "baseline",
       "parent_response": {
-        "daily_stool_consistency": [7, 2, 7, 7, 7, 7, 7],
-        "daily_stool_frequency": [66, 51, 54, 49, 60, 69, 48],
+        "daily_stool_consistency": [7, 7, 7, 7, 7, 7, 2],
+        "daily_stool_frequency": [54, 58, 54, 52, 51, 51, 49],
         "promis_pain_interference": {
-          "t-score": 52.5434
+          "t-score": 50.7413
         },
         "promis_gi_symptoms": {
-          "t-score": 47.7061
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [2, 7, 7, 7, 2, 2, 2],
-        "daily_stool_frequency": [54, 49, 58, 57, 63, 52, 47],
-        "promis_pain_interference": {
-          "t-score": 52.084
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.5829
-        }
-      }
-    },
-    {
-      "treatment": "liberalized",
-      "parent_response": {
-        "daily_stool_consistency": [2, 7, 2, 7, 7, 7, 2],
-        "daily_stool_frequency": [51, 47, 39, 55, 45, 58, 60],
-        "promis_pain_interference": {
-          "t-score": 49.8722
-        },
-        "promis_gi_symptoms": {
-          "t-score": 50.1379
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [7, 7, 7, 2, 7, 7, 7],
-        "daily_stool_frequency": [60, 58, 47, 52, 53, 35, 56],
-        "promis_pain_interference": {
-          "t-score": 50.8536
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.1167
-        }
-      }
-    },
-    {
-      "treatment": "liberalized",
-      "parent_response": {
-        "daily_stool_consistency": [2, 7, 7, 2, 2, 7, 2],
-        "daily_stool_frequency": [49, 44, 62, 66, 60, 47, 47],
-        "promis_pain_interference": {
-          "t-score": 47.7163
-        },
-        "promis_gi_symptoms": {
-          "t-score": 51.1697
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [2, 7, 2, 2, 7, 7, 7],
-        "daily_stool_frequency": [55, 54, 50, 54, 41, 53, 58],
-        "promis_pain_interference": {
-          "t-score": 50.9857
-        },
-        "promis_gi_symptoms": {
-          "t-score": 47.7583
-        }
-      }
-    },
-    {
-      "treatment": "liberalized",
-      "parent_response": {
-        "daily_stool_consistency": [7, 7, 7, 2, 7, 7, 7],
-        "daily_stool_frequency": [59, 60, 56, 69, 51, 59, 46],
-        "promis_pain_interference": {
-          "t-score": 48.5644
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.5676
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [2, 2, 7, 7, 7, 2, 7],
-        "daily_stool_frequency": [48, 56, 42, 60, 36, 47, 40],
-        "promis_pain_interference": {
-          "t-score": 48.0948
-        },
-        "promis_gi_symptoms": {
-          "t-score": 48.3078
-        }
-      }
-    },
-    {
-      "treatment": "liberalized",
-      "parent_response": {
-        "daily_stool_consistency": [2, 2, 2, 7, 7, 2, 2],
-        "daily_stool_frequency": [56, 53, 46, 50, 35, 60, 47],
-        "promis_pain_interference": {
-          "t-score": 47.7863
-        },
-        "promis_gi_symptoms": {
-          "t-score": 48.9004
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [7, 7, 7, 2, 2, 7, 2],
-        "daily_stool_frequency": [53, 49, 51, 51, 47, 49, 49],
-        "promis_pain_interference": {
-          "t-score": 47.6696
-        },
-        "promis_gi_symptoms": {
-          "t-score": 51.1563
-        }
-      }
-    },
-    {
-      "treatment": "liberalized",
-      "parent_response": {
-        "daily_stool_consistency": [2, 7, 7, 7, 7, 2, 7],
-        "daily_stool_frequency": [56, 44, 50, 43, 64, 51, 48],
-        "promis_pain_interference": {
-          "t-score": 50.3952
-        },
-        "promis_gi_symptoms": {
-          "t-score": 51.6341
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [7, 7, 2, 2, 2, 2, 2],
-        "daily_stool_frequency": [41, 61, 55, 54, 52, 61, 49],
-        "promis_pain_interference": {
-          "t-score": 52.1587
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.6197
-        }
-      }
-    },
-    {
-      "treatment": "liberalized",
-      "parent_response": {
-        "daily_stool_consistency": [2, 7, 2, 7, 7, 7, 7],
-        "daily_stool_frequency": [51, 60, 44, 57, 51, 51, 47],
-        "promis_pain_interference": {
-          "t-score": 50.0001
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.4281
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [2, 7, 7, 7, 7, 2, 7],
-        "daily_stool_frequency": [40, 50, 46, 47, 46, 52, 54],
-        "promis_pain_interference": {
-          "t-score": 47.7779
-        },
-        "promis_gi_symptoms": {
-          "t-score": 51.1702
-        }
-      }
-    },
-    {
-      "treatment": "liberalized",
-      "parent_response": {
-        "daily_stool_consistency": [2, 7, 7, 2, 7, 7, 7],
-        "daily_stool_frequency": [58, 66, 50, 34, 45, 66, 50],
-        "promis_pain_interference": {
-          "t-score": 47.9374
-        },
-        "promis_gi_symptoms": {
-          "t-score": 50.1225
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [7, 2, 7, 7, 2, 2, 2],
-        "daily_stool_frequency": [46, 65, 35, 52, 55, 51, 51],
-        "promis_pain_interference": {
-          "t-score": 45.982
-        },
-        "promis_gi_symptoms": {
-          "t-score": 50.3752
-        }
-      }
-    },
-    {
-      "treatment": "liberalized",
-      "parent_response": {
-        "daily_stool_consistency": [2, 7, 2, 7, 7, 2, 7],
-        "daily_stool_frequency": [36, 66, 59, 54, 47, 42, 52],
-        "promis_pain_interference": {
-          "t-score": 49.8883
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.9432
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [7, 7, 7, 7, 7, 7, 7],
-        "daily_stool_frequency": [49, 57, 46, 67, 48, 54, 42],
-        "promis_pain_interference": {
-          "t-score": 47.0797
-        },
-        "promis_gi_symptoms": {
-          "t-score": 51.8352
-        }
-      }
-    },
-    {
-      "treatment": "strict",
-      "parent_response": {
-        "daily_stool_consistency": [2, 7, 7, 2, 7, 7, 2],
-        "daily_stool_frequency": [42, 58, 46, 61, 46, 45, 53],
-        "promis_pain_interference": {
-          "t-score": 48.7191
-        },
-        "promis_gi_symptoms": {
-          "t-score": 50.5207
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [7, 7, 7, 7, 2, 2, 7],
-        "daily_stool_frequency": [51, 50, 53, 60, 52, 51, 57],
-        "promis_pain_interference": {
-          "t-score": 49.8567
-        },
-        "promis_gi_symptoms": {
-          "t-score": 47.8295
-        }
-      }
-    },
-    {
-      "treatment": "strict",
-      "parent_response": {
-        "daily_stool_consistency": [7, 7, 2, 2, 7, 2, 7],
-        "daily_stool_frequency": [49, 48, 53, 51, 43, 38, 45],
-        "promis_pain_interference": {
-          "t-score": 49.0181
-        },
-        "promis_gi_symptoms": {
-          "t-score": 47.216
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [2, 7, 7, 7, 7, 7, 7],
-        "daily_stool_frequency": [43, 43, 41, 45, 62, 52, 49],
-        "promis_pain_interference": {
-          "t-score": 48.358
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.426
-        }
-      }
-    },
-    {
-      "treatment": "strict",
-      "parent_response": {
-        "daily_stool_consistency": [7, 7, 7, 2, 2, 2, 2],
-        "daily_stool_frequency": [43, 46, 54, 60, 51, 58, 50],
-        "promis_pain_interference": {
-          "t-score": 49.1727
-        },
-        "promis_gi_symptoms": {
-          "t-score": 48.925
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [7, 2, 2, 7, 7, 2, 7],
-        "daily_stool_frequency": [41, 46, 37, 63, 51, 51, 50],
-        "promis_pain_interference": {
-          "t-score": 49.9421
-        },
-        "promis_gi_symptoms": {
-          "t-score": 44.8481
-        }
-      }
-    },
-    {
-      "treatment": "strict",
-      "parent_response": {
-        "daily_stool_consistency": [7, 2, 2, 7, 2, 7, 7],
-        "daily_stool_frequency": [50, 39, 50, 52, 50, 53, 57],
-        "promis_pain_interference": {
-          "t-score": 47.3576
-        },
-        "promis_gi_symptoms": {
-          "t-score": 51.3401
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [7, 7, 7, 2, 2, 2, 7],
-        "daily_stool_frequency": [53, 52, 46, 45, 46, 48, 50],
-        "promis_pain_interference": {
-          "t-score": 51.3724
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.0858
-        }
-      }
-    },
-    {
-      "treatment": "strict",
-      "parent_response": {
-        "daily_stool_consistency": [7, 2, 2, 2, 7, 7, 2],
-        "daily_stool_frequency": [58, 58, 48, 60, 58, 55, 52],
-        "promis_pain_interference": {
-          "t-score": 48.4002
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.1188
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [7, 2, 7, 7, 2, 7, 7],
-        "daily_stool_frequency": [52, 47, 51, 41, 51, 62, 46],
-        "promis_pain_interference": {
-          "t-score": 52.4411
-        },
-        "promis_gi_symptoms": {
-          "t-score": 48.7512
-        }
-      }
-    },
-    {
-      "treatment": "strict",
-      "parent_response": {
-        "daily_stool_consistency": [2, 7, 2, 2, 2, 7, 7],
-        "daily_stool_frequency": [40, 60, 55, 44, 60, 54, 34],
-        "promis_pain_interference": {
-          "t-score": 47.8819
-        },
-        "promis_gi_symptoms": {
-          "t-score": 50.1715
+          "t-score": 51.615
         }
       },
       "child_response": {
         "daily_stool_consistency": [2, 2, 7, 7, 7, 2, 2],
-        "daily_stool_frequency": [59, 50, 42, 55, 57, 52, 46],
+        "daily_stool_frequency": [52, 42, 61, 51, 50, 60, 53],
         "promis_pain_interference": {
-          "t-score": 50.1065
+          "t-score": 50.8813
         },
         "promis_gi_symptoms": {
-          "t-score": 52.3952
-        }
-      }
-    },
-    {
-      "treatment": "strict",
-      "parent_response": {
-        "daily_stool_consistency": [7, 7, 7, 7, 7, 7, 7],
-        "daily_stool_frequency": [46, 51, 38, 42, 48, 52, 41],
-        "promis_pain_interference": {
-          "t-score": 49.4939
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.0994
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [7, 7, 7, 2, 7, 2, 7],
-        "daily_stool_frequency": [50, 40, 39, 42, 49, 42, 45],
-        "promis_pain_interference": {
-          "t-score": 49.361
-        },
-        "promis_gi_symptoms": {
-          "t-score": 47.1948
-        }
-      }
-    },
-    {
-      "treatment": "strict",
-      "parent_response": {
-        "daily_stool_consistency": [7, 2, 2, 7, 7, 2, 7],
-        "daily_stool_frequency": [49, 38, 46, 45, 47, 59, 47],
-        "promis_pain_interference": {
-          "t-score": 48.3178
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.6054
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [7, 7, 7, 7, 7, 7, 7],
-        "daily_stool_frequency": [41, 52, 52, 52, 44, 41, 37],
-        "promis_pain_interference": {
-          "t-score": 49.504
-        },
-        "promis_gi_symptoms": {
-          "t-score": 48.3158
+          "t-score": 49.758
         }
       }
     },
     {
       "treatment": "liberalized",
-      "parent_response": {
-        "daily_stool_consistency": [7, 2, 2, 2, 7, 7, 2],
-        "daily_stool_frequency": [46, 58, 42, 47, 62, 62, 50],
-        "promis_pain_interference": {
-          "t-score": 50.1871
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.7991
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [2, 2, 2, 7, 7, 7, 7],
-        "daily_stool_frequency": [52, 46, 56, 47, 43, 58, 61],
-        "promis_pain_interference": {
-          "t-score": 50.7208
-        },
-        "promis_gi_symptoms": {
-          "t-score": 48.4342
-        }
-      }
-    },
-    {
-      "treatment": "liberalized",
-      "parent_response": {
-        "daily_stool_consistency": [7, 2, 2, 7, 2, 2, 2],
-        "daily_stool_frequency": [61, 54, 63, 50, 49, 52, 58],
-        "promis_pain_interference": {
-          "t-score": 48.8775
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.9898
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [7, 7, 7, 2, 7, 2, 2],
-        "daily_stool_frequency": [54, 58, 68, 54, 48, 46, 51],
-        "promis_pain_interference": {
-          "t-score": 49.9236
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.5466
-        }
-      }
-    },
-    {
-      "treatment": "liberalized",
-      "parent_response": {
-        "daily_stool_consistency": [7, 2, 7, 2, 7, 7, 7],
-        "daily_stool_frequency": [56, 49, 40, 55, 49, 57, 64],
-        "promis_pain_interference": {
-          "t-score": 48.9579
-        },
-        "promis_gi_symptoms": {
-          "t-score": 53.0484
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [7, 2, 2, 2, 2, 2, 7],
-        "daily_stool_frequency": [44, 54, 56, 47, 61, 48, 60],
-        "promis_pain_interference": {
-          "t-score": 48.1401
-        },
-        "promis_gi_symptoms": {
-          "t-score": 48.851
-        }
-      }
-    },
-    {
-      "treatment": "liberalized",
-      "parent_response": {
-        "daily_stool_consistency": [7, 7, 7, 7, 7, 7, 2],
-        "daily_stool_frequency": [50, 45, 36, 50, 52, 41, 61],
-        "promis_pain_interference": {
-          "t-score": 49.5833
-        },
-        "promis_gi_symptoms": {
-          "t-score": 50.3121
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [7, 2, 2, 7, 7, 7, 7],
-        "daily_stool_frequency": [57, 43, 53, 56, 46, 57, 50],
-        "promis_pain_interference": {
-          "t-score": 49.5679
-        },
-        "promis_gi_symptoms": {
-          "t-score": 48.2352
-        }
-      }
-    },
-    {
-      "treatment": "liberalized",
-      "parent_response": {
-        "daily_stool_consistency": [7, 7, 2, 7, 7, 7, 2],
-        "daily_stool_frequency": [44, 46, 52, 52, 50, 60, 57],
-        "promis_pain_interference": {
-          "t-score": 47.7707
-        },
-        "promis_gi_symptoms": {
-          "t-score": 50.7909
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [2, 7, 7, 2, 2, 2, 7],
-        "daily_stool_frequency": [38, 48, 48, 45, 54, 59, 54],
-        "promis_pain_interference": {
-          "t-score": 50.7482
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.7704
-        }
-      }
-    },
-    {
-      "treatment": "liberalized",
-      "parent_response": {
-        "daily_stool_consistency": [7, 2, 2, 7, 7, 7, 7],
-        "daily_stool_frequency": [66, 58, 51, 43, 43, 48, 43],
-        "promis_pain_interference": {
-          "t-score": 50.2148
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.8717
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [2, 7, 7, 7, 7, 2, 7],
-        "daily_stool_frequency": [70, 44, 50, 45, 56, 54, 62],
-        "promis_pain_interference": {
-          "t-score": 51.1257
-        },
-        "promis_gi_symptoms": {
-          "t-score": 50.6827
-        }
-      }
-    },
-    {
-      "treatment": "liberalized",
-      "parent_response": {
-        "daily_stool_consistency": [7, 7, 7, 2, 7, 7, 7],
-        "daily_stool_frequency": [57, 50, 48, 63, 61, 55, 60],
-        "promis_pain_interference": {
-          "t-score": 47.9074
-        },
-        "promis_gi_symptoms": {
-          "t-score": 50.0916
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [2, 7, 2, 7, 2, 7, 2],
-        "daily_stool_frequency": [53, 53, 47, 50, 51, 50, 63],
-        "promis_pain_interference": {
-          "t-score": 47.4825
-        },
-        "promis_gi_symptoms": {
-          "t-score": 51.6863
-        }
-      }
-    },
-    {
-      "treatment": "liberalized",
-      "parent_response": {
-        "daily_stool_consistency": [2, 7, 2, 2, 2, 2, 2],
-        "daily_stool_frequency": [63, 59, 44, 63, 54, 51, 37],
-        "promis_pain_interference": {
-          "t-score": 49.6881
-        },
-        "promis_gi_symptoms": {
-          "t-score": 49.9727
-        }
-      },
-      "child_response": {
-        "daily_stool_consistency": [2, 7, 2, 2, 7, 2, 7],
-        "daily_stool_frequency": [59, 50, 47, 45, 65, 51, 51],
-        "promis_pain_interference": {
-          "t-score": 50.3021
-        },
-        "promis_gi_symptoms": {
-          "t-score": 50.2798
-        }
-      }
-    },
-    {
-      "treatment": "strict",
       "parent_response": {
         "daily_stool_consistency": [7, 2, 7, 2, 7, 2, 7],
-        "daily_stool_frequency": [61, 48, 48, 47, 54, 55, 55],
+        "daily_stool_frequency": [62, 48, 64, 45, 37, 63, 49],
         "promis_pain_interference": {
-          "t-score": 49.1835
+          "t-score": 48.0792
         },
         "promis_gi_symptoms": {
-          "t-score": 50.0235
+          "t-score": 47.6938
         }
       },
       "child_response": {
-        "daily_stool_consistency": [7, 2, 7, 2, 7, 2, 2],
-        "daily_stool_frequency": [43, 45, 47, 57, 45, 44, 36],
+        "daily_stool_consistency": [2, 2, 7, 2, 2, 7, 7],
+        "daily_stool_frequency": [55, 48, 58, 57, 55, 46, 43],
         "promis_pain_interference": {
-          "t-score": 49.6767
+          "t-score": 50.0877
         },
         "promis_gi_symptoms": {
-          "t-score": 49.4648
+          "t-score": 48.9626
         }
       }
     },
     {
-      "treatment": "strict",
+      "treatment": "liberalized",
       "parent_response": {
-        "daily_stool_consistency": [7, 2, 2, 2, 2, 7, 7],
-        "daily_stool_frequency": [48, 49, 44, 42, 34, 59, 57],
+        "daily_stool_consistency": [7, 7, 7, 7, 7, 7, 7],
+        "daily_stool_frequency": [53, 58, 50, 59, 49, 54, 53],
         "promis_pain_interference": {
-          "t-score": 48.0104
+          "t-score": 50.9777
         },
         "promis_gi_symptoms": {
-          "t-score": 47.2427
+          "t-score": 50.9587
         }
       },
       "child_response": {
-        "daily_stool_consistency": [2, 7, 7, 2, 7, 7, 7],
-        "daily_stool_frequency": [44, 55, 41, 50, 48, 54, 51],
+        "daily_stool_consistency": [7, 2, 2, 2, 7, 2, 2],
+        "daily_stool_frequency": [55, 47, 45, 45, 63, 77, 59],
         "promis_pain_interference": {
-          "t-score": 49.4519
+          "t-score": 47.6862
         },
         "promis_gi_symptoms": {
-          "t-score": 51.7193
+          "t-score": 50.6375
         }
       }
     },
     {
-      "treatment": "strict",
+      "treatment": "liberalized",
       "parent_response": {
-        "daily_stool_consistency": [7, 2, 2, 7, 7, 2, 7],
-        "daily_stool_frequency": [49, 42, 51, 48, 57, 56, 42],
+        "daily_stool_consistency": [7, 2, 7, 7, 7, 7, 7],
+        "daily_stool_frequency": [50, 51, 36, 56, 48, 48, 48],
         "promis_pain_interference": {
-          "t-score": 49.0509
+          "t-score": 50.9063
         },
         "promis_gi_symptoms": {
-          "t-score": 48.5269
+          "t-score": 49.8988
         }
       },
       "child_response": {
-        "daily_stool_consistency": [2, 7, 2, 7, 7, 7, 7],
-        "daily_stool_frequency": [61, 52, 56, 46, 48, 42, 47],
+        "daily_stool_consistency": [7, 7, 7, 7, 2, 7, 2],
+        "daily_stool_frequency": [63, 45, 59, 51, 61, 41, 45],
         "promis_pain_interference": {
-          "t-score": 50.0552
+          "t-score": 49.0879
         },
         "promis_gi_symptoms": {
-          "t-score": 48.0452
+          "t-score": 50.1173
+        }
+      }
+    },
+    {
+      "treatment": "liberalized",
+      "parent_response": {
+        "daily_stool_consistency": [2, 2, 7, 2, 7, 7, 2],
+        "daily_stool_frequency": [61, 58, 45, 44, 69, 52, 58],
+        "promis_pain_interference": {
+          "t-score": 48.4015
+        },
+        "promis_gi_symptoms": {
+          "t-score": 50.5014
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 2, 7, 2, 2, 7, 2],
+        "daily_stool_frequency": [50, 56, 54, 38, 44, 46, 52],
+        "promis_pain_interference": {
+          "t-score": 49.9215
+        },
+        "promis_gi_symptoms": {
+          "t-score": 50.6007
+        }
+      }
+    },
+    {
+      "treatment": "liberalized",
+      "parent_response": {
+        "daily_stool_consistency": [2, 7, 2, 2, 7, 2, 2],
+        "daily_stool_frequency": [51, 52, 45, 49, 38, 67, 54],
+        "promis_pain_interference": {
+          "t-score": 49.1588
+        },
+        "promis_gi_symptoms": {
+          "t-score": 52.7027
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 7, 2, 7, 7, 7, 2],
+        "daily_stool_frequency": [59, 55, 53, 59, 47, 50, 51],
+        "promis_pain_interference": {
+          "t-score": 47.2454
+        },
+        "promis_gi_symptoms": {
+          "t-score": 50.8304
+        }
+      }
+    },
+    {
+      "treatment": "liberalized",
+      "parent_response": {
+        "daily_stool_consistency": [7, 7, 2, 7, 7, 2, 7],
+        "daily_stool_frequency": [51, 49, 51, 60, 47, 59, 53],
+        "promis_pain_interference": {
+          "t-score": 44.6745
+        },
+        "promis_gi_symptoms": {
+          "t-score": 49.9574
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 7, 7, 2, 7, 7, 2],
+        "daily_stool_frequency": [38, 52, 52, 42, 54, 52, 50],
+        "promis_pain_interference": {
+          "t-score": 48.0709
+        },
+        "promis_gi_symptoms": {
+          "t-score": 49.6554
+        }
+      }
+    },
+    {
+      "treatment": "liberalized",
+      "parent_response": {
+        "daily_stool_consistency": [7, 7, 7, 7, 7, 7, 7],
+        "daily_stool_frequency": [61, 48, 50, 39, 57, 69, 46],
+        "promis_pain_interference": {
+          "t-score": 50.5918
+        },
+        "promis_gi_symptoms": {
+          "t-score": 48.6679
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 2, 7, 7, 7, 2, 2],
+        "daily_stool_frequency": [46, 42, 60, 60, 56, 56, 54],
+        "promis_pain_interference": {
+          "t-score": 49.5906
+        },
+        "promis_gi_symptoms": {
+          "t-score": 50.7509
+        }
+      }
+    },
+    {
+      "treatment": "liberalized",
+      "parent_response": {
+        "daily_stool_consistency": [7, 2, 2, 2, 2, 2, 7],
+        "daily_stool_frequency": [50, 49, 46, 42, 50, 47, 47],
+        "promis_pain_interference": {
+          "t-score": 50.275
+        },
+        "promis_gi_symptoms": {
+          "t-score": 48.2698
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [2, 2, 2, 2, 7, 7, 2],
+        "daily_stool_frequency": [41, 48, 55, 54, 42, 56, 50],
+        "promis_pain_interference": {
+          "t-score": 51.5664
+        },
+        "promis_gi_symptoms": {
+          "t-score": 51.6553
         }
       }
     },
@@ -671,114 +234,551 @@
       "treatment": "strict",
       "parent_response": {
         "daily_stool_consistency": [2, 2, 7, 7, 7, 7, 2],
-        "daily_stool_frequency": [43, 43, 52, 55, 50, 53, 49],
+        "daily_stool_frequency": [37, 61, 56, 47, 55, 44, 42],
         "promis_pain_interference": {
-          "t-score": 50.9407
+          "t-score": 46.7401
         },
         "promis_gi_symptoms": {
-          "t-score": 52.1414
+          "t-score": 49.6874
         }
       },
       "child_response": {
-        "daily_stool_consistency": [2, 7, 2, 2, 2, 2, 2],
-        "daily_stool_frequency": [54, 45, 36, 48, 45, 50, 50],
+        "daily_stool_consistency": [7, 2, 7, 7, 2, 7, 7],
+        "daily_stool_frequency": [54, 46, 48, 48, 38, 47, 47],
         "promis_pain_interference": {
-          "t-score": 51.1668
+          "t-score": 46.103
         },
         "promis_gi_symptoms": {
-          "t-score": 50.8978
+          "t-score": 49.6066
         }
       }
     },
     {
       "treatment": "strict",
       "parent_response": {
-        "daily_stool_consistency": [2, 2, 2, 7, 2, 7, 2],
-        "daily_stool_frequency": [41, 46, 39, 55, 48, 45, 61],
+        "daily_stool_consistency": [7, 2, 7, 7, 7, 7, 2],
+        "daily_stool_frequency": [59, 52, 67, 51, 63, 46, 67],
         "promis_pain_interference": {
-          "t-score": 48.7042
+          "t-score": 48.2115
         },
         "promis_gi_symptoms": {
-          "t-score": 46.3252
+          "t-score": 46.5809
         }
       },
       "child_response": {
-        "daily_stool_consistency": [2, 7, 2, 7, 2, 7, 7],
-        "daily_stool_frequency": [56, 58, 61, 49, 48, 59, 58],
+        "daily_stool_consistency": [7, 2, 7, 2, 7, 7, 7],
+        "daily_stool_frequency": [44, 42, 41, 61, 47, 42, 49],
         "promis_pain_interference": {
-          "t-score": 49.1896
+          "t-score": 51.5505
         },
         "promis_gi_symptoms": {
-          "t-score": 49.523
+          "t-score": 50.156
         }
       }
     },
     {
       "treatment": "strict",
       "parent_response": {
-        "daily_stool_consistency": [7, 2, 2, 7, 2, 7, 2],
-        "daily_stool_frequency": [45, 59, 57, 41, 57, 48, 60],
+        "daily_stool_consistency": [7, 2, 2, 2, 7, 7, 7],
+        "daily_stool_frequency": [48, 51, 46, 46, 56, 45, 46],
         "promis_pain_interference": {
-          "t-score": 47.5531
+          "t-score": 48.0814
         },
         "promis_gi_symptoms": {
-          "t-score": 48.8015
+          "t-score": 48.5748
         }
       },
       "child_response": {
-        "daily_stool_consistency": [7, 2, 7, 2, 7, 2, 7],
-        "daily_stool_frequency": [43, 52, 47, 47, 49, 52, 43],
+        "daily_stool_consistency": [7, 7, 7, 7, 7, 7, 7],
+        "daily_stool_frequency": [48, 47, 53, 52, 56, 40, 48],
         "promis_pain_interference": {
-          "t-score": 47.3214
+          "t-score": 47.5868
         },
         "promis_gi_symptoms": {
-          "t-score": 49.7995
+          "t-score": 48.4358
         }
       }
     },
     {
       "treatment": "strict",
       "parent_response": {
-        "daily_stool_consistency": [2, 7, 2, 2, 2, 7, 7],
-        "daily_stool_frequency": [42, 60, 54, 44, 51, 50, 56],
+        "daily_stool_consistency": [7, 7, 7, 7, 2, 2, 2],
+        "daily_stool_frequency": [51, 35, 54, 54, 44, 60, 52],
         "promis_pain_interference": {
-          "t-score": 49.2044
+          "t-score": 47.3981
         },
         "promis_gi_symptoms": {
-          "t-score": 48.1436
+          "t-score": 49.7536
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 7, 2, 7, 7, 2, 7],
+        "daily_stool_frequency": [45, 40, 45, 44, 43, 47, 40],
+        "promis_pain_interference": {
+          "t-score": 48.9558
+        },
+        "promis_gi_symptoms": {
+          "t-score": 45.7966
+        }
+      }
+    },
+    {
+      "treatment": "strict",
+      "parent_response": {
+        "daily_stool_consistency": [7, 7, 2, 7, 7, 2, 2],
+        "daily_stool_frequency": [50, 52, 55, 36, 52, 55, 53],
+        "promis_pain_interference": {
+          "t-score": 49.2466
+        },
+        "promis_gi_symptoms": {
+          "t-score": 47.6838
         }
       },
       "child_response": {
         "daily_stool_consistency": [2, 2, 7, 2, 2, 2, 2],
-        "daily_stool_frequency": [42, 37, 49, 55, 43, 43, 51],
+        "daily_stool_frequency": [57, 51, 39, 36, 45, 56, 37],
         "promis_pain_interference": {
-          "t-score": 48.6642
+          "t-score": 47.2512
         },
         "promis_gi_symptoms": {
-          "t-score": 47.2853
+          "t-score": 47.2941
         }
       }
     },
     {
       "treatment": "strict",
       "parent_response": {
-        "daily_stool_consistency": [2, 2, 2, 7, 7, 7, 2],
-        "daily_stool_frequency": [50, 61, 53, 50, 53, 51, 44],
+        "daily_stool_consistency": [7, 2, 2, 7, 7, 7, 2],
+        "daily_stool_frequency": [50, 49, 41, 56, 50, 53, 45],
         "promis_pain_interference": {
-          "t-score": 49.1926
+          "t-score": 49.8443
         },
         "promis_gi_symptoms": {
-          "t-score": 49.8255
+          "t-score": 47.9125
         }
       },
       "child_response": {
-        "daily_stool_consistency": [2, 2, 7, 2, 7, 7, 7],
-        "daily_stool_frequency": [54, 50, 53, 48, 58, 51, 42],
+        "daily_stool_consistency": [2, 2, 2, 7, 7, 7, 7],
+        "daily_stool_frequency": [54, 52, 52, 55, 59, 35, 51],
         "promis_pain_interference": {
-          "t-score": 48.8519
+          "t-score": 48.2838
         },
         "promis_gi_symptoms": {
-          "t-score": 48.549
+          "t-score": 50.1287
+        }
+      }
+    },
+    {
+      "treatment": "strict",
+      "parent_response": {
+        "daily_stool_consistency": [2, 7, 7, 2, 7, 2, 7],
+        "daily_stool_frequency": [50, 50, 53, 46, 53, 58, 57],
+        "promis_pain_interference": {
+          "t-score": 46.9693
+        },
+        "promis_gi_symptoms": {
+          "t-score": 49.735
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 2, 7, 2, 7, 2, 2],
+        "daily_stool_frequency": [58, 54, 50, 46, 47, 50, 53],
+        "promis_pain_interference": {
+          "t-score": 49.985
+        },
+        "promis_gi_symptoms": {
+          "t-score": 51.0492
+        }
+      }
+    },
+    {
+      "treatment": "strict",
+      "parent_response": {
+        "daily_stool_consistency": [2, 7, 2, 7, 7, 7, 2],
+        "daily_stool_frequency": [56, 50, 57, 50, 46, 60, 48],
+        "promis_pain_interference": {
+          "t-score": 49.0649
+        },
+        "promis_gi_symptoms": {
+          "t-score": 49.9534
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 7, 2, 2, 7, 2, 7],
+        "daily_stool_frequency": [45, 54, 52, 52, 37, 62, 63],
+        "promis_pain_interference": {
+          "t-score": 50.9158
+        },
+        "promis_gi_symptoms": {
+          "t-score": 47.1276
+        }
+      }
+    },
+    {
+      "treatment": "liberalized",
+      "parent_response": {
+        "daily_stool_consistency": [2, 7, 7, 7, 7, 7, 7],
+        "daily_stool_frequency": [58, 49, 56, 44, 47, 55, 62],
+        "promis_pain_interference": {
+          "t-score": 49.893
+        },
+        "promis_gi_symptoms": {
+          "t-score": 51.2565
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 7, 7, 7, 7, 2, 2],
+        "daily_stool_frequency": [56, 49, 56, 53, 67, 44, 58],
+        "promis_pain_interference": {
+          "t-score": 48.3356
+        },
+        "promis_gi_symptoms": {
+          "t-score": 49.6114
+        }
+      }
+    },
+    {
+      "treatment": "liberalized",
+      "parent_response": {
+        "daily_stool_consistency": [7, 7, 7, 7, 7, 2, 2],
+        "daily_stool_frequency": [68, 58, 45, 56, 63, 52, 49],
+        "promis_pain_interference": {
+          "t-score": 50.8325
+        },
+        "promis_gi_symptoms": {
+          "t-score": 49.8819
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 2, 7, 2, 2, 2, 7],
+        "daily_stool_frequency": [57, 52, 56, 56, 54, 62, 58],
+        "promis_pain_interference": {
+          "t-score": 49.2653
+        },
+        "promis_gi_symptoms": {
+          "t-score": 51.5771
+        }
+      }
+    },
+    {
+      "treatment": "liberalized",
+      "parent_response": {
+        "daily_stool_consistency": [2, 7, 7, 7, 7, 7, 2],
+        "daily_stool_frequency": [58, 51, 49, 44, 53, 56, 47],
+        "promis_pain_interference": {
+          "t-score": 51.1714
+        },
+        "promis_gi_symptoms": {
+          "t-score": 52.4356
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 7, 2, 7, 7, 7, 7],
+        "daily_stool_frequency": [57, 48, 44, 38, 54, 33, 48],
+        "promis_pain_interference": {
+          "t-score": 50.7139
+        },
+        "promis_gi_symptoms": {
+          "t-score": 47.0044
+        }
+      }
+    },
+    {
+      "treatment": "liberalized",
+      "parent_response": {
+        "daily_stool_consistency": [2, 2, 7, 7, 2, 2, 7],
+        "daily_stool_frequency": [42, 61, 56, 46, 46, 54, 59],
+        "promis_pain_interference": {
+          "t-score": 50.1653
+        },
+        "promis_gi_symptoms": {
+          "t-score": 46.9591
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [2, 7, 7, 7, 7, 7, 2],
+        "daily_stool_frequency": [45, 53, 55, 52, 47, 57, 62],
+        "promis_pain_interference": {
+          "t-score": 48.2453
+        },
+        "promis_gi_symptoms": {
+          "t-score": 52.1957
+        }
+      }
+    },
+    {
+      "treatment": "liberalized",
+      "parent_response": {
+        "daily_stool_consistency": [7, 7, 7, 7, 7, 7, 2],
+        "daily_stool_frequency": [60, 42, 54, 52, 59, 57, 51],
+        "promis_pain_interference": {
+          "t-score": 51.3577
+        },
+        "promis_gi_symptoms": {
+          "t-score": 50.2753
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 7, 2, 2, 7, 7, 2],
+        "daily_stool_frequency": [59, 64, 57, 45, 47, 51, 46],
+        "promis_pain_interference": {
+          "t-score": 50.9816
+        },
+        "promis_gi_symptoms": {
+          "t-score": 46.0273
+        }
+      }
+    },
+    {
+      "treatment": "liberalized",
+      "parent_response": {
+        "daily_stool_consistency": [7, 2, 2, 7, 7, 7, 2],
+        "daily_stool_frequency": [63, 57, 62, 68, 54, 60, 46],
+        "promis_pain_interference": {
+          "t-score": 50.7472
+        },
+        "promis_gi_symptoms": {
+          "t-score": 47.9918
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 7, 7, 7, 7, 2, 2],
+        "daily_stool_frequency": [53, 39, 54, 51, 56, 46, 60],
+        "promis_pain_interference": {
+          "t-score": 46.5804
+        },
+        "promis_gi_symptoms": {
+          "t-score": 49.8713
+        }
+      }
+    },
+    {
+      "treatment": "liberalized",
+      "parent_response": {
+        "daily_stool_consistency": [2, 2, 2, 7, 7, 7, 7],
+        "daily_stool_frequency": [51, 55, 57, 65, 51, 53, 61],
+        "promis_pain_interference": {
+          "t-score": 51.0554
+        },
+        "promis_gi_symptoms": {
+          "t-score": 48.6955
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 7, 2, 7, 7, 2, 2],
+        "daily_stool_frequency": [44, 44, 55, 52, 50, 48, 43],
+        "promis_pain_interference": {
+          "t-score": 48.7314
+        },
+        "promis_gi_symptoms": {
+          "t-score": 49.4109
+        }
+      }
+    },
+    {
+      "treatment": "liberalized",
+      "parent_response": {
+        "daily_stool_consistency": [7, 7, 7, 7, 2, 7, 7],
+        "daily_stool_frequency": [50, 41, 52, 62, 46, 51, 51],
+        "promis_pain_interference": {
+          "t-score": 50.3556
+        },
+        "promis_gi_symptoms": {
+          "t-score": 48.4622
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [2, 7, 2, 2, 7, 2, 2],
+        "daily_stool_frequency": [48, 58, 50, 47, 55, 56, 56],
+        "promis_pain_interference": {
+          "t-score": 45.9718
+        },
+        "promis_gi_symptoms": {
+          "t-score": 50.4791
+        }
+      }
+    },
+    {
+      "treatment": "strict",
+      "parent_response": {
+        "daily_stool_consistency": [7, 7, 7, 7, 2, 7, 7],
+        "daily_stool_frequency": [57, 51, 43, 46, 41, 41, 56],
+        "promis_pain_interference": {
+          "t-score": 46.2518
+        },
+        "promis_gi_symptoms": {
+          "t-score": 50.0382
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [2, 7, 7, 7, 7, 2, 2],
+        "daily_stool_frequency": [59, 50, 60, 41, 48, 44, 53],
+        "promis_pain_interference": {
+          "t-score": 45.271
+        },
+        "promis_gi_symptoms": {
+          "t-score": 48.5536
+        }
+      }
+    },
+    {
+      "treatment": "strict",
+      "parent_response": {
+        "daily_stool_consistency": [7, 7, 2, 2, 7, 2, 7],
+        "daily_stool_frequency": [58, 54, 46, 50, 37, 43, 43],
+        "promis_pain_interference": {
+          "t-score": 49.8267
+        },
+        "promis_gi_symptoms": {
+          "t-score": 49.6034
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [2, 2, 2, 2, 7, 2, 2],
+        "daily_stool_frequency": [39, 48, 49, 55, 51, 47, 44],
+        "promis_pain_interference": {
+          "t-score": 50.0744
+        },
+        "promis_gi_symptoms": {
+          "t-score": 47.2814
+        }
+      }
+    },
+    {
+      "treatment": "strict",
+      "parent_response": {
+        "daily_stool_consistency": [2, 2, 7, 7, 7, 7, 7],
+        "daily_stool_frequency": [53, 53, 40, 49, 50, 59, 53],
+        "promis_pain_interference": {
+          "t-score": 50.706
+        },
+        "promis_gi_symptoms": {
+          "t-score": 48.8245
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [2, 7, 7, 7, 2, 7, 7],
+        "daily_stool_frequency": [42, 53, 45, 47, 40, 52, 53],
+        "promis_pain_interference": {
+          "t-score": 47.785
+        },
+        "promis_gi_symptoms": {
+          "t-score": 48.0697
+        }
+      }
+    },
+    {
+      "treatment": "strict",
+      "parent_response": {
+        "daily_stool_consistency": [2, 7, 2, 7, 7, 2, 2],
+        "daily_stool_frequency": [38, 47, 56, 55, 47, 53, 47],
+        "promis_pain_interference": {
+          "t-score": 50.0518
+        },
+        "promis_gi_symptoms": {
+          "t-score": 45.9903
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 2, 7, 2, 7, 2, 7],
+        "daily_stool_frequency": [51, 55, 54, 62, 60, 43, 30],
+        "promis_pain_interference": {
+          "t-score": 48.9984
+        },
+        "promis_gi_symptoms": {
+          "t-score": 50.6154
+        }
+      }
+    },
+    {
+      "treatment": "strict",
+      "parent_response": {
+        "daily_stool_consistency": [7, 2, 7, 2, 2, 7, 7],
+        "daily_stool_frequency": [52, 43, 54, 57, 45, 53, 46],
+        "promis_pain_interference": {
+          "t-score": 50.4495
+        },
+        "promis_gi_symptoms": {
+          "t-score": 49.0525
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [2, 2, 2, 7, 2, 7, 7],
+        "daily_stool_frequency": [46, 50, 52, 46, 47, 46, 41],
+        "promis_pain_interference": {
+          "t-score": 48.3235
+        },
+        "promis_gi_symptoms": {
+          "t-score": 49.3515
+        }
+      }
+    },
+    {
+      "treatment": "strict",
+      "parent_response": {
+        "daily_stool_consistency": [2, 7, 2, 7, 7, 2, 2],
+        "daily_stool_frequency": [48, 54, 48, 51, 47, 47, 40],
+        "promis_pain_interference": {
+          "t-score": 45.0656
+        },
+        "promis_gi_symptoms": {
+          "t-score": 47.2699
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 2, 2, 2, 2, 2, 2],
+        "daily_stool_frequency": [39, 45, 55, 42, 50, 49, 55],
+        "promis_pain_interference": {
+          "t-score": 52.0768
+        },
+        "promis_gi_symptoms": {
+          "t-score": 48.1526
+        }
+      }
+    },
+    {
+      "treatment": "strict",
+      "parent_response": {
+        "daily_stool_consistency": [2, 7, 7, 7, 7, 7, 7],
+        "daily_stool_frequency": [38, 61, 60, 48, 47, 41, 49],
+        "promis_pain_interference": {
+          "t-score": 52.2104
+        },
+        "promis_gi_symptoms": {
+          "t-score": 47.5339
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 2, 2, 7, 7, 2, 7],
+        "daily_stool_frequency": [62, 53, 47, 37, 49, 53, 50],
+        "promis_pain_interference": {
+          "t-score": 50.7861
+        },
+        "promis_gi_symptoms": {
+          "t-score": 49.6025
+        }
+      }
+    },
+    {
+      "treatment": "strict",
+      "parent_response": {
+        "daily_stool_consistency": [2, 7, 7, 7, 7, 7, 2],
+        "daily_stool_frequency": [44, 47, 49, 55, 49, 62, 48],
+        "promis_pain_interference": {
+          "t-score": 49.4653
+        },
+        "promis_gi_symptoms": {
+          "t-score": 50.3265
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [2, 7, 7, 7, 7, 2, 2],
+        "daily_stool_frequency": [40, 34, 47, 56, 51, 56, 48],
+        "promis_pain_interference": {
+          "t-score": 49.6016
+        },
+        "promis_gi_symptoms": {
+          "t-score": 49.1806
         }
       }
     }
