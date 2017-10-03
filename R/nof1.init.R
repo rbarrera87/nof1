@@ -24,8 +24,11 @@ nof1.inits <- function(nof1, n.chains){
   }, error = function(err){
     print(paste("Initial value not working: ",err))
     return(NULL)
+  }, warning = function(warning){
+    print(paste("Warning: ", warning))
+    return(NULL)
   })
-
+  print(inits)
   return(inits)
 }
 

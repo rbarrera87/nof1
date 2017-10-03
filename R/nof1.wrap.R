@@ -210,45 +210,45 @@ wrap <- function(data, metadata){
   print(read_data)
 
   stool_frequency <- tryCatch({
-    data <- list(Treat = read_data$Treatment, Y = read_data$stool_frequency)
-    nof1 <- with(data, {
+    data_freq <- list(Treat = read_data$Treatment, Y = read_data$stool_frequency)
+    nof1_freq <- with(data_freq, {
       nof1.data(Y, Treat, response = "poisson")
     })
-    result <- nof1.run(nof1)
-    summarize_nof1(nof1, result)
+    result_freq <- nof1.run(nof1_freq)
+    summarize_nof1(nof1_freq, result_freq)
   }, error = function(error){
     return(paste("stool_frequency run error: ", error))
   })
 
   stool_consistency <- tryCatch({
-    data <- list(Treat = read_data$Treatment, Y = read_data$stool_consistency)
-    nof1 <- with(data, {
+    data_cons <- list(Treat = read_data$Treatment, Y = read_data$stool_consistency)
+    nof1_cons <- with(data_cons, {
       nof1.data(Y, Treat, response = "binomial")
     })
-    result <- nof1.run(nof1)
-    summarize_nof1(nof1, result)
+    result_cons <- nof1.run(nof1_cons)
+    summarize_nof1(nof1_cons, result_cons)
   }, error = function(error){
     return(paste("stool_consistency run error: ", error))
   })
 
   pain_interference <- tryCatch({
-    data <- list(Treat = read_data$Treatment_weekly, Y = read_data$pain_interference)
-    nof1 <- with(data, {
+    data_pain <- list(Treat = read_data$Treatment_weekly, Y = read_data$pain_interference)
+    nof1_pain <- with(data_pain, {
       nof1.data(Y, Treat, response = "normal")
     })
-    result <- nof1.run(nof1)
-    summarize_nof1(nof1, result)
+    result_pain <- nof1.run(nof1_pain)
+    summarize_nof1(nof1_pain, result_pain)
   }, error = function(error){
     return(paste("pain_interference run error: ", error))
   })
 
   gi_symptoms <- tryCatch({
-    data <- list(Treat = read_data$Treatment_weekly, Y = read_data$gi_symptoms)
-    nof1 <- with(data, {
+    data_gi <- list(Treat = read_data$Treatment_weekly, Y = read_data$gi_symptoms)
+    nof1_gi <- with(data_gi, {
       nof1.data(Y, Treat, response = "normal")
     })
-    result <- nof1.run(nof1)
-    summarize_nof1(nof1, result)
+    result_gi <- nof1.run(nof1_gi)
+    summarize_nof1(nof1_gi, result_gi)
   }, error = function(error){
     return(paste("gi_symptoms run error: ", error))
   })
