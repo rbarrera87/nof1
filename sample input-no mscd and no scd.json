@@ -1,0 +1,56 @@
+{
+  "data": [
+    {
+      "treatment": "baseline",
+      "parent_response": {
+        "daily_stool_consistency": [7, 7, 7, 2, 7, 7, 2],
+        "daily_stool_frequency": [54, 48, 56, 55, 48, 62, 59],
+        "promis_pain_interference": {
+          "t-score": 46.6364
+        },
+        "promis_gi_symptoms": {
+          "t-score": 51.2626
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [2, 7, 2, 7, 2, 2, 7],
+        "daily_stool_frequency": [33, 66, 46, 52, 61, 49, 51],
+        "promis_pain_interference": {
+          "t-score": 46.9892
+        },
+        "promis_gi_symptoms": {
+          "t-score": 49.4617
+        }
+      }
+    },
+    {
+      "treatment": "baseline",
+      "parent_response": {
+        "daily_stool_consistency": [7, 7, 2, 7, 7, 2, 7],
+        "daily_stool_frequency": [49, 63, 42, 49, 62, 61, 60],
+        "promis_pain_interference": {
+          "t-score": 48.1019
+        },
+        "promis_gi_symptoms": {
+          "t-score": 49.9788
+        }
+      },
+      "child_response": {
+        "daily_stool_consistency": [7, 7, 2, 7, 2, 7, 7],
+        "daily_stool_frequency": [49, 53, 52, 54, 56, 59, 63],
+        "promis_pain_interference": {
+          "t-score": 51.9261
+        },
+        "promis_gi_symptoms": {
+          "t-score": 52.326
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "user_id": 300000,
+    "user_age": 15,
+    "trial_start_date": "2017-01-01",
+    "trial_end_date": "2017-08-26"
+  }
+} 
