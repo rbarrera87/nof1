@@ -16,10 +16,10 @@ library(jsonlite)
 library(nof1)
 
 #json.file <- fromJSON("sample input.json")
-#json.file <- fromJSON("sample input-small.json")
+json.file <- fromJSON("sample input-small.json")
 #json.file <- fromJSON("sample input-missing baseline.json")
 #json.file <- fromJSON("sample input-no mscd.json")
-json.file <- fromJSON("sample input-no scd.json")
+#json.file <- fromJSON("sample input-no scd.json")
 result <- do.call(wrap, json.file)
 output <- toJSON(result, pretty = TRUE, UTC = TRUE, auto_unbox = TRUE, na = NULL)
 output
