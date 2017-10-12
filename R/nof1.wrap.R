@@ -16,12 +16,14 @@ read_input_data <- function(data, metadata){
   }
 
   Treatment <- data[,"treatment"]
-  Treatment <- unlist(Treatment)
   Treatment[Treatment == "strict"] = "A"
   Treatment[Treatment == "liberalized"] = "B"
 
   length_each <- sapply(Outcome[,"daily_stool_consistency"], length)
   Treat <- rep(Treatment, times = length_each)
+  
+  length_each2 <- sapply(Outcome[,"promis_gi_symptoms"]$`t-score`, length)
+  Treatment_weekly <- rep(Treatment, time = length_each2)
 
   stool_consistency <- unlist(Outcome$daily_stool_consistency)
   stool_consistency <- ifelse(1 < stool_consistency & stool_consistency < 7, 0, 1)
@@ -30,7 +32,7 @@ read_input_data <- function(data, metadata){
   pain_interference <- as.vector(unlist(Outcome$promis_pain_interference))
   gi_symptoms <- as.vector(unlist(Outcome$promis_gi_symptoms))
 
-  list(Treatment = Treat, Treatment_weekly = Treatment, stool_consistency = stool_consistency, stool_frequency = stool_frequency, pain_interference = pain_interference,  gi_symptoms = gi_symptoms)
+  list(Treatment = Treat, Treatment_weekly = Treatment_weekly, stool_consistency = stool_consistency, stool_frequency = stool_frequency, pain_interference = pain_interference,  gi_symptoms = gi_symptoms)
 }
 
 change <- function(x){
