@@ -64,15 +64,15 @@ jags.fit <- function(nof1, data, pars.save, inits, n.chains, max.run, setsize, n
 
   mod = rjags::jags.model(textConnection(nof1$code), data = data, inits = inits, n.chains = n.chains, n.adapt = setsize)
   
-  # adapted <- FALSE
-  # count <- 0
-  # while(!adapted){
-  #   adapted <- rjags::adapt(mod, setsize, end.adaptation = FALSE)
-  #   count <- count + 1
-  #   if(count == 100){
-  #     stop("algorithm has not adapted")
-  #   }
-  # }
+  adapted <- FALSE
+  count <- 0
+  while(!adapted){
+    adapted <- rjags::adapt(mod, setsize, end.adaptation = FALSE)
+    count <- count + 1
+    if(count == 100){
+      stop("algorithm has not adapted")
+    }
+  }
   
   samples <- rjags::coda.samples(model = mod, variable.names = pars.save, n.iter = setsize)
 
