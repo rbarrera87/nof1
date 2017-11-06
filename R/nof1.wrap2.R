@@ -41,7 +41,7 @@ summarize_nof1_afib <- function(nof1, result){
     
     if("beta_A" %in% colnames(samples)){
       greater_than_1 <-  round(mean(comparison(samples[,"beta_A"], response) > 1, na.rm = TRUE)*100)
-      greater_than_1 <- change(lower_than_1)
+      greater_than_1 <- change(greater_than_1)
     } else{
       greater_than_1 <- NA
     }
