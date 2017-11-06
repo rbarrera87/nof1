@@ -3,13 +3,13 @@
     {
       "treatment": "control",
       "response": {
-        "afib_episode_yn": [0, 1, 0, null, null, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0]
+        "afib_episode_yn": [0, 1, 0, null, null, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0]
       }      
     },
     {
       "treatment": "trigger",
       "response": {
-        "afib_episode_yn": [0, 1, 0, null, null, 0, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1, 1, 0, 0, 0]
+        "afib_episode_yn": [0, 1, 0, null, null, 0, 0, 0, 1, 1, 0, 0, 0, 1, 1, 0, 1, 1, 0, 0, 0]
       }
     }
   ],
