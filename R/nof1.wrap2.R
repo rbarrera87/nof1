@@ -1,0 +1,101 @@
+library(jsonlite)
+library(nof1)
+
+json.file <- fromJSON("afib sample input.json")
+data <- json.file$data
+metadata <- json.file$metadata
+
+#result <- do.call(wrap, json.file)
+#output <- toJSON(result, pretty = TRUE, UTC = TRUE, auto_unbox = TRUE, na = NULL)
+
+read_input_data2 <- function(data, metadata){
+  
+  Y <- unlist(data$response$afib_episode_yn)
+  
+  Treatment <- data$treatment
+  length_each <- sapply(data$response$afib_episode_yn, length)
+  Treat <- rep(Treatment, time = length_each)
+
+  Treat[Treat == "control"] = "baseline"
+  Treat[Treat == "trigger"] = "A"
+  
+  list(Treat = Treat, Y = Y)
+}
+
+
+#' Summarizes the result from the model into json format
+#'
+#' @export
+
+find_raw_mean2 <- function(Y, Treat, baseline, response){
+  
+  raw_mean <- c(mean(Y[Treat == baseline], na.rm = TRUE), mean(Y[Treat == "A"], na.rm = TRUE))
+  raw_mean[is.nan(raw_mean)] <- NA
+  raw_mean
+}
+
+check_enough_data2 <- function(Treatment, x){
+  length(table(Treatment[!is.na(x)])) == 2
+}
+
+summarize_nof1_afib <- function(nof1, result){
+  
+  with(c(nof1, result),{
+    
+    samples <- do.call(rbind, samples)
+    raw_mean <- find_raw_mean2(Y, Treat, baseline, response)
+    rounded_raw_mean <- round_raw_mean(raw_mean, response)
+    
+    #An odds ratio of 1 indicates that the condition or event under study is equally likely to occur in both groups. An odds ratio greater than 1 indicates that the condition or event is more likely to occur in the first group. And an odds ratio less than 1 indicates that the condition or event is less likely to occur in the first group.
+    
+    if("beta_A" %in% colnames(samples)){
+      lower_than_1 <-  round(mean(comparison(samples[,"beta_A"], response) < 1, na.rm = TRUE)*100)
+      lower_than_1 <- change(lower_than_1)
+    } else{
+      lower_than_1 <- NA
+    }
+  
+    return(list(raw_mean = rounded_raw_mean, lower_than_1 = lower_than_1))
+  })
+}
+
+
+#' Wrapper function for afib study that runs the n-of-1 model
+#'
+#' @param json.file input json data
+#' @export
+
+wrap2 <- function(data, metadata){
+  
+  read_data <- tryCatch({
+    read_dummy <- read_input_data2(data, metadata)
+    read_dummy
+  }, error = function(error){
+    return(paste("input read error: ", error))
+  })
+  
+  print(read_data)
+  
+  afib <- tryCatch({
+    data_afib <- read_data
+    nof1_afib <- with(data_afib, {
+      nof1.data(Y, Treat, response = "binomial")
+    })
+    result_afib <- nof1.run(nof1_afib)
+    summarize_nof1_afib(nof1_afib, result_afib)
+  }, error = function(error){
+    return(paste("afib run error: ", error))
+  })
+  
+  metadata <- list(successful_input_reading = check_success(read_data),
+                   successful_run_afib = check_success(afib),
+                   enough_afib = check_enough_data2(read_data$Treat, read_data$Y),
+                   user_id = 325,
+                   timestamp_sammy_completed = Sys.time(),
+                   sammy_version_id = 1,
+                   sammy_version_date = "8/15/2017",
+                   sammy_version_note = "")
+  
+  final <- list(metadata = metadata, afib = afib)
+  return(final)
+}

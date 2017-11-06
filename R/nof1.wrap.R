@@ -171,7 +171,6 @@ summarize_nof1 <- function(nof1, result){
     rounded_raw_mean <- round_raw_mean(raw_mean, response)
 
     coef <- rep(NA,2)
-    rownames
     if("beta_A" %in% colnames(samples)){
       coef[1] <- apply(samples[,c("beta_A"), drop = F], 2, mean)
     }
