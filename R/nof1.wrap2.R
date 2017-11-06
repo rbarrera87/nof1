@@ -35,6 +35,7 @@ summarize_nof1_afib <- function(nof1, result){
     samples <- do.call(rbind, samples)
     raw_mean <- find_raw_mean2(Y, Treat, baseline, response)
     rounded_raw_mean <- round_raw_mean(raw_mean, response)
+    raw_mean <- list(control = rounded_raw_mean[1], trigger = rounded_raw_mean[2])
     
     #An odds ratio of 1 indicates that the condition or event under study is equally likely to occur in both groups. An odds ratio greater than 1 indicates that the condition or event is more likely to occur in the first group. And an odds ratio less than 1 indicates that the condition or event is less likely to occur in the first group.
     
@@ -45,7 +46,7 @@ summarize_nof1_afib <- function(nof1, result){
       lower_than_1 <- NA
     }
   
-    return(list(raw_mean = rounded_raw_mean, lower_than_1 = lower_than_1))
+    return(list(raw_mean = raw_mean, prob_trigger_better = lower_than_1))
   })
 }
 
@@ -71,6 +72,7 @@ wrap2 <- function(data, metadata){
     nof1_afib <- with(data_afib, {
       nof1.data(Y, Treat, response = "binomial")
     })
+    print(cat(nof1_afib$code))
     result_afib <- nof1.run(nof1_afib)
     summarize_nof1_afib(nof1_afib, result_afib)
   }, error = function(error){
