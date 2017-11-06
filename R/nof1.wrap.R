@@ -46,6 +46,10 @@ check_enough_data <- function(Treatment, x){
   length(table(Treatment[!is.na(x)])) == 3
 }
 
+check_success <- function(x){
+  ifelse(is.list(x), TRUE, x)
+}
+
 comparison <- function(x, response){
   answer <-
     if(response == "poisson" || response == "binomial"){
@@ -280,10 +284,6 @@ wrap <- function(data, metadata){
   }, error = function(error){
     return(paste("gi_symptoms run error: ", error))
   })
-
-  check_success <- function(x){
-    ifelse(is.list(x), TRUE, x)
-  }
 
   metadata <- list(successful_input_reading = check_success(read_data),
                    successful_run_stool_frequency = check_success(stool_frequency),

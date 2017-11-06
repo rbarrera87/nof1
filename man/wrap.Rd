@@ -4,7 +4,7 @@
 \alias{wrap}
 \title{Wrapper function that runs the n-of-1 model}
 \usage{
-wrap(json.file)
+wrap(data, metadata)
 }
 \arguments{
 \item{json.file}{input json data}
