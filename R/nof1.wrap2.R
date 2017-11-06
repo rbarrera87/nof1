@@ -1,13 +1,3 @@
-library(jsonlite)
-library(nof1)
-
-json.file <- fromJSON("afib sample input.json")
-data <- json.file$data
-metadata <- json.file$metadata
-
-#result <- do.call(wrap, json.file)
-#output <- toJSON(result, pretty = TRUE, UTC = TRUE, auto_unbox = TRUE, na = NULL)
-
 read_input_data2 <- function(data, metadata){
   
   Y <- unlist(data$response$afib_episode_yn)
