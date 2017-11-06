@@ -4,16 +4,16 @@
     "successful_run_afib": true,
     "enough_afib": true,
     "user_id": 325,
-    "timestamp_sammy_completed": "2017-11-06 21:21:56",
+    "timestamp_sammy_completed": "2017-11-06 23:20:49",
     "sammy_version_id": 1,
     "sammy_version_date": "8/15/2017",
     "sammy_version_note": ""
   },
   "afib": {
     "raw_mean": {
-      "control": 37,
-      "trigger": 26
+      "control": 26,
+      "trigger": 37
     },
-    "prob_afib_more_likely_with_trigger": 23
+    "prob_afib_more_likely_with_trigger": 77
   }
 } 
