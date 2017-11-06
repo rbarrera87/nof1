@@ -40,13 +40,13 @@ summarize_nof1_afib <- function(nof1, result){
     #An odds ratio of 1 indicates that the condition or event under study is equally likely to occur in both groups. An odds ratio greater than 1 indicates that the condition or event is more likely to occur in the first group. And an odds ratio less than 1 indicates that the condition or event is less likely to occur in the first group.
     
     if("beta_A" %in% colnames(samples)){
-      lower_than_1 <-  round(mean(comparison(samples[,"beta_A"], response) < 1, na.rm = TRUE)*100)
-      lower_than_1 <- change(lower_than_1)
+      greater_than_1 <-  round(mean(comparison(samples[,"beta_A"], response) > 1, na.rm = TRUE)*100)
+      greater_than_1 <- change(lower_than_1)
     } else{
-      lower_than_1 <- NA
+      greater_than_1 <- NA
     }
   
-    return(list(raw_mean = raw_mean, prob_trigger_better = lower_than_1))
+    return(list(raw_mean = raw_mean, prob_afib_more_likely_with_trigger = greater_than_1))
   })
 }
 
@@ -72,7 +72,6 @@ wrap2 <- function(data, metadata){
     nof1_afib <- with(data_afib, {
       nof1.data(Y, Treat, response = "binomial")
     })
-    print(cat(nof1_afib$code))
     result_afib <- nof1.run(nof1_afib)
     summarize_nof1_afib(nof1_afib, result_afib)
   }, error = function(error){
