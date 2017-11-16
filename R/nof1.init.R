@@ -181,6 +181,7 @@ nof1.inits.ordinal <- function(nof1, n.chains){
     initial.values[[i]][["dc"]] <- dc
   }
 
+
   Treat.matrix <- NULL
   for(i in Treat.name){
     Treat.matrix <- cbind(Treat.matrix, nof1[[paste0("Treat_", i)]])
@@ -190,8 +191,10 @@ nof1.inits.ordinal <- function(nof1, n.chains){
   #   model <- polr(as.ordered(Y) ~ Treat.matrix, Hess = TRUE)
   #   co = coef(summary(model))
   # } 
-  model <- tryCatch(polr(as.ordered(Y) ~ Treat.matrix + BS, Hess = TRUE), error=function(e) NULL)
+  model <- tryCatch(polr(as.ordered(Y) ~ Treat.matrix, Hess = TRUE), error=function(e) NULL)
   co = coef(summary(model))
+
+  
   
   if(!is.null(model)){
     co_Treat <- co[grep('Treat.matrix', rownames(coef(summary(model)))),,drop = FALSE]
