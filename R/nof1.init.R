@@ -198,7 +198,7 @@ nof1.inits.ordinal <- function(nof1, n.chains){
   
   if(!is.null(model)){
     co_Treat <- co[grep('Treat.matrix', rownames(coef(summary(model)))),,drop = FALSE]
-    co_BS <- co[grep('BS', rownames(coef(summary(model)))), ]
+    #co_BS <- co[grep('BS', rownames(coef(summary(model)))), ]
 
     for(i in 1:n.chains){
       for(j in 1:length(Treat.name)){
