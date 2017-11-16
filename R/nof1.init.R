@@ -167,7 +167,7 @@ nof1.inits.ordinal <- function(nof1, n.chains){
   }
 
   for(i in 1:n.chains){
-    p <- rmultz2(nobs,p)/nobs
+    p <- combinat::rmultz2(nobs,p)/nobs
     if (any(p == 0)) {
       p[which(p == 0)] <- 0.05
       p[max(which(p == max(p)))] <- p[max(which(p == max(p)))] + 1 - sum(p)
