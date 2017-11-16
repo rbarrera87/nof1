@@ -191,10 +191,8 @@ nof1.inits.ordinal <- function(nof1, n.chains){
   #   model <- polr(as.ordered(Y) ~ Treat.matrix, Hess = TRUE)
   #   co = coef(summary(model))
   # } 
-  model <- tryCatch(polr(as.ordered(Y) ~ Treat.matrix, Hess = TRUE), error=function(e) NULL)
+  model <- MASS::polr(as.ordered(Y) ~ Treat.matrix, Hess = TRUE)
   co = coef(summary(model))
-
-  
   
   if(!is.null(model)){
     co_Treat <- co[grep('Treat.matrix', rownames(coef(summary(model)))),,drop = FALSE]
@@ -212,6 +210,7 @@ nof1.inits.ordinal <- function(nof1, n.chains){
       # }
     }
   }
+  
   return(initial.values)
   })
 }
