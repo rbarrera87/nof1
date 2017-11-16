@@ -186,14 +186,13 @@ nof1.inits.ordinal <- function(nof1, n.chains){
     Treat.matrix <- cbind(Treat.matrix, nof1[[paste0("Treat_", i)]])
   }
 
-  if(is.na(knots)){
-    model <- polr(as.ordered(Y) ~ Treat.matrix, Hess = TRUE)
-    co = coef(summary(model))
-  } else{
-    model <- tryCatch(polr(as.ordered(Y) ~ Treat.matrix + BS, Hess = TRUE), error=function(e) NULL)
-    co = coef(summary(model))
-  }
-
+  # if(is.na(knots)){
+  #   model <- polr(as.ordered(Y) ~ Treat.matrix, Hess = TRUE)
+  #   co = coef(summary(model))
+  # } 
+  model <- tryCatch(polr(as.ordered(Y) ~ Treat.matrix + BS, Hess = TRUE), error=function(e) NULL)
+  co = coef(summary(model))
+  
   if(!is.null(model)){
     co_Treat <- co[grep('Treat.matrix', rownames(coef(summary(model)))),,drop = FALSE]
     co_BS <- co[grep('BS', rownames(coef(summary(model)))), ]
@@ -203,11 +202,11 @@ nof1.inits.ordinal <- function(nof1, n.chains){
         initial.values[[i]][[paste0("beta_", Treat.name[j])]] <- co_Treat[j,1] + rnorm(1) * co_Treat[j,2]
       }
 
-      if(!is.na(knots)){
-        for(j in 1:ncol(BS)){
-          initial.values[[i]][[paste0("gamma", j)]] <- co_BS[j, 1] + rnorm(1) * co_BS[j, 2]
-        }
-      }
+      # if(!is.na(knots)){
+      #   for(j in 1:ncol(BS)){
+      #     initial.values[[i]][[paste0("gamma", j)]] <- co_BS[j, 1] + rnorm(1) * co_BS[j, 2]
+      #   }
+      # }
     }
   }
   return(initial.values)
