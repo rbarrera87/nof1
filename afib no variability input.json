@@ -1,0 +1,22 @@
+{
+  "data": [
+    {
+      "treatment": "control",
+      "response": {
+        "afib_episode_yn": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      }      
+    },
+    {
+      "treatment": "trigger",
+      "response": {
+        "afib_episode_yn": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+      }
+    }
+  ],
+  "metadata": {
+    "user_id": 300000,
+    "trigger": "coffee",
+    "trial_start_date": "2017-01-01",
+    "trial_end_date": "2017-08-26"
+  }
+}
