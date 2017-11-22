@@ -87,6 +87,6 @@ wrap2 <- function(data, metadata){
                    sammy_version_date = "8/15/2017",
                    sammy_version_note = "")
   
-  final <- list(metadata = metadata, afib = afib)
+  final <- list(metadata = metadata, afib = afib, result_afib = result_afib)
   return(final)
 }
