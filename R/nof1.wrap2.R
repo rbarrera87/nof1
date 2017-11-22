@@ -70,7 +70,7 @@ wrap2 <- function(data, metadata){
   afib <- tryCatch({
     data_afib <- read_data
     nof1_afib <- with(data_afib, {
-      nof1.data(Y, Treat, response = "binomial")
+      nof1.data(Y, Treat, response = "binomial", beta.prior = list("dnorm", 0, 0.25))
     })
     result_afib <- nof1.run(nof1_afib)
     summarize_nof1_afib(nof1_afib, result_afib)
