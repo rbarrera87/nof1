@@ -67,16 +67,17 @@ time_series_plot <- function(nof1){
 #'
 #' @param result.list list of nof1 results created using nof1.run
 #' @param result.name name of the outcome 
+#' @param level confidence interval level (default is 0.95)
 #' @export
 
-odds_ratio_plot <- function(result.list, result.name = NULL){
+odds_ratio_plot <- function(result.list, result.name = NULL, level = 0.95){
   
   odds_ratio <- matrix(NA, nrow = length(result.list), ncol = 3)
   
   for(i in 1:length(result.list)){
     result <- result.list[[i]]
     samples <- do.call(rbind, result$samples)
-    odds_ratio[i,] <- exp(quantile(samples[,grep("beta", colnames(samples))], c(0.025, 0.5, 0.975)))
+    odds_ratio[i,] <- exp(quantile(samples[,grep("beta", colnames(samples))], c((1 -level)/2, 0.5, 1 - (1 -level)/2)))
   }
   
   odds <- as.data.frame(odds_ratio)
@@ -85,6 +86,9 @@ odds_ratio_plot <- function(result.list, result.name = NULL){
   if(is.null(result.name)){
     odds$vars <- row.names(odds)  
   } else{
+    if(length(result.name) != length(result.list)){
+      stop("result.name should have same length as result.list")
+    }
     odds$vars <- result.name
   }
   ticks <- c(0.1, 0.2, 0.5, 1, 2, 5, 10)
