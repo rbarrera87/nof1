@@ -2,7 +2,7 @@
 % Please edit documentation in R/nof1.summary.R
 \name{stacked_percent_barplot}
 \alias{stacked_percent_barplot}
-\title{Stacked_percent_barplot for raw data (for ordinal data)}
+\title{Stacked_percent_barplot for raw data (for ordinal or binomial data)}
 \usage{
 stacked_percent_barplot(nof1)
 }
@@ -10,5 +10,5 @@ stacked_percent_barplot(nof1)
 \item{nof1}{nof1 object created using nof1.data}
 }
 \description{
-Stacked_percent_barplot for raw data (for ordinal data)
+Stacked_percent_barplot for raw data (for ordinal or binomial data)
 }
