@@ -12,10 +12,10 @@ frequency_plot <- function(nof1){
   
   if(nof1$response %in% c("binomial", "ordinal")){
     data <- aggregate(nof1$Y, list(Y = nof1$Y, Treat = nof1$Treat), length)
-    ggplot(data= data, aes(x= Y, y= x, fill=Treat)) +  geom_bar(stat="identity", position="dodge") + ylab("Frequency")  
+    ggplot(data= data, aes(x= Y, y= x, fill=Treat)) +  geom_bar(stat="identity", position="dodge") + ylab("Frequency") + theme_bw()  
   } else if(nof1$response %in% c("normal", "poisson")){
     data <- data.frame(Y = nof1$Y, Treat = nof1$Treat)
-    ggplot(data, aes(x = Y, fill = Treat, color = Treat))  + geom_histogram(position = "dodge", alpha = 0.5)
+    ggplot(data, aes(x = Y, fill = Treat, color = Treat))  + geom_histogram(position = "dodge", alpha = 0.5) + theme_bw()
   }
 }
 
@@ -29,7 +29,7 @@ stacked_percent_barplot <- function(nof1){
   if(nof1$response %in% c("binomial", "ordinal")){
     data <- aggregate(nof1$Y, list(Y = nof1$Y, Treat = nof1$Treat), length)
     #ggplot(data, aes(fill= Treat, y= x, x= Y)) + geom_bar( stat="identity", position="fill") + ylab("proportion")
-    ggplot(data, aes(fill= factor(Y), y= x, x= Treat)) + geom_bar( stat="identity", position="fill") + labs(fill = "Outcomes") + ylab("Proportions")
+    ggplot(data, aes(fill= factor(Y), y= x, x= Treat)) + geom_bar( stat="identity", position="fill") + labs(fill = "Outcomes") + ylab("Proportions") +  theme_bw()  
   } else{
     stop("only works for binomial and ordinal data")
   }
@@ -59,7 +59,7 @@ raw_table <- function(nof1){
 time_series_plot <- function(nof1){
   
   data <- data.frame(Y = nof1$Y, Treat = nof1$Treat)
-  ggplot(data = data, aes(1:length(Y), Y, color = factor(Treat))) + geom_point() +ylab("Outcomes") + xlab("Time") + labs(color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat)
+  ggplot(data = data, aes(1:length(Y), Y, color = factor(Treat))) + geom_point() +ylab("Outcomes") + xlab("Time") + labs(color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat) +  theme_bw()  
 }
 
 
