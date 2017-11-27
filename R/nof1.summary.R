@@ -59,7 +59,7 @@ raw_table <- function(nof1){
 time_series_plot <- function(nof1){
   
   data <- data.frame(Y = nof1$Y, Treat = nof1$Treat)
-  ggplot(data = data, aes(1:length(Y), Y, color = factor(Treat))) + geom_point() + xlab("Time") + labs(color = "Treatment")
+  ggplot(data = data, aes(1:length(Y), Y, color = factor(Treat))) + geom_point() + xlab("Time") + labs(color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat)
 }
 
 
