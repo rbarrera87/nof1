@@ -19,7 +19,7 @@ frequency_plot <- function(nof1){
   }
 }
 
-#' Stacked_percent_barplot for raw data (for ordinal data)
+#' Stacked_percent_barplot for raw data (for ordinal or binomial data)
 #'
 #' @param nof1 nof1 object created using nof1.data
 #' @export
@@ -30,6 +30,8 @@ stacked_percent_barplot <- function(nof1){
     data <- aggregate(nof1$Y, list(Y = nof1$Y, Treat = nof1$Treat), length)
     #ggplot(data, aes(fill= Treat, y= x, x= Y)) + geom_bar( stat="identity", position="fill") + ylab("proportion")
     ggplot(data, aes(fill= factor(Y), y= x, x= Treat)) + geom_bar( stat="identity", position="fill") + labs(fill = "Outcomes") + ylab("proportions")
+  } else{
+    stop("only works for binomial and ordinal data")
   }
 }
 
