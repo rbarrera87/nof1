@@ -66,28 +66,36 @@ time_series_plot <- function(nof1){
 #' Odds ratio plot for the raw data
 #'
 #' @param result.list list of nof1 results created using nof1.run
+#' @param result.name name of the outcome 
 #' @export
 
-odds_ratio_plot <- function(result.list){
+odds_ratio_plot <- function(result.list, result.name = NULL){
+  
+  odds_ratio <- matrix(NA, nrow = length(result.list), ncol = 3)
   
   for(i in 1:length(result.list)){
-    
     result <- result.list[[i]]
     samples <- do.call(rbind, result$samples)
-    samples[,grep("beta", colnames(samples))]
-
-    
-    
-    
-    colnames(samples)
-    samples[,"beta_B"]
-    
-      sapply(result$samples, cbind)
-    
-    names(result$samples)
-    
+    odds_ratio[i,] <- exp(quantile(samples[,grep("beta", colnames(samples))], c(0.025, 0.5, 0.975)))
   }
   
+  odds <- as.data.frame(odds_ratio)
+  names(odds) <- c("lower", "OR", "upper")
+  
+  if(is.null(result.name)){
+    odds$vars <- row.names(odds)  
+  } else{
+    odds$vars <- result.name
+  }
+  ticks <- c(0.1, 0.2, 0.5, 1, 2, 5, 10)
+  ggplot(odds, aes(y = OR, x = reorder(vars, OR))) + 
+    geom_point() +
+    geom_errorbar(aes(ymin = lower, ymax = upper), width = .2) +
+    scale_y_log10(breaks = ticks, labels = ticks) +
+    geom_hline(yintercept = 1, linetype = 2) +
+    coord_flip() +
+    labs(x = "Variables", y = "OR") +
+    theme_bw()  
 }
 
 
