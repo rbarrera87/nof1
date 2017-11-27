@@ -29,7 +29,7 @@ stacked_percent_barplot <- function(nof1){
   if(nof1$response %in% c("binomial", "ordinal")){
     data <- aggregate(nof1$Y, list(Y = nof1$Y, Treat = nof1$Treat), length)
     #ggplot(data, aes(fill= Treat, y= x, x= Y)) + geom_bar( stat="identity", position="fill") + ylab("proportion")
-    ggplot(data, aes(fill= factor(Y), y= x, x= Treat)) + geom_bar( stat="identity", position="fill") + labs(fill = "Outcomes") + ylab("proportions")
+    ggplot(data, aes(fill= factor(Y), y= x, x= Treat)) + geom_bar( stat="identity", position="fill") + labs(fill = "Outcomes") + ylab("Proportions")
   } else{
     stop("only works for binomial and ordinal data")
   }
