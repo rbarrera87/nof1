@@ -92,7 +92,7 @@ odds_ratio_plot <- function(result.list, result.name = NULL, level = 0.95){
     odds$vars <- result.name
   }
   ticks <- c(0.1, 0.2, 0.5, 1, 2, 5, 10)
-  ggplot(odds, aes(y = OR, x = reorder(vars, OR))) + 
+  ggplot(odds, aes(y = OR, x = factor(vars))) + 
     geom_point() +
     geom_errorbar(aes(ymin = lower, ymax = upper), width = .2) +
     scale_y_log10(breaks = ticks, labels = ticks) +
