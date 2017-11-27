@@ -59,8 +59,38 @@ raw_table <- function(nof1){
 time_series_plot <- function(nof1){
   
   data <- data.frame(Y = nof1$Y, Treat = nof1$Treat)
-  ggplot(data = data, aes(1:length(Y), Y, color = factor(Treat))) + geom_point() +ylab("Outcomes") + xlab("Time") + labs(color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat) + coord_flip()
+  ggplot(data = data, aes(1:length(Y), Y, color = factor(Treat))) + geom_point() +ylab("Outcomes") + xlab("Time") + labs(color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat)
 }
+
+
+#' Odds ratio plot for the raw data
+#'
+#' @param result.list list of nof1 results created using nof1.run
+#' @export
+
+odds_ratio_plot <- function(result.list){
+  
+  for(i in 1:length(result.list)){
+    
+    result <- result.list[[i]]
+    samples <- do.call(rbind, result$samples)
+    samples[,grep("beta", colnames(samples))]
+
+    
+    
+    
+    colnames(samples)
+    samples[,"beta_B"]
+    
+      sapply(result$samples, cbind)
+    
+    names(result$samples)
+    
+  }
+  
+}
+
+
 # 
 # plot_odds<-function(x, title = NULL){
 #   tmp<-data.frame(cbind(exp(x), exp(confint(x))))
