@@ -61,22 +61,22 @@ time_series_plot <- function(nof1){
   data <- data.frame(Y = nof1$Y, Treat = nof1$Treat)
   ggplot(data = data, aes(1:length(Y), Y, color = factor(Treat))) + geom_point() +ylab("Outcomes") + xlab("Time") + labs(color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat) + coord_flip()
 }
-
-plot_odds<-function(x, title = NULL){
-  tmp<-data.frame(cbind(exp(x), exp(confint(x))))
-  odds<-tmp[-1,]
-  names(odds)<-c("OR", "lower", "upper")
-  odds$vars<-row.names(odds)
-  ticks<-c(seq(.1, 1, by =.1), seq(0, 10, by =1), seq(10, 100, by =10))
-  
-  ggplot(odds, aes(y= OR, x = reorder(vars, OR))) +
-    geom_point() +
-    geom_errorbar(aes(ymin=lower, ymax=upper), width=.2) +
-    scale_y_log10(breaks=ticks, labels = ticks) +
-    geom_hline(yintercept = 1, linetype=2) +
-    coord_flip() +
-    labs(title = title, x = "Variables", y = "OR") +
-    theme_bw()
-}
-
-plot_odds(result$samples)
+# 
+# plot_odds<-function(x, title = NULL){
+#   tmp<-data.frame(cbind(exp(x), exp(confint(x))))
+#   odds<-tmp[-1,]
+#   names(odds)<-c("OR", "lower", "upper")
+#   odds$vars<-row.names(odds)
+#   ticks<-c(seq(.1, 1, by =.1), seq(0, 10, by =1), seq(10, 100, by =10))
+#   
+#   ggplot(odds, aes(y= OR, x = reorder(vars, OR))) +
+#     geom_point() +
+#     geom_errorbar(aes(ymin=lower, ymax=upper), width=.2) +
+#     scale_y_log10(breaks=ticks, labels = ticks) +
+#     geom_hline(yintercept = 1, linetype=2) +
+#     coord_flip() +
+#     labs(title = title, x = "Variables", y = "OR") +
+#     theme_bw()
+# }
+# 
+# plot_odds(result$samples)
