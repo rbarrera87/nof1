@@ -2,6 +2,7 @@
 
 export(find_raw_mean2)
 export(frequency_plot)
+export(kernel_plot)
 export(nof1.data)
 export(nof1.inits)
 export(nof1.run)

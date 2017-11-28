@@ -2,15 +2,24 @@
 % Please edit documentation in R/nof1.summary.R
 \name{probability_barplot}
 \alias{probability_barplot}
+\alias{probability_barplot}
 \title{Odds ratio plot for the raw data}
 \usage{
+probability_barplot(result.list, result.name = NULL)
+
 probability_barplot(result.list, result.name = NULL)
 }
 \arguments{
 \item{result.list}{list of nof1 results created using nof1.run}
 
 \item{result.name}{name of the outcomes}
+
+\item{result.list}{list of nof1 results created using nof1.run}
+
+\item{result.name}{name of the outcomes}
 }
 \description{
+Odds ratio plot for the raw data
+
 Odds ratio plot for the raw data
 }

@@ -12,7 +12,7 @@ frequency_plot <- function(nof1){
   
   if(nof1$response %in% c("binomial", "ordinal")){
     data <- aggregate(nof1$Y, list(Y = nof1$Y, Treat = nof1$Treat), length)
-    ggplot(data= data, aes(x= Y, y= x, fill=Treat)) +  geom_bar(stat="identity", position="dodge") + scale_y_continuous(labels = percent_format()) + ylab("Frequency") + theme_bw()  
+    ggplot(data= data, aes(x= Y, y= x, fill=Treat)) +  geom_bar(stat="identity", position="dodge") + ylab("Frequency") + theme_bw()  
   } else if(nof1$response %in% c("normal", "poisson")){
     data <- data.frame(Y = nof1$Y, Treat = nof1$Treat)
     ggplot(data, aes(x = Y, fill = Treat, color = Treat))  + geom_histogram(position = "dodge", alpha = 0.5) + theme_bw()
@@ -28,8 +28,8 @@ stacked_percent_barplot <- function(nof1){
   
   if(nof1$response %in% c("binomial", "ordinal")){
     data <- aggregate(nof1$Y, list(Y = nof1$Y, Treat = nof1$Treat), length)
-    #ggplot(data, aes(fill= Treat, y= x, x= Y)) + geom_bar( stat="identity", position="fill") + ylab("proportion")
-    ggplot(data, aes(fill= factor(Y), y= x, x= Treat)) + geom_bar( stat="identity", position="fill") + scale_y_continuous(labels = percent_format()) + labs(fill = "Outcomes") + ylab("Proportions") +  theme_bw()  
+    #ggplot(data, aes(fill= Treat, y= x, x= Y)) + geom_bar( stat="identity", position="fill") + ylab("Percentage")
+    ggplot(data, aes(fill= factor(Y), y= x, x= Treat)) + geom_bar( stat="identity", position="fill") + scale_y_continuous(labels = percent_format()) + labs(fill = "Outcomes") + ylab("Percentages") +  theme_bw()  
   } else{
     stop("only works for binomial and ordinal data")
   }
@@ -51,6 +51,9 @@ raw_table <- function(nof1){
   }
 }
 
+
+
+
 #' Time series plot for the raw data
 #'
 #' @param nof1 nof1 object created using nof1.data
@@ -61,6 +64,23 @@ time_series_plot <- function(nof1){
   data <- data.frame(Y = nof1$Y, Treat = nof1$Treat)
   ggplot(data = data, aes(1:length(Y), Y, color = factor(Treat))) + geom_point() + labs(x = "Time", y = "Outcomes", color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat) +  theme_bw()  
 }
+
+
+
+#' Kernel density of the posterior distribution for odds ratio
+#'
+#' @param result nof1 result object created using nof1.run
+#' @export
+
+kernel_plot <- function(result){
+  samples <- do.call(rbind, result$samples)
+  beta_variable <- samples[,grep("beta", colnames(samples))]
+  data <- as.data.frame(beta_variable)
+  
+  ggplot(data, aes(beta_variable)) + geom_density() + theme_bw() + labs(x = "log odds ratio")
+}
+
+
 
 
 #' Odds ratio plot for the raw data
@@ -130,7 +150,39 @@ probability_barplot <- function(result.list, result.name = NULL){
   
   data <- data.frame(probability = probability, result.name = result.name, Treat = rep(c(levels(result.list$result$nof1$Treat)[2],levels(result.list$result$nof1$Treat)[1]), length(result.list)))
   
-  ggplot(data, aes(fill = factor(Treat), y = probability, x = result.name)) + geom_bar( stat="identity", position="fill") + scale_y_continuous(labels = percent_format()) + labs(x = "Variables", y = "Proportions", fill = "Treatment") + coord_flip()  +  theme_bw()  
+  ggplot(data, aes(fill = factor(Treat), y = probability, x = result.name)) + geom_bar( stat="identity", position="fill") + scale_y_continuous(labels = percent_format()) + labs(x = "Variables", y = "Percentages", fill = "Treatment") + coord_flip()  +  theme_bw()  
+}
+
+
+#' Odds ratio plot for the raw data
+#'
+#' @param result.list list of nof1 results created using nof1.run
+#' @param result.name name of the outcomes
+#' @export
+
+probability_barplot <- function(result.list, result.name = NULL){
+  
+  probability <- rep(NA, length(result.list)* 2)
+  
+  for(i in 1:length(result.list)){
+    result <- result.list[[i]]
+    samples <- do.call(rbind, result$samples)
+    probability[(i-1)*2 + 1] <- mean(exp(samples[,grep("beta", colnames(samples))]) > 1)
+    probability[i*2] <- 1 - probability[(i-1)*2 + 1] 
+  }
+  
+  if(is.null(result.name)){
+    result.name <- rep(1:length(result.list), each = 2)
+  } else{
+    if(length(result.name) != length(result.list)){
+      stop("result.name should have same length as result.list")
+    }
+    result.name <- rep(result.name, each = 2)
+  }
+  
+  data <- data.frame(probability = probability, result.name = result.name, Treat = rep(c(levels(result.list$result$nof1$Treat)[2],levels(result.list$result$nof1$Treat)[1]), length(result.list)))
+  
+  ggplot(data, aes(fill = factor(Treat), y = probability, x = result.name)) + geom_bar( stat="identity", position="fill") + scale_y_continuous(labels = percent_format()) + labs(x = "Variables", y = "Percentages", fill = "Treatment") + coord_flip()  +  theme_bw()  
 }
 
 
