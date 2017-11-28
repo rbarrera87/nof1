@@ -12,7 +12,7 @@ frequency_plot <- function(nof1){
   
   if(nof1$response %in% c("binomial", "ordinal")){
     data <- aggregate(nof1$Y, list(Y = nof1$Y, Treat = nof1$Treat), length)
-    ggplot(data= data, aes(x= Y, y= x, fill=Treat)) +  geom_bar(stat="identity", position="dodge") + ylab("Frequency") + xlim(0.5, nof1$ncat+0.5)+ theme_bw()  
+    ggplot(data= data, aes(x= Y, y= x, fill=Treat)) +  geom_bar(stat="identity", position="dodge") + ylab("Frequency") + xlim(0.5, nof1$ncat +0.5)+ theme_bw()  
   } else if(nof1$response %in% c("normal", "poisson")){
     data <- data.frame(Y = nof1$Y, Treat = nof1$Treat)
     ggplot(data, aes(x = Y, fill = Treat, color = Treat)) + geom_histogram(position = "dodge", alpha = 0.5) + theme_bw()
