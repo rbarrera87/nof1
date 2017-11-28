@@ -62,7 +62,7 @@ raw_table <- function(nof1){
 time_series_plot <- function(nof1){
   
   data <- data.frame(Y = nof1$Y, Treat = nof1$Treat)
-  ggplot(data = data, aes(1:length(Y), Y, color = factor(Treat))) + geom_point() + labs(x = "Time", y = "Outcomes", color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat) +  theme_bw()  
+  ggplot(data = data, aes(1:length(Y), Y, color = factor(Treat), group = 1)) + geom_point() + geom_line()+ labs(x = "Time", y = "Outcomes", color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat) +  theme_bw()  
 }
 
 
@@ -154,7 +154,7 @@ probability_barplot <- function(result.list, result.name = NULL){
 }
 
 
-#' Odds ratio plot for the raw data
+#' Plot for probability that odds ratio is greater than 1
 #'
 #' @param result.list list of nof1 results created using nof1.run
 #' @param result.name name of the outcomes
