@@ -12,7 +12,7 @@ frequency_plot <- function(nof1){
   
   if(nof1$response %in% c("binomial", "ordinal")){
     data <- aggregate(nof1$Y, list(Y = nof1$Y, Treat = nof1$Treat), length)
-    ggplot(data= data, aes(x= Y, y= x, fill=Treat)) +  geom_bar(stat="identity", position="dodge") + ylab("Frequency") + theme_bw()  
+    ggplot(data= data, aes(x= Y, y= x, fill=Treat)) +  geom_bar(stat="identity", position="dodge") + scale_y_continuous(labels = percent_format()) + ylab("Frequency") + theme_bw()  
   } else if(nof1$response %in% c("normal", "poisson")){
     data <- data.frame(Y = nof1$Y, Treat = nof1$Treat)
     ggplot(data, aes(x = Y, fill = Treat, color = Treat))  + geom_histogram(position = "dodge", alpha = 0.5) + theme_bw()
@@ -29,7 +29,7 @@ stacked_percent_barplot <- function(nof1){
   if(nof1$response %in% c("binomial", "ordinal")){
     data <- aggregate(nof1$Y, list(Y = nof1$Y, Treat = nof1$Treat), length)
     #ggplot(data, aes(fill= Treat, y= x, x= Y)) + geom_bar( stat="identity", position="fill") + ylab("proportion")
-    ggplot(data, aes(fill= factor(Y), y= x, x= Treat)) + geom_bar( stat="identity", position="fill") + labs(fill = "Outcomes") + ylab("Proportions") +  theme_bw()  
+    ggplot(data, aes(fill= factor(Y), y= x, x= Treat)) + geom_bar( stat="identity", position="fill") + scale_y_continuous(labels = percent_format()) + labs(fill = "Outcomes") + ylab("Proportions") +  theme_bw()  
   } else{
     stop("only works for binomial and ordinal data")
   }
@@ -130,7 +130,7 @@ probability_barplot <- function(result.list, result.name = NULL){
   
   data <- data.frame(probability = probability, result.name = result.name, Treat = rep(c(levels(result.list$result$nof1$Treat)[2],levels(result.list$result$nof1$Treat)[1]), length(result.list)))
   
-  ggplot(data, aes(fill = factor(Treat), y = probability, x = result.name)) + geom_bar( stat="identity", position="fill") + labs(x = "Variables", y = "Proportions", fill = "Treatment") + coord_flip()  +  theme_bw()  
+  ggplot(data, aes(fill = factor(Treat), y = probability, x = result.name)) + geom_bar( stat="identity", position="fill") + scale_y_continuous(labels = percent_format()) + labs(x = "Variables", y = "Proportions", fill = "Treatment") + coord_flip()  +  theme_bw()  
 }
 
 
