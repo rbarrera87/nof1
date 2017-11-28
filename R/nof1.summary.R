@@ -130,7 +130,7 @@ probability_barplot <- function(result.list, result.name = NULL){
   
   data <- data.frame(probability = probability, result.name = result.name, Treat = rep(c(levels(result.list$result$nof1$Treat)[2],levels(result.list$result$nof1$Treat)[1]), length(result.list)))
   
-  ggplot(data, aes(fill = factor(Treat), y = probability, x = result.name)) + geom_bar( stat="identity", position="fill") + labs(x = "Variables", y = "Proportions", fill = "Outcomes") + coord_flip()  +  theme_bw()  
+  ggplot(data, aes(fill = factor(Treat), y = probability, x = result.name)) + geom_bar( stat="identity", position="fill") + labs(x = "Variables", y = "Proportions", fill = "Treatment") + coord_flip()  +  theme_bw()  
 }
 
 
