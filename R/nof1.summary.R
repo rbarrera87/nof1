@@ -86,7 +86,7 @@ kernel_plot <- function(result){
 #' Odds ratio plot for the raw data
 #'
 #' @param result.list list of nof1 results created using nof1.run
-#' @param result.name name of the outcome 
+#' @param name of the outcomes. If left unspecified, it numbers each result in order of how it is stored in result.list
 #' @param level confidence interval level (default is 0.95)
 #' @export
 
@@ -125,7 +125,7 @@ odds_ratio_plot <- function(result.list, result.name = NULL, level = 0.95){
 #' Odds ratio plot for the raw data
 #'
 #' @param result.list list of nof1 results created using nof1.run
-#' @param result.name name of the outcomes
+#' @param result.name name of the outcomes. If left unspecified, it numbers each result in order of how it is stored in result.list
 #' @export
 
 probability_barplot <- function(result.list, result.name = NULL){
