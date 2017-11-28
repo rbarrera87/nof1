@@ -59,7 +59,7 @@ raw_table <- function(nof1){
 time_series_plot <- function(nof1){
   
   data <- data.frame(Y = nof1$Y, Treat = nof1$Treat)
-  ggplot(data = data, aes(1:length(Y), Y, color = factor(Treat))) + geom_point() +ylab("Outcomes") + xlab("Time") + labs(color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat) +  theme_bw()  
+  ggplot(data = data, aes(1:length(Y), Y, color = factor(Treat))) + geom_point() + labs(x = "Time", y = "Outcomes", color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat) +  theme_bw()  
 }
 
 
@@ -102,6 +102,39 @@ odds_ratio_plot <- function(result.list, result.name = NULL, level = 0.95){
     theme_bw()  
 }
 
+#' Odds ratio plot for the raw data
+#'
+#' @param result.list list of nof1 results created using nof1.run
+#' @param result.name name of the outcomes
+#' @export
+
+probability_barplot <- function(result.list, result.name = NULL){
+  
+  probability <- rep(NA, length(result.list)* 2)
+  
+  for(i in 1:length(result.list)){
+    result <- result.list[[i]]
+    samples <- do.call(rbind, result$samples)
+    probability[(i-1)*2 +1] <- mean(exp(samples[,grep("beta", colnames(samples))]) > 1)
+    probability[i*2] <- 1 - probability[(i-1)*2 +1] 
+  }
+  
+  if(is.null(result.name)){
+    result.name <- rep(1:length(result.list), each = 2)
+  } else{
+    if(length(result.name) != length(result.list)){
+      stop("result.name should have same length as result.list")
+    }
+    result.name <- rep(result.name, each = 2)
+  }
+  
+  data <- data.frame(probability = probability, result.name = result.name, Treat = rep(c(levels(result.list$result$nof1$Treat)[2],levels(result.list$result$nof1$Treat)[1]), length(result.list)))
+  
+  ggplot(data, aes(fill = factor(Treat), y = probability, x = result.name)) + geom_bar( stat="identity", position="fill") + labs(x = "Variables", y = "Proportions", fill = "Outcomes") + coord_flip()  +  theme_bw()  
+}
+
+
+
 
 # 
 # plot_odds<-function(x, title = NULL){
@@ -120,5 +153,4 @@ odds_ratio_plot <- function(result.list, result.name = NULL, level = 0.95){
 #     labs(title = title, x = "Variables", y = "OR") +
 #     theme_bw()
 # }
-# 
-# plot_odds(result$samples)
+
