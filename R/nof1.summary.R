@@ -12,7 +12,7 @@ frequency_plot <- function(nof1){
   
   if(nof1$response %in% c("binomial", "ordinal")){
     data <- aggregate(nof1$Y, list(Y = nof1$Y, Treat = nof1$Treat), length)
-    ggplot(data= data, aes(x= Y, y= x, fill=Treat)) +  geom_bar(stat="identity", position="dodge") + ylab("Frequency") + xlim(1, nof1$ncat) + theme_bw()  
+    ggplot(data= data, aes(x= Y, y= x, fill=Treat)) +  geom_bar(stat="identity", position="dodge") + ylab("Frequency") + theme_bw()  
   } else if(nof1$response %in% c("normal", "poisson")){
     data <- data.frame(Y = nof1$Y, Treat = nof1$Treat)
     ggplot(data, aes(x = Y, fill = Treat, color = Treat)) + geom_histogram(position = "dodge", alpha = 0.5) + theme_bw()
@@ -62,7 +62,7 @@ raw_table <- function(nof1){
 time_series_plot <- function(nof1){
   
   data <- data.frame(Y = nof1$Y, Treat = nof1$Treat)
-  ggplot(data = data, aes(1:length(Y), Y, color = factor(Treat), group = 1)) + geom_point() + geom_line()+ labs(x = "Time", y = "Outcomes", color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat) +  theme_bw()  
+  ggplot(data = data, aes(1:length(Y), Y, color = factor(Treat), group = 1)) + geom_point() + geom_line()+ labs(x = "Time", y = "Outcomes", color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat) +  ylim(1, nof1$ncat) +  theme_bw()  
 }
 
 
