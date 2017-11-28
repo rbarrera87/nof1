@@ -115,8 +115,8 @@ probability_barplot <- function(result.list, result.name = NULL){
   for(i in 1:length(result.list)){
     result <- result.list[[i]]
     samples <- do.call(rbind, result$samples)
-    probability[(i-1)*2 +1] <- mean(exp(samples[,grep("beta", colnames(samples))]) > 1)
-    probability[i*2] <- 1 - probability[(i-1)*2 +1] 
+    probability[(i-1)*2 + 1] <- mean(exp(samples[,grep("beta", colnames(samples))]) > 1)
+    probability[i*2] <- 1 - probability[(i-1)*2 + 1] 
   }
   
   if(is.null(result.name)){
