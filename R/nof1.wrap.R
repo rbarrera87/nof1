@@ -81,20 +81,11 @@ find_mean_difference <- function(coef, response, raw_mean){
   rounded <-
   if(response == "poisson"){
 
-    round(
-    c(base_vs_scd = as.numeric((exp(coef["beta_A"]) - 1) * raw_mean[1]), base_vs_mscd = as.numeric((exp(coef["beta_B"]) - 1) * raw_mean[1]),
-     mscd_vs_scd = as.numeric((exp(coef["beta_A"] - coef["beta_B"]) - 1) * raw_mean[3])), 1)
-
+    round(c(base_vs_scd = exp(coef["alpha"] + coef["beta_A"]) - exp(coef["alpha"]), 
+     base_vs_mscd = exp(coef["alpha"] + coef["beta_B"]) - exp(coef["alpha"]), 
+     mscd_vs_scd = exp(coef["alpha"] + coef["beta_A"]) - exp(coef["alpha"] + coef["beta_B"])), 1)
+     
   } else if (response == "binomial"){
-
-    # can't divide by 0
-    if(!is.na(raw_mean[1])){
-      if(raw_mean[1] == 1) raw_mean[1] = 0.99
-    }
-
-    if(!is.na(raw_mean[3])){
-      if(raw_mean[3] == 1) raw_mean[3] = 0.99
-    }
 
     round(
     c(base_vs_scd = as.numeric((raw_mean[1]/(1-raw_mean[1]) * exp(coef["beta_A"])) / (1 + raw_mean[1]/(1-raw_mean[1]) * exp(coef["beta_A"])) - raw_mean[1]),
@@ -168,20 +159,13 @@ calculate_p_threshold <- function(samples, response){
 
 summarize_nof1 <- function(nof1, result){
 
-  with(c(nof1, result),{
+  with(c(nof1_freq, result_freq),{
 
     samples <- do.call(rbind, samples)
     raw_mean <- find_raw_mean(Y, Treat, baseline, response)
     rounded_raw_mean <- round_raw_mean(raw_mean, response)
 
-    coef <- rep(NA,2)
-    if("beta_A" %in% colnames(samples)){
-      coef[1] <- apply(samples[,c("beta_A"), drop = F], 2, mean)
-    }
-    if("beta_B" %in% colnames(samples)){
-      coef[2] <- apply(samples[,c("beta_B"), drop = F], 2, mean)
-    }
-    names(coef) <- c("beta_A", "beta_B")
+    coef <- samples[,names(coef) %in% c("alpha", "beta_A", "beta_B")]
     diff <- find_mean_difference(coef, response, raw_mean)
 
     raw_mean <- list(base = rounded_raw_mean[1], scd = rounded_raw_mean[2], mscd = rounded_raw_mean[3])

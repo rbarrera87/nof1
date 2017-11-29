@@ -95,7 +95,7 @@ kernel_plot <- function(result, xlim_value = c(0, 10)){
   beta_variable <- exp(samples[,grep("beta", colnames(samples))])
   data <- as.data.frame(beta_variable)
   
-  ggplot(data, aes(beta_variable)) + geom_density() + theme_bw() + xlim(xlim_value[1], xlim_value[2]) + labs(x = "odds ratio") 
+  ggplot(data, aes(beta_variable)) + geom_density() + theme_bw() + xlim(xlim_value[1], xlim_value[2]) + labs(x = "Odds Ratio", y = "Density") 
 }
 
 
