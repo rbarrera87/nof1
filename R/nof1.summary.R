@@ -68,7 +68,7 @@ time_series_plot <- function(nof1, time = NULL, timestamp = NULL, timestamp.form
     time_dfference <- time
   } else if(is.null(timestamp)){
     time_difference <- 1:length(nof1$Y)
-  } else if(!is.null(timestamp))){
+  } else if(!is.null(timestamp)){
     first_timestamp <- strptime(timestamp[1], timestamp.format)
     
     time_difference <- rep(NA, length(timestamp))
