@@ -64,18 +64,20 @@ raw_table <- function(nof1){
 
 time_series_plot <- function(nof1, time = NULL, timestamp = NULL, timestamp.format = "%m/%d/%Y %H:%M"){
   
-  first_timestamp <- strptime(timestamp[1], timestamp.format)
-  
-  time_difference <- rep(NA, length(timestamp))
-  time_difference[1] <- 1 
-  for(i in 2:length(timestamp)){
-    second_timestamp <- strptime(timestamp[i], timestamp.format)
-    time_difference[i] <- round(1 + as.numeric(difftime(second_timestamp, first_timestamp, units = "days")))
-  }
-  
-  if(is.null(time) & is.null(timestamp)){
+  if(!is.null(time)){
+    time_dfference <- time
+  } else if(is.null(timestamp){
     time_difference <- 1:length(nof1$Y)
-  }
+  } else if(!is.null(timestamp))){
+    first_timestamp <- strptime(timestamp[1], timestamp.format)
+    
+    time_difference <- rep(NA, length(timestamp))
+    time_difference[1] <- 1 
+    for(i in 2:length(timestamp)){
+      second_timestamp <- strptime(timestamp[i], timestamp.format)
+      time_difference[i] <- round(1 + as.numeric(difftime(second_timestamp, first_timestamp, units = "days")))
+    }  
+  } 
   
   data <- data.frame(Y = nof1$Y, Treat = nof1$Treat)
   ggplot(data = data, aes(time_difference, Y, color = factor(Treat), group = 1)) + geom_point() + geom_line()+ labs(x = "Time", y = "Outcomes", color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat) +  ylim(1, nof1$ncat) +  theme_bw()  
