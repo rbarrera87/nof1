@@ -65,7 +65,7 @@ raw_table <- function(nof1){
 time_series_plot <- function(nof1, time = NULL, timestamp = NULL, timestamp.format = "%m/%d/%Y %H:%M"){
   
   if(!is.null(time)){
-    time_dfference <- time
+    time_difference <- time
   } else if(is.null(timestamp)){
     time_difference <- 1:length(nof1$Y)
   } else if(!is.null(timestamp)){
