@@ -90,12 +90,12 @@ time_series_plot <- function(nof1, time = NULL, timestamp = NULL, timestamp.form
 #' @param result nof1 result object created using nof1.run
 #' @export
 
-kernel_plot <- function(result){
+kernel_plot <- function(result, xlim_value = c(0, 10)){
   samples <- do.call(rbind, result$samples)
   beta_variable <- exp(samples[,grep("beta", colnames(samples))])
   data <- as.data.frame(beta_variable)
   
-  ggplot(data, aes(beta_variable)) + geom_density() + theme_bw() + xlim(0, 20) + labs(x = "odds ratio") 
+  ggplot(data, aes(beta_variable)) + geom_density() + theme_bw() + xlim(xlim_value[1], xlim_value[2]) + labs(x = "odds ratio") 
 }
 
 
