@@ -92,7 +92,7 @@ time_series_plot <- function(nof1, time = NULL, timestamp = NULL, timestamp.form
 
 kernel_plot <- function(result){
   samples <- do.call(rbind, result$samples)
-  beta_variable <- samples[,grep("beta", colnames(samples))]
+  beta_variable <- exp(samples[,grep("beta", colnames(samples))])
   data <- as.data.frame(beta_variable)
   
   ggplot(data, aes(beta_variable)) + geom_density() + theme_bw() + labs(x = "log odds ratio")
