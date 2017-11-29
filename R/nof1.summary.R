@@ -57,12 +57,28 @@ raw_table <- function(nof1){
 #' Time series plot for the raw data
 #'
 #' @param nof1 nof1 object created using nof1.data
+#' @param time can manually specify time variable
+#' @param timestamp or instead provide timestamp information for the all the outcomes
+#' @param timestamp.format format of timestamp used. By default it is "%m/%d/%Y %H:%M" and example of it would be 12/24/2015 11:23
 #' @export
 
-time_series_plot <- function(nof1){
+time_series_plot <- function(nof1, time = NULL, timestamp = NULL, timestamp.format = "%m/%d/%Y %H:%M"){
+  
+  first_timestamp <- strptime(timestamp[1], timestamp.format)
+  
+  time_difference <- rep(NA, length(timestamp))
+  time_difference[1] <- 1 
+  for(i in 2:length(timestamp)){
+    second_timestamp <- strptime(timestamp[i], timestamp.format)
+    time_difference[i] <- round(1 + as.numeric(difftime(second_timestamp, first_timestamp, units = "days")))
+  }
+  
+  if(is.null(time) & is.null(timestamp)){
+    time_difference <- 1:length(nof1$Y)
+  }
   
   data <- data.frame(Y = nof1$Y, Treat = nof1$Treat)
-  ggplot(data = data, aes(1:length(Y), Y, color = factor(Treat), group = 1)) + geom_point() + geom_line()+ labs(x = "Time", y = "Outcomes", color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat) +  ylim(1, nof1$ncat) +  theme_bw()  
+  ggplot(data = data, aes(time_difference, Y, color = factor(Treat), group = 1)) + geom_point() + geom_line()+ labs(x = "Time", y = "Outcomes", color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat) +  ylim(1, nof1$ncat) +  theme_bw()  
 }
 
 
