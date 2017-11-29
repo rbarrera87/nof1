@@ -95,7 +95,7 @@ kernel_plot <- function(result){
   beta_variable <- exp(samples[,grep("beta", colnames(samples))])
   data <- as.data.frame(beta_variable)
   
-  ggplot(data, aes(beta_variable)) + geom_density() + theme_bw() + labs(x = "log odds ratio")
+  ggplot(data, aes(beta_variable)) + geom_density() + theme_bw() + labs(x = "log odds ratio") + xlim(0.1, 10)
 }
 
 
