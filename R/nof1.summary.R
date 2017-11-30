@@ -136,7 +136,7 @@ odds_ratio_plot <- function(result.list, result.name = NULL, level = 0.95){
     scale_y_log10(breaks = ticks, labels = ticks) +
     geom_hline(yintercept = 1, linetype = 2) +
     coord_flip() +
-    labs(x = "Variables", y = "OR") +
+    labs(x = "Variables", y = "Odds Ratio") +
     theme_bw()  
 }
 
