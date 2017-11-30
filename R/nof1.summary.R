@@ -28,12 +28,9 @@ stacked_percent_barplot <- function(nof1, title = NULL){
   
   if(nof1$response %in% c("binomial", "ordinal")){
     data <- aggregate(nof1$Y, list(Y = nof1$Y, Treat = nof1$Treat), length)
-    data$ncat <- nof1$ncat
     
-    expand.grid(factor(data$Y,1:5), data$Treat)
-    #ggplot(data, aes(fill= Treat, y= x, x= Y)) + geom_bar( stat="identity", position="fill") + ylab("Percentage")
     ggplot(data, aes(fill= factor(Y, levels = 1:nof1$ncat), y= x, x= Treat)) + geom_bar( stat="identity", position="fill") + 
-      scale_y_continuous(labels = percent_format()) +  theme_bw() + labs(title = title, y = "Percentage", fill = "Outcomes") +
+      scale_y_continuous(labels = percent_format()) +  theme_bw() + labs(title = title, x = "Treatment", y = "Percentage", fill = "Outcomes") +
       scale_fill_manual(values = 4:(3+nof1$ncat), labels = 1:nof1$ncat, drop = FALSE)
   } else{
     stop("only works for binomial and ordinal data")
@@ -181,7 +178,7 @@ probability_barplot <- function(result.list, result.name = NULL){
 #' @param result.name name of the outcomes
 #' @export
 
-probability_barplot <- function(result.list, result.name = NULL){
+probability_barplot <- function(result.list, result.name = NULL, title = NULL){
   
   probability <- rep(NA, length(result.list)* 2)
   
@@ -203,7 +200,7 @@ probability_barplot <- function(result.list, result.name = NULL){
   
   data <- data.frame(probability = probability, result.name = result.name, Treat = rep(c(levels(result.list$result$nof1$Treat)[2],levels(result.list$result$nof1$Treat)[1]), length(result.list)))
   
-  ggplot(data, aes(fill = factor(Treat), y = probability, x = result.name)) + geom_bar( stat="identity", position="fill") + scale_y_continuous(labels = percent_format()) + labs(title = "Probability certain treatment is better", x = "Variables", y = "Percentages", fill = "Treatment") + coord_flip()  +  theme_bw()  
+  ggplot(data, aes(fill = factor(Treat), y = probability, x = result.name)) + geom_bar( stat="identity", position="fill") + scale_y_continuous(labels = percent_format()) + labs(title = title, x = "Variables", y = "Percentages", fill = "Treatment") + coord_flip()  +  theme_bw()  
 }
 
 
