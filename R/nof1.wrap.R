@@ -112,7 +112,7 @@ find_mean_difference <- function(coef, response, raw_mean){
   scd <- link_function(coef_alpha + coef_beta_A, response)
   mscd <- link_function(coef_alpha + coef_beta_B, response)
   
-  mean_difference <- c(base_vs_scd = mean(scd - base), base_vs_mscd = mean(mscd - base),mscd_vs_scd = mean(scd - mscd))
+  mean_difference <- c(base_vs_scd = mean(scd - base), base_vs_mscd = mean(mscd - base), mscd_vs_scd = mean(scd - mscd))
   
   rounded <- if(response %in% c("poisson", "normal")){
     round(mean_difference, 1)
