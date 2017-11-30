@@ -24,7 +24,7 @@ frequency_plot <- function(nof1, xlab = NULL){
 #' @param nof1 nof1 object created using nof1.data
 #' @export
 
-stacked_percent_barplot <- function(nof1){
+stacked_percent_barplot <- function(nof1, title = NULL){
   
   if(nof1$response %in% c("binomial", "ordinal")){
     data <- aggregate(nof1$Y, list(Y = nof1$Y, Treat = nof1$Treat), length)
@@ -33,7 +33,7 @@ stacked_percent_barplot <- function(nof1){
     expand.grid(factor(data$Y,1:5), data$Treat)
     #ggplot(data, aes(fill= Treat, y= x, x= Y)) + geom_bar( stat="identity", position="fill") + ylab("Percentage")
     ggplot(data, aes(fill= factor(Y, levels = 1:nof1$ncat), y= x, x= Treat)) + geom_bar( stat="identity", position="fill") + 
-      scale_y_continuous(labels = percent_format()) +  theme_bw() + labs(y = "Percentage", fill = "Outcomes") +
+      scale_y_continuous(labels = percent_format()) +  theme_bw() + labs(title = title, y = "Percentage", fill = "Outcomes") +
       scale_fill_manual(values = 4:(3+nof1$ncat), labels = 1:nof1$ncat, drop = FALSE)
   } else{
     stop("only works for binomial and ordinal data")
