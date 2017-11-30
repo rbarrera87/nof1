@@ -60,6 +60,22 @@ comparison <- function(x, response){
   return(answer)
 }
 
+link_function <- function(x, response){
+  answer <-
+    if(response == "poisson"){
+      exp(x)
+    } else if(response == "binomial"){
+      inv_logit(x)
+    } else if(response == "normal"){
+      x
+    }
+}
+
+
+inv_logit <- function(a){
+  1/(1+exp(-a))
+}
+
 find_raw_mean <- function(Y, Treat, baseline, response){
 
   raw_mean <- c(mean(Y[Treat == baseline], na.rm = TRUE), mean(Y[Treat == "A"], na.rm = TRUE), mean(Y[Treat == "B"], na.rm = TRUE))
@@ -78,27 +94,32 @@ round_raw_mean <- function(raw_mean, response){
 
 find_mean_difference <- function(coef, response, raw_mean){
 
-  rounded <-
-  if(response == "poisson"){
-
-    round(c(base_vs_scd = exp(coef["alpha"] + coef["beta_A"]) - exp(coef["alpha"]), 
-     base_vs_mscd = exp(coef["alpha"] + coef["beta_B"]) - exp(coef["alpha"]), 
-     mscd_vs_scd = exp(coef["alpha"] + coef["beta_A"]) - exp(coef["alpha"] + coef["beta_B"])), 1)
-     
-  } else if (response == "binomial"){
-
-    round(
-    c(base_vs_scd = as.numeric((raw_mean[1]/(1-raw_mean[1]) * exp(coef["beta_A"])) / (1 + raw_mean[1]/(1-raw_mean[1]) * exp(coef["beta_A"])) - raw_mean[1]),
-      base_vs_mscd = as.numeric((raw_mean[1]/(1-raw_mean[1]) * exp(coef["beta_B"])) / (1 + raw_mean[1]/(1-raw_mean[1]) * exp(coef["beta_B"])) - raw_mean[1]),
-      mscd_vs_scd = as.numeric((raw_mean[3]/(1-raw_mean[3]) * exp(coef["beta_A"] - coef["beta_B"])) / (1 + raw_mean[3]/(1-raw_mean[3]) * exp(coef["beta_A"] - coef["beta_B"])) - raw_mean[3])) * 100)
-  } else if (response == "normal"){
-
-    round(
-    c(base_vs_scd = as.numeric(coef["beta_A"]),
-      base_vs_mscd = as.numeric(coef["beta_B"]),
-      mscd_Vs_scd = as.numeric(coef["beta_A"] - coef["beta_B"])), 1)
+  coef_alpha <- coef_beta_A <- coef_beta_B <- NA
+  
+  if("alpha" %in% colnames(coef)){
+    coef_alpha <- coef[,"alpha", drop = F]
+  } 
+  
+  if("beta_A" %in% colnames(coef)){
+    coef_beta_A <- coef[,"beta_A", drop = F]
   }
 
+  if("beta_B" %in% colnames(coef)){
+    coef_beta_B <- coef[,"beta_B",drop = F]
+  }
+  
+  base <- link_function(coef_alpha, response)
+  scd <- link_function(coef_alpha + coef_beta_A, response)
+  mscd <- link_function(coef_alpha + coef_beta_B, response)
+  
+  mean_difference <- c(base_vs_scd = mean(scd - base), base_vs_mscd = mean(mscd - base),mscd_vs_scd = mean(scd - mscd))
+  
+  rounded <- if(response %in% c("poisson", "normal")){
+    round(mean_difference, 1)
+  } else if(response == "binomial"){
+    round(mean_difference * 100)
+  }
+    
   if(response == "binomial"){
     rounded[rounded==0 & !is.na(rounded)] <- 1
     rounded[rounded==100  & !is.na(rounded)] <- 99
@@ -159,13 +180,13 @@ calculate_p_threshold <- function(samples, response){
 
 summarize_nof1 <- function(nof1, result){
 
-  with(c(nof1_freq, result_freq),{
+  with(c(nof1, result),{
 
     samples <- do.call(rbind, samples)
     raw_mean <- find_raw_mean(Y, Treat, baseline, response)
     rounded_raw_mean <- round_raw_mean(raw_mean, response)
 
-    coef <- samples[,names(coef) %in% c("alpha", "beta_A", "beta_B")]
+    coef <- samples[,colnames(coef) %in% c("alpha", "beta_A", "beta_B")]
     diff <- find_mean_difference(coef, response, raw_mean)
 
     raw_mean <- list(base = rounded_raw_mean[1], scd = rounded_raw_mean[2], mscd = rounded_raw_mean[3])
@@ -280,8 +301,8 @@ wrap <- function(data, metadata){
                    enough_gi_symptoms = check_enough_data(read_data$Treatment_weekly, read_data$gi_symptoms),
                    user_id = 325,
                    timestamp_trialist_completed = Sys.time(),
-                   trialist_version_id = 1,
-                   trialist_version_date = "8/15/2017",
+                   trialist_version_id = 2,
+                   trialist_version_date = "11/29/2017",
                    trialist_version_note = "")
 
   summary_graph <- tryCatch({
