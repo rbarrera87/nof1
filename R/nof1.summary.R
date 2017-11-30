@@ -29,8 +29,12 @@ stacked_percent_barplot <- function(nof1){
   if(nof1$response %in% c("binomial", "ordinal")){
     data <- aggregate(nof1$Y, list(Y = nof1$Y, Treat = nof1$Treat), length)
     data$ncat <- nof1$ncat
+    
+    expand.grid(factor(data$Y,1:5), data$Treat)
     #ggplot(data, aes(fill= Treat, y= x, x= Y)) + geom_bar( stat="identity", position="fill") + ylab("Percentage")
-    ggplot(data, aes(fill= factor(Y, 1:ncat), y= x, x= Treat)) + geom_bar( stat="identity", position="fill") + scale_y_continuous(labels = percent_format()) + labs(fill = "Outcomes") + ylab("Percentages") +  theme_bw()  
+    ggplot(data, aes(fill= factor(Y, levels = 1:nof1$ncat), y= x, x= Treat)) + geom_bar( stat="identity", position="fill") + 
+      scale_y_continuous(labels = percent_format()) +  theme_bw() + labs(y = "Percentage", fill = "Outcomes") +
+      scale_fill_manual(values = 4:(3+nof1$ncat), labels = 1:nof1$ncat, drop = FALSE)
   } else{
     stop("only works for binomial and ordinal data")
   }
@@ -81,7 +85,7 @@ time_series_plot <- function(nof1, time = NULL, timestamp = NULL, timestamp.form
   } 
   
   data <- data.frame(Y = nof1$Y, Treat = nof1$Treat)
-  ggplot(data = data, aes(time_difference, Y, color = factor(Treat), group = 1)) + geom_point() + geom_line()+ labs(x = "Time", y = "Outcomes", color = "Treatment") + scale_y_continuous(breaks=1:nof1$ncat) +  ylim(1, nof1$ncat) +  theme_bw()  
+  ggplot(data = data, aes(time_difference, Y, color = factor(Treat), group = 1)) + geom_point() + labs(x = "Time", y = "Outcomes", color = "Treatment") +  ylim(1, nof1$ncat) +  theme_bw()  
 }
 
 
@@ -91,15 +95,13 @@ time_series_plot <- function(nof1, time = NULL, timestamp = NULL, timestamp.form
 #' @param result nof1 result object created using nof1.run
 #' @export
 
-kernel_plot <- function(result, xlim_value = c(0, 10)){
+kernel_plot <- function(result, xlim_value = c(0, 10), title = NULL){
   samples <- do.call(rbind, result$samples)
   beta_variable <- exp(samples[,grep("beta", colnames(samples))])
   data <- as.data.frame(beta_variable)
   
-  ggplot(data, aes(beta_variable)) + geom_density() + theme_bw() + xlim(xlim_value[1], xlim_value[2]) + labs(x = "Odds Ratio", y = "Density") 
+  ggplot(data, aes(beta_variable)) + geom_density() + theme_bw() + xlim(xlim_value[1], xlim_value[2]) + labs(title = title, x = "Odds Ratio", y = "Density") 
 }
-
-
 
 
 #' Odds ratio plot for the raw data
@@ -201,7 +203,7 @@ probability_barplot <- function(result.list, result.name = NULL){
   
   data <- data.frame(probability = probability, result.name = result.name, Treat = rep(c(levels(result.list$result$nof1$Treat)[2],levels(result.list$result$nof1$Treat)[1]), length(result.list)))
   
-  ggplot(data, aes(fill = factor(Treat), y = probability, x = result.name)) + geom_bar( stat="identity", position="fill") + scale_y_continuous(labels = percent_format()) + labs(title = "Percentage certain treatment is better", x = "Variables", y = "Percentages", fill = "Treatment") + coord_flip()  +  theme_bw()  
+  ggplot(data, aes(fill = factor(Treat), y = probability, x = result.name)) + geom_bar( stat="identity", position="fill") + scale_y_continuous(labels = percent_format()) + labs(title = "Probability certain treatment is better", x = "Variables", y = "Percentages", fill = "Treatment") + coord_flip()  +  theme_bw()  
 }
 
 
