@@ -108,7 +108,7 @@ kernel_plot <- function(result, xlim_value = c(0, 10), title = NULL){
 #' @param level confidence interval level (default is 0.95)
 #' @export
 
-odds_ratio_plot <- function(result.list, result.name = NULL, level = 0.95){
+odds_ratio_plot <- function(result.list, result.name = NULL, level = 0.95, title = NULL){
   
   odds_ratio <- matrix(NA, nrow = length(result.list), ncol = 3)
   
@@ -136,7 +136,7 @@ odds_ratio_plot <- function(result.list, result.name = NULL, level = 0.95){
     scale_y_log10(breaks = ticks, labels = ticks) +
     geom_hline(yintercept = 1, linetype = 2) +
     coord_flip() +
-    labs(x = "Variables", y = "Odds Ratio") +
+    labs(x = "Variables", y = "Odds Ratio", title = title) +
     theme_bw()  
 }
 
