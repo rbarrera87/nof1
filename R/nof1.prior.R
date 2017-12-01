@@ -8,8 +8,8 @@ nof1.prior.default <- function(prior.param){
   }
 
   if(is.null(beta.prior)){
-    if(response == "binomial" || response == "ordinal"){
-      beta.prior <- list("dnorm", 0, 0.001)
+    if(response == "ordinal"){
+      beta.prior <- list("dnorm", 0, 0.25)
     } else{
       beta.prior <- list("dnorm", 0, 0.001)    
     }
