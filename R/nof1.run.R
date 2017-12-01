@@ -46,6 +46,10 @@ nof1.run <- function(nof1, inits = NULL, n.chains = 3, max.run = 100000, setsize
   # if(!is.null(knots)){
   #   data$BS <- nof1$BS
   # }
+  
+  if(!is.null(extra.pars.save)){
+    pars.save <- c(pars.save, "p")
+  }
 
   if(is.null(inits)){
     inits <- nof1.inits(nof1, n.chains)
