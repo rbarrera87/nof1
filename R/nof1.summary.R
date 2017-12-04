@@ -138,7 +138,7 @@ odds_ratio_plot <- function(result.list, result.name = NULL, level = 0.95, title
     theme_bw()  
 }
 
-#' Odds ratio plot for the raw data
+#' Plot showing probability certain treatment is better than the other one
 #'
 #' @param result.list list of nof1 results created using nof1.run
 #' @param result.name name of the outcomes. If left unspecified, it numbers each result in order of how it is stored in result.list
@@ -168,39 +168,6 @@ probability_barplot <- function(result.list, result.name = NULL){
   
   ggplot(data, aes(fill = factor(Treat), y = probability, x = result.name)) + geom_bar( stat="identity", position="fill") + scale_y_continuous(labels = percent_format()) + labs(x = "Variables", y = "Percentages", fill = "Treatment") + coord_flip()  +  theme_bw()  
 }
-
-
-#' Plot for probability that odds ratio is greater than 1
-#'
-#' @param result.list list of nof1 results created using nof1.run
-#' @param result.name name of the outcomes
-#' @export
-
-probability_barplot <- function(result.list, result.name = NULL, title = NULL){
-  
-  probability <- rep(NA, length(result.list)* 2)
-  
-  for(i in 1:length(result.list)){
-    result <- result.list[[i]]
-    samples <- do.call(rbind, result$samples)
-    probability[(i-1)*2 + 1] <- mean(exp(samples[,grep("beta", colnames(samples))]) > 1)
-    probability[i*2] <- 1 - probability[(i-1)*2 + 1] 
-  }
-  
-  if(is.null(result.name)){
-    result.name <- rep(1:length(result.list), each = 2)
-  } else{
-    if(length(result.name) != length(result.list)){
-      stop("result.name should have same length as result.list")
-    }
-    result.name <- rep(result.name, each = 2)
-  }
-  
-  data <- data.frame(probability = probability, result.name = result.name, Treat = rep(c(levels(result.list$result$nof1$Treat)[2],levels(result.list$result$nof1$Treat)[1]), length(result.list)))
-  
-  ggplot(data, aes(fill = factor(Treat), y = probability, x = result.name)) + geom_bar( stat="identity", position="fill") + scale_y_continuous(labels = percent_format()) + labs(title = title, x = "Variables", y = "Percentages", fill = "Treatment") + coord_flip()  +  theme_bw()  
-}
-
 
 
 
