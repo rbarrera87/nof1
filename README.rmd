@@ -16,9 +16,8 @@ library(jsonlite)
 library(nof1)
 
 ##### PRODUCE
-#json.file <- fromJSON("sample input.json")
-json.file <- fromJSON("sample input-small.json")
-#json.file <- fromJSON("sample input-missing baseline.json")
+json.file <- fromJSON("sample input.json")
+#json.file <- fromJSON("sample input-small.json")
 #json.file <- fromJSON("sample input-no mscd.json")
 #json.file <- fromJSON("sample input-no scd.json")
 result <- do.call(wrap, json.file)

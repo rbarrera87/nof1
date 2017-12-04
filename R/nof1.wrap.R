@@ -182,7 +182,7 @@ summarize_nof1 <- function(nof1, result){
     raw_mean <- find_raw_mean(Y, Treat, baseline, response)
     rounded_raw_mean <- round_number(raw_mean, response)
 
-    coef <- samples[,colnames(coef) %in% c("alpha", "beta_A", "beta_B")]
+    coef <- samples[,colnames(samples) %in% c("alpha", "beta_A", "beta_B")]
     diff <- find_mean_difference(coef, response, raw_mean)
 
     raw_mean <- list(base = rounded_raw_mean[1], scd = rounded_raw_mean[2], mscd = rounded_raw_mean[3])

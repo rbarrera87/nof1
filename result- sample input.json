@@ -11,9 +11,9 @@
     "enough_pain_interference": true,
     "enough_gi_symptoms": true,
     "user_id": 325,
-    "timestamp_trialist_completed": "2017-10-12 16:07:45",
-    "trialist_version_id": 1,
-    "trialist_version_date": "8/15/2017",
+    "timestamp_trialist_completed": "2017-12-04 16:42:26",
+    "trialist_version_id": 2,
+    "trialist_version_date": "12/04/2017",
     "trialist_version_note": ""
   },
   "stool_frequency": {
@@ -32,11 +32,11 @@
     "gauge_graph": {
       "base_vs_scd": {
         "greater_than_threshold": 18,
-        "lower_than_threshold": 40
+        "lower_than_threshold": 39
       },
       "base_vs_mscd": {
         "greater_than_threshold": 11,
-        "lower_than_threshold": 53
+        "lower_than_threshold": 52
       },
       "mscd_vs_scd": {
         "greater_than_threshold": 33,
@@ -52,8 +52,8 @@
         "mscd": 51
       },
       "mean_difference": {
-        "base_vs_scd": -19,
-        "base_vs_mscd": -31,
+        "base_vs_scd": -16,
+        "base_vs_mscd": -27,
         "mscd_vs_scd": 11
       }
     },
@@ -68,7 +68,7 @@
       },
       "mscd_vs_scd": {
         "greater_than_threshold": 90,
-        "lower_than_threshold": 3
+        "lower_than_threshold": 2
       }
     }
   },
@@ -130,13 +130,13 @@
   },
   "summary_graph": {
     "base_vs_scd": {
-      "stool_frequency": 40,
+      "stool_frequency": 39,
       "stool_consistency": 88,
       "pain_interference": 32,
       "gi_symptoms": 77
     },
     "base_vs_mscd": {
-      "stool_frequency": 53,
+      "stool_frequency": 52,
       "stool_consistency": 97,
       "pain_interference": -1,
       "gi_symptoms": 6
@@ -148,4 +148,4 @@
       "gi_symptoms": 10
     }
   }
-} 
+}
