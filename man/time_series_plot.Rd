@@ -4,10 +4,17 @@
 \alias{time_series_plot}
 \title{Time series plot for the raw data}
 \usage{
-time_series_plot(nof1)
+time_series_plot(nof1, time = NULL, timestamp = NULL,
+  timestamp.format = "\%m/\%d/\%Y \%H:\%M")
 }
 \arguments{
 \item{nof1}{nof1 object created using nof1.data}
+
+\item{time}{can manually specify time variable}
+
+\item{timestamp}{or instead provide timestamp information for the all the outcomes}
+
+\item{timestamp.format}{format of timestamp used. By default it is "%m/%d/%Y %H:%M" and example of it would be 12/24/2015 11:23}
 }
 \description{
 Time series plot for the raw data

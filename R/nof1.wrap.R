@@ -1,13 +1,14 @@
 #' Read json data in as an R object
 #'
-#' @param json.file input data
+#' @param data input data. see sample input.json in the github repo
+#' @param metadata metadata. see sample input.json in the github repo
 #' @export
 
 read_input_data <- function(data, metadata){
 
   if(metadata$user_age < 14){
     Outcome <- data$parent_response
-  }else{
+  } else{
     if(sum(is.na(data$parent_response)) < sum(is.na(data$child_response))){
       Outcome <- data$parent_response
     }else{
@@ -40,7 +41,6 @@ change <- function(x){
   x = ifelse(x==100,99,x)
   return(x)
 }
-
 
 check_enough_data <- function(Treatment, x){
   length(table(Treatment[!is.na(x)])) == 3
@@ -83,7 +83,7 @@ find_raw_mean <- function(Y, Treat, baseline, response){
   raw_mean
 }
 
-round_raw_mean <- function(raw_mean, response){
+round_number <- function(raw_mean, response){
 
   if(response == "poisson" || response == "normal"){
     round(raw_mean,1)
@@ -114,12 +114,8 @@ find_mean_difference <- function(coef, response, raw_mean){
   
   mean_difference <- c(base_vs_scd = mean(scd - base), base_vs_mscd = mean(mscd - base), mscd_vs_scd = mean(scd - mscd))
   
-  rounded <- if(response %in% c("poisson", "normal")){
-    round(mean_difference, 1)
-  } else if(response == "binomial"){
-    round(mean_difference * 100)
-  }
-    
+  rounded <- round_number(mean_difference, response)
+
   if(response == "binomial"){
     rounded[rounded==0 & !is.na(rounded)] <- 1
     rounded[rounded==100  & !is.na(rounded)] <- 99
@@ -184,7 +180,7 @@ summarize_nof1 <- function(nof1, result){
 
     samples <- do.call(rbind, samples)
     raw_mean <- find_raw_mean(Y, Treat, baseline, response)
-    rounded_raw_mean <- round_raw_mean(raw_mean, response)
+    rounded_raw_mean <- round_number(raw_mean, response)
 
     coef <- samples[,colnames(coef) %in% c("alpha", "beta_A", "beta_B")]
     diff <- find_mean_difference(coef, response, raw_mean)
@@ -302,7 +298,7 @@ wrap <- function(data, metadata){
                    user_id = 325,
                    timestamp_trialist_completed = Sys.time(),
                    trialist_version_id = 2,
-                   trialist_version_date = "11/29/2017",
+                   trialist_version_date = "12/04/2017",
                    trialist_version_note = "")
 
   summary_graph <- tryCatch({

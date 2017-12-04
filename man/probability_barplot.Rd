@@ -5,14 +5,14 @@
 \alias{probability_barplot}
 \title{Odds ratio plot for the raw data}
 \usage{
-probability_barplot(result.list, result.name = NULL)
+probability_barplot(result.list, result.name = NULL, title = NULL)
 
-probability_barplot(result.list, result.name = NULL)
+probability_barplot(result.list, result.name = NULL, title = NULL)
 }
 \arguments{
 \item{result.list}{list of nof1 results created using nof1.run}
 
-\item{result.name}{name of the outcomes}
+\item{result.name}{name of the outcomes. If left unspecified, it numbers each result in order of how it is stored in result.list}
 
 \item{result.list}{list of nof1 results created using nof1.run}
 
@@ -21,5 +21,5 @@ probability_barplot(result.list, result.name = NULL)
 \description{
 Odds ratio plot for the raw data
 
-Odds ratio plot for the raw data
+Plot for probability that odds ratio is greater than 1
 }

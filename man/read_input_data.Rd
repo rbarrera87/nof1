@@ -7,7 +7,9 @@
 read_input_data(data, metadata)
 }
 \arguments{
-\item{json.file}{input data}
+\item{data}{input data. see sample input.json in the github repo}
+
+\item{metadata}{metadata. see sample input.json in the github repo}
 }
 \description{
 Read json data in as an R object

@@ -54,8 +54,6 @@ raw_table <- function(nof1){
 }
 
 
-
-
 #' Time series plot for the raw data
 #'
 #' @param nof1 nof1 object created using nof1.data

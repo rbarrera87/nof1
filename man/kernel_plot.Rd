@@ -4,7 +4,7 @@
 \alias{kernel_plot}
 \title{Kernel density of the posterior distribution for odds ratio}
 \usage{
-kernel_plot(result)
+kernel_plot(result, xlim_value = c(0, 10), title = NULL)
 }
 \arguments{
 \item{result}{nof1 result object created using nof1.run}

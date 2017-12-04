@@ -4,14 +4,15 @@
 \alias{odds_ratio_plot}
 \title{Odds ratio plot for the raw data}
 \usage{
-odds_ratio_plot(result.list, result.name = NULL, level = 0.95)
+odds_ratio_plot(result.list, result.name = NULL, level = 0.95,
+  title = NULL)
 }
 \arguments{
 \item{result.list}{list of nof1 results created using nof1.run}
 
-\item{result.name}{name of the outcome}
-
 \item{level}{confidence interval level (default is 0.95)}
+
+\item{name}{of the outcomes. If left unspecified, it numbers each result in order of how it is stored in result.list}
 }
 \description{
 Odds ratio plot for the raw data

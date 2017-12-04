@@ -4,7 +4,7 @@
 \alias{frequency_plot}
 \title{Frequency plot for raw data}
 \usage{
-frequency_plot(nof1)
+frequency_plot(nof1, xlab = NULL, title = NULL)
 }
 \arguments{
 \item{nof1}{nof1 object created using nof1.data}
