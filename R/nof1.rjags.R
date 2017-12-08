@@ -92,13 +92,11 @@ nof1.binomial.rjags <- function(nof1){
   }
   
   code <- paste0(code, "\n\tp_", baseline, " <- ilogit(alpha)")
-  
   for(i in Treat.name){
     code <- paste0(code, "\n\tp_", i, " <- ilogit(alpha + beta_", i, ")")
   }
   
-  comps <- combn(c(nof1$baseline, nof1$Treat.name), 2)
-  
+  comps <- combn(c(baseline, Treat.name), 2)
   for(i in 1:length(comps[1,])){
     code <- paste0(code, "\n\tRR_", paste0(comps[,i], collapse = "_"), " <- p_", comps[2,i], "/p_", comps[1,i])
   }

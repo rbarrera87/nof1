@@ -16,13 +16,18 @@ nof1.run <- function(nof1, inits = NULL, n.chains = 3, max.run = 100000, setsize
 
   with(nof1, {
 
-  #pars.save <- c("logprec", "rho")
   pars.save <- ifelse(response == "ordinal", "c", "alpha")
 
-  #missing values
-  # for(i in which(is.na(nof1$Y))){
-  #   pars.save <- c(pars.save, paste0("Y[", i, "]"))
-  # }
+  if(response == "binomial"){
+    
+    for(i in Treat.name){
+      pars.save <- c(pars.save, paste0("p_", i))  
+    }
+    comps <- comb(c(baseline, Treat.name), 2)
+    for(i in 1:length(comps[1,])){
+      pars.save <- c(pars.save, paste0("RR_", paste0(comps[,i], collapse = "_")))
+    }
+  }
 
   if(response == "normal"){
     pars.save <- c(pars.save, "logprec")
@@ -46,10 +51,6 @@ nof1.run <- function(nof1, inits = NULL, n.chains = 3, max.run = 100000, setsize
   # if(!is.null(knots)){
   #   data$BS <- nof1$BS
   # }
-  
-  if(!is.null(extra.pars.save)){
-    pars.save <- c(pars.save, "p")
-  }
 
   if(is.null(inits)){
     inits <- nof1.inits(nof1, n.chains)
