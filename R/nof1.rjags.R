@@ -70,7 +70,7 @@ nof1.binomial.rjags <- function(nof1){
   code <- paste0("model{")
   code <- paste0(code,
                  "\n\tfor (i in 1:", nobs, ") {",
-                 "\n\t\tlogit(p[i]) <- alpha") #+ epsilon[i]")
+                 "\n\t\tlogit(p[i]) <- alpha")
 
   for(i in Treat.name){
     code <- paste0(code, " + beta_", i, "*Treat_", i, "[i]")
@@ -85,26 +85,23 @@ nof1.binomial.rjags <- function(nof1){
   code <- paste0(code,
                  "\n\t\tY[i] ~ dbern(p[i])",
                  "\n\t}",
-                 "\n\t#e0 ~ dnorm(0, (1- rho^2) * prec)",
-                 "\n\t#epsilon[1] <- e0",
-                 "\n\t#for(i in 2:", nobs, "){",
-                 "\n\t\t#epsilon[i] ~ dnorm(epsilon.m[i], prec)",
-                 "\n\t\t#epsilon.m[i] <- rho * epsilon[i-1]",
-                 "\n\t#}",
-                 "\n\talpha ~ ", alpha.prior[[1]], "(", alpha.prior[[2]], ",", alpha.prior[[3]], ")",
-                 "\n\t#rho ~ ", rho.prior[[1]], "(", rho.prior[[2]], ",", rho.prior[[3]], ")")
+                 "\n\talpha ~ ", alpha.prior[[1]], "(", alpha.prior[[2]], ",", alpha.prior[[3]], ")")
 
   for(i in Treat.name){
     code <- paste0(code, "\n\tbeta_", i, " ~ ", beta.prior[[1]], "(", beta.prior[[2]], ",", beta.prior[[3]], ")")
   }
+  
+  code <- paste0(code, "\n\tp_", baseline, " <- ilogit(alpha)")
+  
+  # for(i in Treat.name){
+  #   code <- paste0(code, "\n\tp_", i, " <- ilogit())
+  # }
 
   # if(!is.null(knots)){
   #   for(j in 1:ncol(BS)){
   #     code <- paste0(code, "\n\tgamma", j, " ~ ", gamma.prior[[1]], "(", gamma.prior[[2]], ",", gamma.prior[[3]], ")")
   #   }
   # }
-
-  #code <- paste0(code, nof1.hy.prior.rjags(hy.prior), "\n}")
   code <- paste0(code, "\n}")
 
   return(code)

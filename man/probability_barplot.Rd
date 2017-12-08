@@ -2,24 +2,15 @@
 % Please edit documentation in R/nof1.summary.R
 \name{probability_barplot}
 \alias{probability_barplot}
-\alias{probability_barplot}
-\title{Odds ratio plot for the raw data}
+\title{Plot showing probability certain treatment is better than the other one}
 \usage{
-probability_barplot(result.list, result.name = NULL, title = NULL)
-
-probability_barplot(result.list, result.name = NULL, title = NULL)
+probability_barplot(result.list, result.name = NULL)
 }
 \arguments{
 \item{result.list}{list of nof1 results created using nof1.run}
 
 \item{result.name}{name of the outcomes. If left unspecified, it numbers each result in order of how it is stored in result.list}
-
-\item{result.list}{list of nof1 results created using nof1.run}
-
-\item{result.name}{name of the outcomes}
 }
 \description{
-Odds ratio plot for the raw data
-
-Plot for probability that odds ratio is greater than 1
+Plot showing probability certain treatment is better than the other one
 }
