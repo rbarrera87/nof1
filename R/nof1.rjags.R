@@ -93,9 +93,9 @@ nof1.binomial.rjags <- function(nof1){
   
   code <- paste0(code, "\n\tp_", baseline, " <- ilogit(alpha)")
   
-  # for(i in Treat.name){
-  #   code <- paste0(code, "\n\tp_", i, " <- ilogit())
-  # }
+  for(i in Treat.name){
+    code <- paste0(code, "\n\tp_", i, " <- ilogit(alpha + beta_", i, ")")
+  }
 
   # if(!is.null(knots)){
   #   for(j in 1:ncol(BS)){

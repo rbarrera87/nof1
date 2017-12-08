@@ -1,23 +1,28 @@
 #' Make a network object containing data, priors, and a jags model file
 #'
 #' @param Y Outcome
+#' @param Treat Treatment indicator vector
+#' @param ncat Number of categories. Used in ordinal models
+#' @param baseline Name of the baseline treatment
+#' @param response Type of outcome. Can be normal, binomial, poisson or ordinal
 #' @export
-
+ 
 nof1.data <- function(Y, Treat, Time=NULL, ncat = NULL, knots = NULL, baseline = "baseline", response = NULL,
                       alpha.prior = NULL, beta.prior = NULL, gamma.prior = NULL, dc.prior = NULL, c1.prior = NULL,
                       rho.prior = NULL, hy.prior = NULL){
-
-  nobs <- length(Y)
-  Treat.name <- unique(Treat)
   
-  if(!baseline %in% Treat){
-    stop("wrong baseline name")
-  }
   
   if(response == "ordinal"){
     if(is.null(ncat)){
       stop("ncat (number of categories) must be entered for ordinal response")
     }
+  }
+  
+  nobs <- length(Y)
+  Treat.name <- unique(Treat)
+  
+  if(!baseline %in% Treat){
+    stop("wrong baseline name")
   }
   
   Treat.name <- Treat.name[Treat.name != baseline]  
