@@ -14,8 +14,8 @@ time_series_plot(nof1, time = NULL, timestamp = NULL,
 
 \item{timestamp}{or instead provide timestamp information for the all the outcomes}
 
-\item{timestamp.format}{format of timestamp used. By default it is "%m/%d/%Y %H:%M" and example of it would be 12/24/2015 11:23}
+\item{timestamp.format}{format of timestamp used. By default it is and example of it would be 12/24/2015 11:23}
 }
 \description{
-Time series plot for the raw data
+Draw time series plot
 }

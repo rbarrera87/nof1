@@ -56,10 +56,11 @@ raw_table <- function(nof1){
 
 #' Time series plot for the raw data
 #'
+#' Draw time series plot
+#'
 #' @param nof1 nof1 object created using nof1.data
 #' @param time can manually specify time variable
 #' @param timestamp or instead provide timestamp information for the all the outcomes
-#' @param timestamp.format format of timestamp used. By default it is "%m/%d/%Y %H:%M" and example of it would be 12/24/2015 11:23
 #' @export
 
 time_series_plot <- function(nof1, time = NULL, timestamp = NULL, timestamp.format = "%m/%d/%Y %H:%M"){

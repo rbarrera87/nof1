@@ -11,6 +11,14 @@ nof1.data(Y, Treat, Time = NULL, ncat = NULL, knots = NULL,
 }
 \arguments{
 \item{Y}{Outcome}
+
+\item{Treat}{Treatment indicator vector}
+
+\item{ncat}{Number of categories. Used in ordinal models}
+
+\item{baseline}{Name of the baseline treatment}
+
+\item{response}{Type of outcome. Can be normal, binomial, poisson or ordinal}
 }
 \description{
 Make a network object containing data, priors, and a jags model file
