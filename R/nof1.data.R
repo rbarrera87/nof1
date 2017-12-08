@@ -11,7 +11,6 @@ nof1.data <- function(Y, Treat, Time=NULL, ncat = NULL, knots = NULL, baseline =
                       alpha.prior = NULL, beta.prior = NULL, gamma.prior = NULL, dc.prior = NULL, c1.prior = NULL,
                       rho.prior = NULL, hy.prior = NULL){
   
-  
   if(response == "ordinal"){
     if(is.null(ncat)){
       stop("ncat (number of categories) must be entered for ordinal response")
