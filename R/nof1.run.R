@@ -20,13 +20,11 @@ nof1.run <- function(nof1, inits = NULL, n.chains = 3, max.run = 100000, setsize
 
   if(response == "binomial"){
     
+    pars.save <- c(pars.save, paste0("p_", baseline))
     for(i in Treat.name){
       pars.save <- c(pars.save, paste0("p_", i))  
     }
-    comps <- combn(c(baseline, Treat.name), 2)
-    for(i in 1:length(comps[1,])){
-      pars.save <- c(pars.save, paste0("RR_", paste0(comps[,i], collapse = "_")))
-    }
+
   }
 
   if(response == "normal"){
