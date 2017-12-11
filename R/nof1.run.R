@@ -20,8 +20,7 @@ nof1.run <- function(nof1, inits = NULL, n.chains = 3, max.run = 100000, setsize
 
   if(response == "binomial"){
     
-    pars.save <- c(pars.save, paste0("p_", baseline))
-    for(i in Treat.name){
+    for(i in Treat.order){
       pars.save <- c(pars.save, paste0("p_", i))  
     }
     
@@ -41,12 +40,12 @@ nof1.run <- function(nof1, inits = NULL, n.chains = 3, max.run = 100000, setsize
   #   }
   # }
 
-  for(i in Treat.name){
+  for(i in Treat.order[-1]){
     pars.save <- c(pars.save, paste0("beta_", i))
   }
 
   data <- list(Y = Y)
-  for(i in Treat.name){
+  for(i in Treat.order[-1]){
     data[[paste0("Treat_", i)]] <- nof1[[paste0("Treat_", i)]]
   }
 

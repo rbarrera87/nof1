@@ -22,9 +22,8 @@ nof1.data <- function(Y, Treat, Treat.order = NULL, Time=NULL, ncat = NULL, knot
   if(!all(Treat %in% Treat.order)){
     stop("all treatment has to be specified in treatment order")
   }
-  Treat.name <- Treat.order[-1] 
   
-  nof1 = list(Y = Y, Treat = Treat, Treat.order = Treat.order, ncat = ncat, nobs = nobs, Treat.name = Treat.name, response = response)
+  nof1 = list(Y = Y, Treat = Treat, Treat.order = Treat.order, ncat = ncat, nobs = nobs, response = response)
 
   if(!is.null(Time)){
     cen.Time <- (Time - mean(Time, na.rm = TRUE)) / sd(Time, na.rm = TRUE)
@@ -38,7 +37,7 @@ nof1.data <- function(Y, Treat, Treat.order = NULL, Time=NULL, ncat = NULL, knot
     nof1$knots <- knots
   }
 
-  for(i in Treat.name){
+  for(i in Treat.order[-1]){
     nam <- paste("Treat_", i, sep = "")
     nam <- assign(nam, as.numeric(Treat == i))
     nof1[[ paste("Treat_", i, sep = "")]] <- nam
