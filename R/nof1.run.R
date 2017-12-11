@@ -4,7 +4,7 @@
 #' @export
 
 nof1.run <- function(nof1, inits = NULL, n.chains = 3, max.run = 100000, setsize = 10000, n.run = 50000,
-                     conv.limit = 2, extra.pars.save = NULL){
+                     conv.limit = 1.05, extra.pars.save = NULL){
 
   if (!inherits(nof1, "nof1.data")) {
     stop('Given network is not nof1.data. Run nof1.data function first')
@@ -71,7 +71,7 @@ nof1.run <- function(nof1, inits = NULL, n.chains = 3, max.run = 100000, setsize
   })
 }
 
-jags.fit <- function(nof1, data, pars.save, conv.save, inits, n.chains, max.run, setsize, n.run, conv.limit){
+jags.fit <- function(nof1, data, pars.save, inits, n.chains, max.run, setsize, n.run, conv.limit){
 
   mod = rjags::jags.model(textConnection(nof1$code), data = data, inits = inits, n.chains = n.chains, n.adapt = setsize)
   
@@ -87,7 +87,7 @@ jags.fit <- function(nof1, data, pars.save, conv.save, inits, n.chains, max.run,
   
   samples <- rjags::coda.samples(model = mod, variable.names = pars.save, n.iter = setsize)
 
-  max.gelman <- find.max.gelman(samples, index = conv.save)
+  max.gelman <- find.max.gelman(samples)
   print(max.gelman)
   check <- max.gelman > conv.limit
 
