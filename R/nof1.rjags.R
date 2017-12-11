@@ -20,7 +20,7 @@ nof1.normal.rjags <- function(nof1){
   code <- paste0("model{")
   code <- paste0(code,
                  "\n\tfor (i in 1:", nobs, ") {",
-                 "\n\t\tm[i] <- mu[i] #+ rho * epsilon[i]",
+                 "\n\t\tm[i] <- mu[i]",
                  "\n\t\tmu[i] <- alpha")
 
   for(i in Treat.name){
@@ -36,14 +36,7 @@ nof1.normal.rjags <- function(nof1){
   code <- paste0(code,
                  "\n\t\tY[i] ~ dnorm(m[i], prec)",
                  "\n\t}",
-                 "\n\t#e0 ~ dnorm(0, (1-rho^2)*prec)",
-                 "\n\t#epsilon[1] <- e0",
-                 "\n\t#for(i in 2:", nobs, "){",
-                 "\n\t\t#epsilon[i] <- Y[i-1] - mu[i-1]",
-                 "\n\t#}",
-                 "\n\talpha ~ ", alpha.prior[[1]], "(", alpha.prior[[2]], ",", alpha.prior[[3]], ")",
-                 "\n\t#rho ~ ", rho.prior[[1]], "(", rho.prior[[2]], ",", rho.prior[[3]], ")"
-                 )
+                 "\n\talpha ~ ", alpha.prior[[1]], "(", alpha.prior[[2]], ",", alpha.prior[[3]], ")")
 
   for(i in Treat.name){
     code <- paste0(code, "\n\tbeta_", i, " ~ ", beta.prior[[1]], "(", beta.prior[[2]], ",", beta.prior[[3]], ")")
@@ -172,12 +165,6 @@ nof1.ordinal.rjags <- function(nof1){
     code <- paste0(code,
                    "\n\t\t}",
                    "\n\t}",
-                   "\n\t#e0 ~ dnorm(0, (1-rho^2)*prec)",
-                   "\n\t#epsilon[1] <- e0",
-                   "\n\t#for(i in 2:", nobs, "){",
-                   "\n\t\t#epsilon[i] ~ dnorm(epsilon.m[i], prec)",
-                   "\n\t\t#epsilon.m[i] <- rho * epsilon[i-1]",
-                   "\n\t#}",
                    "\n\tfor(i in 2:", ncat-1, ") {",
                    "\n\t\tdc[i] ~ ", dc.prior[[1]], "(", dc.prior[[2]], ",", dc.prior[[3]], ")",
                    "\n\t}",
@@ -185,9 +172,8 @@ nof1.ordinal.rjags <- function(nof1){
                    "\n\tfor (i in 2:", ncat-1, ") {",
                    "\n\t\tc[i] <- c[i-1] + dc[i]",
                    "\n\t}",
-                   "\n\tdc[1] ~ ", c1.prior[[1]], "(", c1.prior[[2]], ",", c1.prior[[3]], ")",
-                   "\n\t#rho ~ ", rho.prior[[1]], "(", rho.prior[[2]], ",", rho.prior[[3]], ")")
-
+                   "\n\tdc[1] ~ ", c1.prior[[1]], "(", c1.prior[[2]], ",", c1.prior[[3]], ")")
+    
     for(i in Treat.name){
       code <- paste0(code, "\n\tbeta_", i, " ~ ", beta.prior[[1]], "(", beta.prior[[2]], ",", beta.prior[[3]], ")")
     }
