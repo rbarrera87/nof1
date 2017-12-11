@@ -39,14 +39,15 @@ summarize_nof1_afib <- function(nof1, result){
 
     #An odds ratio of 1 indicates that the condition or event under study is equally likely to occur in both groups. An odds ratio greater than 1 indicates that the condition or event is more likely to occur in the first group. And an odds ratio less than 1 indicates that the condition or event is less likely to occur in the first group.
 
-    trans <- transform_using_link(samples, response)
+    coef_alpha <- samples[,"alpha", drop = F]
+    coef_beta_A <- samples[,"beta_A", drop = F]
     
-    if("beta_A" %in% colnames(samples)){
-      greater_than_1 <- round(mean(trans$scd/trans$base > 1, na.rm = TRUE)*100)
-      greater_than_1 <- change(greater_than_1)
-    } else{
-      greater_than_1 <- NA
-    }
+    base <- inv_logit(coef_alpha)
+    trigger <- inv_logit(coef_alpha + coef_beta_A)
+    
+    greater_than_1 <- round(mean(trigger/base > 1, na.rm = TRUE)*100)
+    greater_than_1 <- change(greater_than_1)
+    
     return(list(raw_mean = raw_mean, prob_afib_more_likely_with_trigger = greater_than_1))
   })
 }
