@@ -95,7 +95,6 @@ round_number <- function(raw_mean, response){
 find_mean_difference <- function(coef, response, raw_mean){
 
   coef_alpha <- coef_beta_A <- coef_beta_B <- NA
-<<<<<<< HEAD
  
   coef_name <- if(response == "binomial"){
     "p"
@@ -111,11 +110,9 @@ find_mean_difference <- function(coef, response, raw_mean){
     } else if(response %in% c("binomial", "poisson")){
       samples[, paste0(coef_name, "_", Treat.order[1]), drop = F]
     }
-=======
-  
+
   if("alpha" %in% colnames(coef)){
     coef_alpha <- coef[,"alpha", drop = F]
->>>>>>> parent of 6312453... revision
   } 
   
   if("beta_A" %in% colnames(coef)){
@@ -263,7 +260,7 @@ wrap <- function(data, metadata){
   stool_frequency <- tryCatch({
     data_freq <- list(Treat = read_data$Treatment, Y = read_data$stool_frequency)
     nof1_freq <- with(data_freq, {
-      nof1.data(Y, Treat, response = "poisson")
+      nof1.data(Y, Treat, Treat.order = c("baseline", "A", "B"), response = "poisson")
     })
     result_freq <- nof1.run(nof1_freq)
     summarize_nof1(nof1_freq, result_freq)
@@ -274,7 +271,7 @@ wrap <- function(data, metadata){
   stool_consistency <- tryCatch({
     data_cons <- list(Treat = read_data$Treatment, Y = read_data$stool_consistency)
     nof1_cons <- with(data_cons, {
-      nof1.data(Y, Treat, response = "binomial")
+      nof1.data(Y, Treat, Treat.order = c("baseline", "A", "B"), response = "binomial")
     })
     result_cons <- nof1.run(nof1_cons)
     summarize_nof1(nof1_cons, result_cons)
@@ -285,7 +282,7 @@ wrap <- function(data, metadata){
   pain_interference <- tryCatch({
     data_pain <- list(Treat = read_data$Treatment_weekly, Y = read_data$pain_interference)
     nof1_pain <- with(data_pain, {
-      nof1.data(Y, Treat, response = "normal")
+      nof1.data(Y, Treat, Treat.order = c("baseline", "A", "B"), response = "normal")
     })
     result_pain <- nof1.run(nof1_pain)
     summarize_nof1(nof1_pain, result_pain)
@@ -296,7 +293,7 @@ wrap <- function(data, metadata){
   gi_symptoms <- tryCatch({
     data_gi <- list(Treat = read_data$Treatment_weekly, Y = read_data$gi_symptoms)
     nof1_gi <- with(data_gi, {
-      nof1.data(Y, Treat, response = "normal")
+      nof1.data(Y, Treat, Treat.order = c("baseline", "A", "B"), response = "normal")
     })
     result_gi <- nof1.run(nof1_gi)
     summarize_nof1(nof1_gi, result_gi)

@@ -149,7 +149,7 @@ nof1.poisson.rjags <- function(nof1){
   
   comps <- combn(Treat.order, 2)
   for(i in 1:ncol(comps)){
-    code <- paste0(code, "\n\tRR_", comps[1,i], "_", comps[2,i], " <- gamma_", comps[2,i], "/gamma_", comps[1,i])
+    code <- paste0(code, "\n\tRR_", comps[1,i], "_", comps[2,i], " <- lambda_", comps[2,i], "/lambda_", comps[1,i])
   }
 
   # if(!is.null(knots)){
