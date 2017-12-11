@@ -4,6 +4,10 @@ inv_logit <- function(a){
   exp(a)/(1 + exp(a))
 }
 
+#' Ordinal simulation
+#'
+#' @export
+
 nof1.ordinal.simulation <- function(baseline = "baseline", Base.size = 100, Treat.size = 100,
                                     alpha = 0, beta_A = -0.1, beta_B = -0.3, cut = c(0.5,1,1.5,2), ncat = 5){
   
@@ -40,6 +44,10 @@ nof1.ordinal.simulation <- function(baseline = "baseline", Base.size = 100, Trea
 }
 
 
+#' Binomial simulation
+#'
+#' @export
+
 nof1.binomial.simulation <- function(baseline = "baseline", Base.size = 14, Treat.size = 56,
                                      alpha = 0.5, beta_A = -0.1, beta_B = -0.05){
   
@@ -65,6 +73,12 @@ nof1.binomial.simulation <- function(baseline = "baseline", Base.size = 14, Trea
   
   list(Y = Y, Treat = Treat)
 }
+
+
+
+#' Poisson simulation
+#'
+#' @export
 
 nof1.poisson.simulation <- function(baseline = "baseline", Base.size = 14, Treat.size = 56,
                                     alpha = 1, beta_A = -0.1, beta_B = -0.05){

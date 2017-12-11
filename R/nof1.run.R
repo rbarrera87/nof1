@@ -28,12 +28,11 @@ nof1.run <- function(nof1, inits = NULL, n.chains = 3, max.run = 100000, setsize
     }
   }
   
-  if(response %in% ("binomial", "poisson")){
+  if(response %in% c("binomial", "poisson")){
     comps <- combn(Treat.order, 2)
     for(i in 1:ncol(comps)){
       pars.save <- c(pars.save, paste0("RR_", comps[1,i], "_", comps[2,i]))
     }  
-    
   }
     
     

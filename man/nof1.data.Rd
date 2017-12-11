@@ -4,19 +4,19 @@
 \alias{nof1.data}
 \title{Make a network object containing data, priors, and a jags model file}
 \usage{
-nof1.data(Y, Treat, Time = NULL, ncat = NULL, knots = NULL,
-  baseline = "baseline", response = NULL, alpha.prior = NULL,
-  beta.prior = NULL, gamma.prior = NULL, dc.prior = NULL,
-  c1.prior = NULL, rho.prior = NULL, hy.prior = NULL)
+nof1.data(Y, Treat, Treat.order = NULL, Time = NULL, ncat = NULL,
+  knots = NULL, response = NULL, alpha.prior = NULL, beta.prior = NULL,
+  gamma.prior = NULL, dc.prior = NULL, c1.prior = NULL,
+  rho.prior = NULL, hy.prior = NULL)
 }
 \arguments{
 \item{Y}{Outcome}
 
 \item{Treat}{Treatment indicator vector}
 
-\item{ncat}{Number of categories. Used in ordinal models}
+\item{Treat.order}{Treatment order in which it is compared. First element in the order is defined to be baseline.}
 
-\item{baseline}{Name of the baseline treatment}
+\item{ncat}{Number of categories. Used in ordinal models}
 
 \item{response}{Type of outcome. Can be normal, binomial, poisson or ordinal}
 }
