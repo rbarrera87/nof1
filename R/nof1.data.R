@@ -16,7 +16,6 @@ nof1.data <- function(Y, Treat, baseline = "baseline", Time=NULL, ncat = NULL, k
       stop("ncat (number of categories) must be entered for ordinal response")
     }
   }
-  
   nobs <- length(Y)
   
   if(!baseline %in% Treat){
