@@ -96,20 +96,8 @@ find_mean_difference <- function(coef, response, raw_mean){
 
   coef_alpha <- coef_beta_A <- coef_beta_B <- NA
  
-  coef_name <- if(response == "binomial"){
-    "p"
-  } else if(response == "poisson"){
-    "lambda"
-  } else if(response == "normal"){
-    "beta"
-  }
-    
   if("alpha" %in% colnames(samples)){
-    base <- if(response == "normal"){
-      samples[,"alpha", drop = F]  
-    } else if(response %in% c("binomial", "poisson")){
-      samples[, paste0(coef_name, "_", Treat.order[1]), drop = F]
-    }
+    coef_alpha <- coef[,"alpha", drop = F]
   }
 
   if("beta_A" %in% colnames(coef)){
