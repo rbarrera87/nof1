@@ -66,6 +66,26 @@ nof1.binomial.simulation <- function(baseline = "baseline", Base.size = 14, Trea
   list(Y = Y, Treat = Treat)
 }
 
-
+nof1.poisson.simulation <- function(baseline = "baseline", Base.size = 14, Treat.size = 56,
+                                    alpha = 1, beta_A = -0.1, beta_B = -0.05){
   
+  store <- generate_time(baseline, knots, Base.size, Treat.size)
+  
+  with(store, {
+    
+    Y <- epsilon <- mu <- rep(NA, nobs)
+    
+    for(i in 1:nobs){
+      
+      mu[i] <- alpha
+      if(Treat[i] == "A"){
+        mu[i] <- mu[i] + beta_A
+      } else if (Treat[i] == "B"){
+        mu[i] <- mu[i] + beta_B
+      }
+      Y[i] <- rpois(1, exp(mu[i]))
+    }
+    list(Y = Y, Treat = Treat)
+  })
+}
 
