@@ -123,18 +123,18 @@ round_number <- function(raw_mean, response){
   }
 }
 
-find_mean_difference <- function(coef, response, raw_mean){
-
+transform_using_link <- function(coef, response){
+  
   coef_alpha <- coef_beta_A <- coef_beta_B <- NA
- 
+  
   if("alpha" %in% colnames(coef)){
     coef_alpha <- coef[,"alpha", drop = F]
   }
-
+  
   if("beta_A" %in% colnames(coef)){
     coef_beta_A <- coef[,"beta_A", drop = F]
   }
-
+  
   if("beta_B" %in% colnames(coef)){
     coef_beta_B <- coef[,"beta_B",drop = F]
   }
@@ -143,8 +143,18 @@ find_mean_difference <- function(coef, response, raw_mean){
   scd <- link_function(coef_alpha + coef_beta_A, response)
   mscd <- link_function(coef_alpha + coef_beta_B, response)
   
-  mean_difference <- c(base_vs_scd = mean(scd - base), base_vs_mscd = mean(mscd - base), mscd_vs_scd = mean(scd - mscd))
+  return(list(base = base, scd = scd, mscd = mscd))
+}
+
+
+find_mean_difference <- function(coef, response, raw_mean){
+
+  trans <- transform_using_link(coef, response)
   
+  mean_difference <- with(trans, {
+    c(base_vs_scd = mean(scd - base), base_vs_mscd = mean(mscd - base), mscd_vs_scd = mean(scd - mscd))  
+  })
+
   rounded <- round_number(mean_difference, response)
 
   if(response == "binomial"){
@@ -154,7 +164,7 @@ find_mean_difference <- function(coef, response, raw_mean){
   return(rounded)
 }
 
-calculate_p_threshold <- function(samples, response){
+calculate_p_threshold <- function(coef, response){
 
   upper <-
     if(response == "poisson"){
@@ -173,32 +183,53 @@ calculate_p_threshold <- function(samples, response){
     } else if(response == "normal"){
       -2.9
     }
+  
+  trans <- transform_using_link(coef, response)
+  
+  with(trans, {
 
-  if("beta_A" %in% colnames(samples)){
-    base_vs_scd <- list(greater_than_threshold = round(mean(comparison(samples[,"beta_A"], response) > upper, na.rm = TRUE)*100),
-                        lower_than_threshold = round(mean(comparison(samples[,"beta_A"], response) < lower, na.rm = TRUE)*100))
+  if("beta_A" %in% colnames(coef)){
+    if(response == "normal"){
+      base_vs_scd <- list(greater_than_threshold = round(mean(scd - base > upper, na.rm = TRUE)*100),
+                          lower_than_threshold = round(mean(scd - base < lower, na.rm = TRUE)*100))
+    } else if(response %in% c("poisson", "binomial")){
+      base_vs_scd <- list(greater_than_threshold = round(mean(scd/base > upper, na.rm = TRUE)*100),
+                          lower_than_threshold = round(mean(scd/base < lower, na.rm = TRUE)*100))
+    }
     base_vs_scd <- rapply(base_vs_scd, change, how = "replace")
   } else{
     base_vs_scd <- list(greater_than_threshold = NA, lower_than_threshold = NA)
   }
 
-  if("beta_B" %in% colnames(samples)){
-    base_vs_mscd <- list(greater_than_threshold = round(mean(comparison(samples[,"beta_B"], response) > upper, na.rm = TRUE)*100),
-                         lower_than_threshold = round(mean(comparison(samples[,"beta_B"], response) < lower, na.rm = TRUE)*100))
+  if("beta_B" %in% colnames(coef)){
+    if(response == "normal"){
+      base_vs_mscd <- list(greater_than_threshold = round(mean(mscd - base > upper, na.rm = TRUE)*100),
+                           lower_than_threshold = round(mean(mscd - base < lower, na.rm = TRUE)*100))
+    } else if(response %in% c("poisson", "binomial")){
+      base_vs_mscd <- list(greater_than_threshold = round(mean(mscd/base > upper, na.rm = TRUE)*100),
+                          lower_than_threshold = round(mean(mscd/base < lower, na.rm = TRUE)*100))
+    }
     base_vs_mscd <- rapply(base_vs_mscd, change, how = "replace")
   } else{
     base_vs_mscd <- list(greater_than_threshold = NA, lower_than_threshold = NA)
   }
 
-  if("beta_A" %in% colnames(samples) & "beta_B" %in% colnames(samples)){
-    mscd_vs_scd <- list(greater_than_threshold = round(mean(comparison(samples[,"beta_A"] - samples[,"beta_B"], response) > upper, na.rm = TRUE)*100),
-                        lower_than_threshold = round(mean(comparison(samples[,"beta_A"] - samples[,"beta_B"], response) < lower, na.rm = TRUE)*100))
+  if("beta_A" %in% colnames(coef) & "beta_B" %in% colnames(coef)){
+    
+    if(response == "normal"){
+      mscd_vs_scd <- list(greater_than_threshold = round(mean(scd - mscd > upper, na.rm = TRUE)*100),
+                           lower_than_threshold = round(mean(scd - mscd < lower, na.rm = TRUE)*100))
+    } else if(response %in% c("poisson", "binomial")){
+      mscd_vs_scd <- list(greater_than_threshold = round(mean(scd/mscd > upper, na.rm = TRUE)*100),
+                          lower_than_threshold = round(mean(scd/mscd < lower, na.rm = TRUE)*100))
+    }
     mscd_vs_scd <- rapply(mscd_vs_scd, change, how = "replace")
   } else{
     mscd_vs_scd <- list(greater_than_threshold = NA, lower_than_threshold = NA)
   }
 
   return(list(base_vs_scd = base_vs_scd, base_vs_mscd = base_vs_mscd, mscd_vs_scd = mscd_vs_scd))
+  })
 }
 
 #' Summarizes the result from the model into json format
@@ -220,7 +251,7 @@ summarize_nof1 <- function(nof1, result){
     mean_difference <- list(base_vs_scd = diff[1], base_vs_mscd = diff[2], mscd_vs_scd = diff[3])
     three_group_comparison <- list(raw_mean = raw_mean, mean_difference = mean_difference)
 
-    gauge_graph <- calculate_p_threshold(samples, response)
+    gauge_graph <- calculate_p_threshold(coef, response)
     return(list(three_group_comparison = three_group_comparison, gauge_graph = gauge_graph))
   })
 }
