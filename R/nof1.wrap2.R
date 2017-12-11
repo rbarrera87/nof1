@@ -1,5 +1,3 @@
-### This is a wrapper for AFIB study
-
 read_input_data2 <- function(data, metadata){
   
   Y <- unlist(data$response$afib_episode_yn)

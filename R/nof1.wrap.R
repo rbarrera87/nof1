@@ -1,5 +1,3 @@
-### This is a wrapper for PRODUCE study
-
 #' Read json data in as an R object
 #'
 #' @param data input data. see sample input.json in the github repo
@@ -52,6 +50,28 @@ check_success <- function(x){
   ifelse(is.list(x), TRUE, x)
 }
 
+comparison <- function(x, response){
+  answer <-
+    if(response == "poisson" || response == "binomial"){
+      exp(x)
+    } else if(response == "normal"){
+      x
+    }
+  return(answer)
+}
+
+link_function <- function(x, response){
+  answer <-
+    if(response == "poisson"){
+      exp(x)
+    } else if(response == "binomial"){
+      inv_logit(x)
+    } else if(response == "normal"){
+      x
+    }
+}
+
+
 inv_logit <- function(a){
   1/(1+exp(-a))
 }
@@ -83,7 +103,7 @@ find_mean_difference <- function(samples, response, Treat.order){
   } else if(response == "normal"){
     "beta"
   }
-  
+    
   if("alpha" %in% colnames(samples)){
     base <- if(response == "normal"){
       samples[,"alpha", drop = F]  
