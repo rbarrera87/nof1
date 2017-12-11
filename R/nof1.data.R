@@ -19,7 +19,7 @@ nof1.data <- function(Y, Treat, Treat.order = NULL, Time=NULL, ncat = NULL, knot
   
   nobs <- length(Y)
   
-  if(all(Treat %in% Treat.order)){
+  if(!all(Treat %in% Treat.order)){
     stop("all treatment has to be specified in treatment order")
   }
   Treat.name <- Treat.order[-1] 
