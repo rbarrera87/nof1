@@ -24,7 +24,7 @@ nof1.data <- function(Y, Treat, Treat.order = NULL, Time=NULL, ncat = NULL, knot
   }
   
   if(!all(Treat.order %in% Treat)){
-    print(paste0("removing ", Treat.order[Treat.order %in% Treat], "from Treat.order"))
+    print(paste0("removing ", Treat.order[!Treat.order %in% Treat], " from Treat.order"))
     Treat.order <- Treat.order[Treat.order %in% Treat]
   }
   Treat.name <- Treat.order[-1] #Treatment without baseline treatment
