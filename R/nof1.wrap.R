@@ -113,19 +113,11 @@ find_mean_difference <- function(samples, response, Treat.order){
   } 
     
   if("beta_A" %in% colnames(samples)){
-    scd <- if(response == "normal"){
-      samples[,"alpha", drop = F] + samples[,"beta_A", drop = F]
-    } else if(response %in% c("binomial", "poisson")){
-      samples[, paste0(coef_name, "_A")]
-    }
+    scd <- samples[, paste0(coef_name, "_", "A")]
   }
     
   if("beta_B" %in% colnames(samples)){
-    mscd <- if(response == "normal"){
-      samples[,"alpha", drop = F] + samples[,"beta_B", drop = F]
-    } else if(response %in% c("binomial", "poisson")){
-      samples[, paste0(coef_name, "_", "B")]
-    }
+    mscd <- samples[, paste0(coef_name, "_", "B")]
   }
     
   mean_difference <- c(base_vs_scd = mean(scd - base), base_vs_mscd = mean(mscd - base), mscd_vs_scd = mean(scd - mscd))
