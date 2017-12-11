@@ -14,7 +14,11 @@ time_series_plot(nof1, time = NULL, timestamp = NULL,
 
 \item{timestamp}{or instead provide timestamp information for the all the outcomes}
 
+<<<<<<< HEAD
 \item{timestamp.format}{format of timestamp used. See default format.}
+=======
+\item{timestamp.format}{format of timestamp used. By default it is and example of it would be 12/24/2015 11:23}
+>>>>>>> parent of fe174c7... revision
 }
 \description{
 Draw time series plot
