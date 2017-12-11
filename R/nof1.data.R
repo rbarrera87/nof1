@@ -22,7 +22,7 @@ nof1.data <- function(Y, Treat, Treat.order = NULL, Time=NULL, ncat = NULL, knot
   if(!all(Treat %in% Treat.order)){
     stop("all treatment has to be specified in treatment order")
   }
-  Treat.name <- Treat.order[-1] 
+  Treat.name <- Treat.order[-1] #Treatment without baseline treatment
   
   nof1 = list(Y = Y, Treat = Treat, Treat.order = Treat.order, ncat = ncat, nobs = nobs, Treat.name = Treat.name, response = response)
 

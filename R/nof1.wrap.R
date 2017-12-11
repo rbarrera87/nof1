@@ -11,7 +11,7 @@ read_input_data <- function(data, metadata){
   } else{
     if(sum(is.na(data$parent_response)) < sum(is.na(data$child_response))){
       Outcome <- data$parent_response
-    }else{
+    } else{
       Outcome <- data$child_response
     }
   }
@@ -92,30 +92,37 @@ round_number <- function(raw_mean, response){
   }
 }
 
-find_mean_difference <- function(coef, response, raw_mean){
+find_mean_difference <- function(samples, response, Treat.order){
 
   coef_alpha <- coef_beta_A <- coef_beta_B <- NA
-  
-  if("alpha" %in% colnames(coef)){
-    coef_alpha <- coef[,"alpha", drop = F]
+ 
+  coef_name <- if(response == "binomial"){
+    "p"
+  } else if(response == "poisson"){
+    "gamma"
+  } else if(response == "normal"){
+    "beta"
+  }
+    
+  if("alpha" %in% colnames(samples)){
+    base <- if(response == "normal"){
+      samples[,"alpha", drop = F]  
+    } else if(response %in% c("binomial", "poisson")){
+      samples[, paste0(coef_name, "_", Treat.order[1]), drop = F]
+    }
   } 
-  
-  if("beta_A" %in% colnames(coef)){
-    coef_beta_A <- coef[,"beta_A", drop = F]
+    
+  if("beta_A" %in% colnames(samples)){
+    scd <- samples[, paste0(coef_name, "_", "A")]
   }
-
-  if("beta_B" %in% colnames(coef)){
-    coef_beta_B <- coef[,"beta_B",drop = F]
+    
+  if("beta_B" %in% colnames(samples)){
+    mscd <- samples[, paste0(coef_name, "_", "B")]
   }
-  
-  base <- link_function(coef_alpha, response)
-  scd <- link_function(coef_alpha + coef_beta_A, response)
-  mscd <- link_function(coef_alpha + coef_beta_B, response)
-  
+    
   mean_difference <- c(base_vs_scd = mean(scd - base), base_vs_mscd = mean(mscd - base), mscd_vs_scd = mean(scd - mscd))
-  
   rounded <- round_number(mean_difference, response)
-
+    
   if(response == "binomial"){
     rounded[rounded==0 & !is.na(rounded)] <- 1
     rounded[rounded==100  & !is.na(rounded)] <- 99
@@ -142,27 +149,47 @@ calculate_p_threshold <- function(samples, response){
     } else if(response == "normal"){
       -2.9
     }
-
+  
   if("beta_A" %in% colnames(samples)){
-    base_vs_scd <- list(greater_than_threshold = round(mean(comparison(samples[,"beta_A"], response) > upper, na.rm = TRUE)*100),
-                        lower_than_threshold = round(mean(comparison(samples[,"beta_A"], response) < lower, na.rm = TRUE)*100))
-    base_vs_scd <- rapply(base_vs_scd, change, how = "replace")
+    
+    if(response == "normal"){
+      base_vs_scd <- list(greater_than_threshold = round(mean(samples[,"beta_A"] > upper, na.rm = TRUE)*100),
+                          lower_than_threshold = round(mean(samples[,"beta_A"] < lower, na.rm = TRUE)*100))
+      base_vs_scd <- rapply(base_vs_scd, change, how = "replace")
+    } else if(response %in% c("ordinal", "poisson")){
+      base_vs_scd <- list(greater_than_threshold = round(mean(samples[,"RR_baseline_A"] > upper, na.rm = TRUE)*100),
+                          lower_than_threshold = round(mean(samples[,"RR_baseline_A"] < lower, na.rm = TRUE)*100))
+      base_vs_scd <- rapply(base_vs_scd, change, how = "replace")
+    }
   } else{
     base_vs_scd <- list(greater_than_threshold = NA, lower_than_threshold = NA)
   }
 
   if("beta_B" %in% colnames(samples)){
-    base_vs_mscd <- list(greater_than_threshold = round(mean(comparison(samples[,"beta_B"], response) > upper, na.rm = TRUE)*100),
-                         lower_than_threshold = round(mean(comparison(samples[,"beta_B"], response) < lower, na.rm = TRUE)*100))
-    base_vs_mscd <- rapply(base_vs_mscd, change, how = "replace")
+    
+    if(response == "normal"){
+      base_vs_mscd <- list(greater_than_threshold = round(mean(samples[,"beta_B"] > upper, na.rm = TRUE)*100),
+                          lower_than_threshold = round(mean(samples[,"beta_B"] < lower, na.rm = TRUE)*100))
+      base_vs_mscd <- rapply(base_vs_mscd, change, how = "replace")
+    } else if(response %in% c("ordinal", "poisson")){
+      base_vs_mscd <- list(greater_than_threshold = round(mean(samples[,"RR_baseline_B"] > upper, na.rm = TRUE)*100),
+                           lower_than_threshold = round(mean(samples[,"RR_baseline_B"] < lower, na.rm = TRUE)*100))
+      base_vs_mscd <- rapply(base_vs_mscd, change, how = "replace")
+    }
   } else{
     base_vs_mscd <- list(greater_than_threshold = NA, lower_than_threshold = NA)
   }
 
   if("beta_A" %in% colnames(samples) & "beta_B" %in% colnames(samples)){
-    mscd_vs_scd <- list(greater_than_threshold = round(mean(comparison(samples[,"beta_A"] - samples[,"beta_B"], response) > upper, na.rm = TRUE)*100),
-                        lower_than_threshold = round(mean(comparison(samples[,"beta_A"] - samples[,"beta_B"], response) < lower, na.rm = TRUE)*100))
-    mscd_vs_scd <- rapply(mscd_vs_scd, change, how = "replace")
+    if(response == "normal"){
+      mscd_vs_scd <- list(greater_than_threshold = round(mean(samples[,"beta_A"] - samples[,"beta_B"] > upper, na.rm = TRUE)*100),
+                           lower_than_threshold = round(mean(samples[,"beta_A"] - samples[,"beta_B"] < lower, na.rm = TRUE)*100))
+      mscd_vs_scd <- rapply(mscd_vs_scd, change, how = "replace")
+    } else if(response %in% c("ordinal", "poisson")){
+      mscd_vs_scd <- list(greater_than_threshold = round(mean( 1/samples[,"RR_A_B"] > upper, na.rm = TRUE)*100),
+                           lower_than_threshold = round(mean( 1/samples[,"RR_A_B"] < lower, na.rm = TRUE)*100))
+      mscd_vs_scd <- rapply(mscd_vs_scd, change, how = "replace")
+    }
   } else{
     mscd_vs_scd <- list(greater_than_threshold = NA, lower_than_threshold = NA)
   }
@@ -182,8 +209,7 @@ summarize_nof1 <- function(nof1, result){
     raw_mean <- find_raw_mean(Y, Treat, baseline, response)
     rounded_raw_mean <- round_number(raw_mean, response)
 
-    coef <- samples[,colnames(samples) %in% c("alpha", "beta_A", "beta_B")]
-    diff <- find_mean_difference(coef, response, raw_mean)
+    diff <- find_mean_difference(samples, response, Treat.order)
 
     raw_mean <- list(base = rounded_raw_mean[1], scd = rounded_raw_mean[2], mscd = rounded_raw_mean[3])
     mean_difference <- list(base_vs_scd = diff[1], base_vs_mscd = diff[2], mscd_vs_scd = diff[3])
