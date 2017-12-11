@@ -18,23 +18,6 @@ nof1.run <- function(nof1, inits = NULL, n.chains = 3, max.run = 100000, setsize
 
   pars.save <- ifelse(response == "ordinal", "c", "alpha")
 
-  if(response == "binomial"){
-    for(i in Treat.order){
-      pars.save <- c(pars.save, paste0("p_", i))  
-    }
-  } else if(response == "poisson"){
-    for(i in Treat.order){
-      pars.save <- c(pars.save, paste0("lambda_", i))  
-    }
-  }
-  
-  if(response %in% c("binomial", "poisson")){
-    comps <- combn(Treat.order, 2)
-    for(i in 1:ncol(comps)){
-      pars.save <- c(pars.save, paste0("RR_", comps[1,i], "_", comps[2,i]))
-    }  
-  }
-    
   if(response == "normal"){
     pars.save <- c(pars.save, "logprec")
   }
