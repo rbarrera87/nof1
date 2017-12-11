@@ -11,7 +11,7 @@
     "enough_pain_interference": false,
     "enough_gi_symptoms": false,
     "user_id": 325,
-    "timestamp_trialist_completed": "2017-12-04 18:10:21",
+    "timestamp_trialist_completed": "2017-12-11 22:16:45",
     "trialist_version_id": 2,
     "trialist_version_date": "12/04/2017",
     "trialist_version_note": ""
@@ -31,7 +31,7 @@
     },
     "gauge_graph": {
       "base_vs_scd": {
-        "greater_than_threshold": 49,
+        "greater_than_threshold": 50,
         "lower_than_threshold": 13
       },
       "base_vs_mscd": {
@@ -59,8 +59,8 @@
     },
     "gauge_graph": {
       "base_vs_scd": {
-        "greater_than_threshold": 9,
-        "lower_than_threshold": 85
+        "greater_than_threshold": 5,
+        "lower_than_threshold": 75
       },
       "base_vs_mscd": {
         "greater_than_threshold": null,
@@ -116,7 +116,7 @@
     "gauge_graph": {
       "base_vs_scd": {
         "greater_than_threshold": 1,
-        "lower_than_threshold": 81
+        "lower_than_threshold": 82
       },
       "base_vs_mscd": {
         "greater_than_threshold": null,
@@ -130,10 +130,10 @@
   },
   "summary_graph": {
     "base_vs_scd": {
-      "stool_frequency": -49,
-      "stool_consistency": 85,
+      "stool_frequency": -50,
+      "stool_consistency": 75,
       "pain_interference": 34,
-      "gi_symptoms": 81
+      "gi_symptoms": 82
     },
     "base_vs_mscd": {
       "stool_frequency": null,

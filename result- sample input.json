@@ -1,4 +1,4 @@
-{
+
   "metadata": {
     "successful_summary_graph": true,
     "successful_input_reading": true,
@@ -11,7 +11,7 @@
     "enough_pain_interference": true,
     "enough_gi_symptoms": true,
     "user_id": 325,
-    "timestamp_trialist_completed": "2017-12-04 17:25:04",
+    "timestamp_trialist_completed": "2017-12-11 22:08:57",
     "trialist_version_id": 2,
     "trialist_version_date": "12/04/2017",
     "trialist_version_note": ""
@@ -31,16 +31,16 @@
     },
     "gauge_graph": {
       "base_vs_scd": {
-        "greater_than_threshold": 18,
-        "lower_than_threshold": 39
+        "greater_than_threshold": 19,
+        "lower_than_threshold": 40
       },
       "base_vs_mscd": {
-        "greater_than_threshold": 11,
-        "lower_than_threshold": 52
+        "greater_than_threshold": 12,
+        "lower_than_threshold": 53
       },
       "mscd_vs_scd": {
         "greater_than_threshold": 32,
-        "lower_than_threshold": 3
+        "lower_than_threshold": 4
       }
     }
   },
@@ -52,23 +52,23 @@
         "mscd": 51
       },
       "mean_difference": {
-        "base_vs_scd": -17,
+        "base_vs_scd": -16,
         "base_vs_mscd": -28,
         "mscd_vs_scd": 11
       }
     },
     "gauge_graph": {
       "base_vs_scd": {
-        "greater_than_threshold": 7,
-        "lower_than_threshold": 88
+        "greater_than_threshold": 4,
+        "lower_than_threshold": 80
       },
       "base_vs_mscd": {
         "greater_than_threshold": 1,
-        "lower_than_threshold": 97
+        "lower_than_threshold": 96
       },
       "mscd_vs_scd": {
-        "greater_than_threshold": 90,
-        "lower_than_threshold": 2
+        "greater_than_threshold": 80,
+        "lower_than_threshold": 1
       }
     }
   },
@@ -130,20 +130,20 @@
   },
   "summary_graph": {
     "base_vs_scd": {
-      "stool_frequency": 39,
-      "stool_consistency": 88,
+      "stool_frequency": 40,
+      "stool_consistency": 80,
       "pain_interference": 32,
       "gi_symptoms": 77
     },
     "base_vs_mscd": {
-      "stool_frequency": 52,
-      "stool_consistency": 97,
+      "stool_frequency": 53,
+      "stool_consistency": 96,
       "pain_interference": -1,
       "gi_symptoms": 6
     },
     "mscd_vs_scd": {
       "stool_frequency": -32,
-      "stool_consistency": -90,
+      "stool_consistency": -80,
       "pain_interference": 12,
       "gi_symptoms": 10
     }
