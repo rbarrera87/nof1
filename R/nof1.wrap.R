@@ -82,16 +82,6 @@ check_success <- function(x){
   ifelse(is.list(x), TRUE, x)
 }
 
-comparison <- function(x, response){
-  answer <-
-    if(response == "poisson" || response == "binomial"){
-      exp(x)
-    } else if(response == "normal"){
-      x
-    }
-  return(answer)
-}
-
 link_function <- function(x, response){
   answer <-
     if(response == "poisson"){
