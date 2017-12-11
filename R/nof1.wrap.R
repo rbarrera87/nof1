@@ -110,11 +110,8 @@ find_mean_difference <- function(coef, response, raw_mean){
     } else if(response %in% c("binomial", "poisson")){
       samples[, paste0(coef_name, "_", Treat.order[1]), drop = F]
     }
+  }
 
-  if("alpha" %in% colnames(coef)){
-    coef_alpha <- coef[,"alpha", drop = F]
-  } 
-  
   if("beta_A" %in% colnames(coef)){
     coef_beta_A <- coef[,"beta_A", drop = F]
   }

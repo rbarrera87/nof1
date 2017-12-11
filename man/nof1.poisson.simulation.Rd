@@ -4,8 +4,8 @@
 \alias{nof1.poisson.simulation}
 \title{Poisson simulation}
 \usage{
-nof1.poisson.simulation(baseline = "baseline", Base.size = 14,
-  Treat.size = 56, alpha = 1, beta_A = -0.1, beta_B = -0.05)
+nof1.poisson.simulation(Base.size = 14, Treat.size = 56, alpha = 1,
+  beta_A = -0.1, beta_B = -0.05)
 }
 \description{
 Poisson simulation

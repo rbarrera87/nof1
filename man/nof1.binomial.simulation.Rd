@@ -4,8 +4,8 @@
 \alias{nof1.binomial.simulation}
 \title{Binomial simulation}
 \usage{
-nof1.binomial.simulation(baseline = "baseline", Base.size = 14,
-  Treat.size = 56, alpha = 0.5, beta_A = -0.1, beta_B = -0.05)
+nof1.binomial.simulation(Base.size = 14, Treat.size = 56, alpha = 0.5,
+  beta_A = -0.1, beta_B = -0.05)
 }
 \description{
 Binomial simulation
