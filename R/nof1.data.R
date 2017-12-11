@@ -2,12 +2,12 @@
 #'
 #' @param Y Outcome
 #' @param Treat Treatment indicator vector
+#' @param Treat.order Treatment order in which it is compared. First element in the order is defined to be baseline. 
 #' @param ncat Number of categories. Used in ordinal models
-#' @param baseline Name of the baseline treatment
 #' @param response Type of outcome. Can be normal, binomial, poisson or ordinal
 #' @export
  
-nof1.data <- function(Y, Treat, Time=NULL, ncat = NULL, knots = NULL, baseline = "baseline", response = NULL,
+nof1.data <- function(Y, Treat, Treat.order = NULL, Time=NULL, ncat = NULL, knots = NULL, response = NULL,
                       alpha.prior = NULL, beta.prior = NULL, gamma.prior = NULL, dc.prior = NULL, c1.prior = NULL,
                       rho.prior = NULL, hy.prior = NULL){
   
@@ -18,15 +18,13 @@ nof1.data <- function(Y, Treat, Time=NULL, ncat = NULL, knots = NULL, baseline =
   }
   
   nobs <- length(Y)
-  Treat.name <- unique(Treat)
   
-  if(!baseline %in% Treat){
-    stop("wrong baseline name")
+  if(all(Treat %in% Treat.order)){
+    stop("all treatment has to be specified in treatment order")
   }
+  Treat.name <- Treat.order[-1] 
   
-  Treat.name <- Treat.name[Treat.name != baseline]  
-  
-  nof1 = list(Y = Y, Treat = Treat, baseline = baseline, ncat = ncat, nobs = nobs, Treat.name = Treat.name, response = response)
+  nof1 = list(Y = Y, Treat = Treat, Treat.order = Treat.order, ncat = ncat, nobs = nobs, Treat.name = Treat.name, response = response)
 
   if(!is.null(Time)){
     cen.Time <- (Time - mean(Time, na.rm = TRUE)) / sd(Time, na.rm = TRUE)

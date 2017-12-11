@@ -91,11 +91,17 @@ nof1.binomial.rjags <- function(nof1){
     code <- paste0(code, "\n\tbeta_", i, " ~ ", beta.prior[[1]], "(", beta.prior[[2]], ",", beta.prior[[3]], ")")
   }
   
-  code <- paste0(code, "\n\tp_", baseline, " <- ilogit(alpha)")
+  code <- paste0(code, "\n\tp_", Treat.order[1], " <- ilogit(alpha)")
   for(i in Treat.name){
     code <- paste0(code, "\n\tp_", i, " <- ilogit(alpha + beta_", i, ")")
   }
   
+  comps <- combn(ts, 2)
+  for(i in 1:ncol(comps)){
+    code <- paste0(code, "\n\tRR_", comps[1,i], "_", comps[2,i], " <- p_", comps[2,i], "/p_", comps[1,i])
+  }
+  
+
   # if(!is.null(knots)){
   #   for(j in 1:ncol(BS)){
   #     code <- paste0(code, "\n\tgamma", j, " ~ ", gamma.prior[[1]], "(", gamma.prior[[2]], ",", gamma.prior[[3]], ")")
