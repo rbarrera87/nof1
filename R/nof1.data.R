@@ -7,7 +7,7 @@
 #' @param response Type of outcome. Can be normal, binomial, poisson or ordinal
 #' @export
  
-nof1.data <- function(Y, Treat, baseline = "baseline", ncat = NULL, response = NULL, Time=NULL, knots = NULL
+nof1.data <- function(Y, Treat, baseline = "baseline", ncat = NULL, response = NULL, Time=NULL, knots = NULL,
                       alpha.prior = NULL, beta.prior = NULL, gamma.prior = NULL, dc.prior = NULL, c1.prior = NULL,
                       rho.prior = NULL, hy.prior = NULL){
   
