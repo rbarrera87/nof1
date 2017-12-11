@@ -36,7 +36,7 @@ nof1.inits.normal <- function(nof1, n.chains){
   with(nof1, {
 
   Treat.matrix <- NULL
-  for(i in Treat.order[-1]){
+  for(i in Treat.name){
     Treat.matrix <- cbind(Treat.matrix, nof1[[paste0("Treat_", i)]])
   }
 
@@ -57,13 +57,13 @@ nof1.inits.normal <- function(nof1, n.chains){
   for(i in 1:n.chains){
     initial.values[[i]][["alpha"]] <- co[1,1] + rnorm(1) *co[1,2]
 
-    for(j in 1:length(Treat.order[-1])){
-      initial.values[[i]][[paste0("beta_", Treat.order[-1][j])]] <- co[1+j,1] + rnorm(1) * co[1+j,2]
+    for(j in 1:length(Treat.name)){
+      initial.values[[i]][[paste0("beta_", Treat.name[j])]] <- co[1+j,1] + rnorm(1) * co[1+j,2]
     }
 
     # if(!is.null(knots)){
     #   for(j in 1:ncol(BS)){
-    #     initial.values[[i]][[paste0("gamma", j)]] <- co[1+length(Treat.order[-1])+j, 1] + rnorm(1) * co[1+length(Treat.order[-1])+j, 2]
+    #     initial.values[[i]][[paste0("gamma", j)]] <- co[1+length(Treat.name)+j, 1] + rnorm(1) * co[1+length(Treat.name)+j, 2]
     #   }
     # }
   }
@@ -100,7 +100,7 @@ nof1.inits.binom.poisson <- function(nof1, n.chains){
   with(nof1, {
 
   Treat.matrix <- NULL
-  for(i in Treat.order[-1]){
+  for(i in Treat.name){
     Treat.matrix <- cbind(Treat.matrix, nof1[[paste0("Treat_", i)]])
   }
 
@@ -130,13 +130,13 @@ nof1.inits.binom.poisson <- function(nof1, n.chains){
 
     initial.values[[i]][["alpha"]] <- co[1,1] + rnorm(1) *co[1,2]
 
-    for(j in 1:length(Treat.order[-1])){
-      initial.values[[i]][[paste0("beta_", Treat.order[-1][j])]] <- co[1+j,1] + rnorm(1) * co[1+j,2]
+    for(j in 1:length(Treat.name)){
+      initial.values[[i]][[paste0("beta_", Treat.name[j])]] <- co[1+j,1] + rnorm(1) * co[1+j,2]
     }
 
     # if(!is.null(knots)){
     #   for(j in 1:ncol(BS)){
-    #     initial.values[[i]][[paste0("gamma", j)]] <- co[1+length(Treat.order[-1])+j, 1] + rnorm(1) * co[1+length(Treat.order[-1])+j, 2]
+    #     initial.values[[i]][[paste0("gamma", j)]] <- co[1+length(Treat.name)+j, 1] + rnorm(1) * co[1+length(Treat.name)+j, 2]
     #   }
     # }
   }
@@ -183,7 +183,7 @@ nof1.inits.ordinal <- function(nof1, n.chains){
 
 
   Treat.matrix <- NULL
-  for(i in Treat.order[-1]){
+  for(i in Treat.name){
     Treat.matrix <- cbind(Treat.matrix, nof1[[paste0("Treat_", i)]])
   }
 
@@ -199,8 +199,8 @@ nof1.inits.ordinal <- function(nof1, n.chains){
     #co_BS <- co[grep('BS', rownames(coef(summary(model)))), ]
 
     for(i in 1:n.chains){
-      for(j in 1:length(Treat.order[-1])){
-        initial.values[[i]][[paste0("beta_", Treat.order[-1][j])]] <- co_Treat[j,1] + rnorm(1) * co_Treat[j,2]
+      for(j in 1:length(Treat.name)){
+        initial.values[[i]][[paste0("beta_", Treat.name[j])]] <- co_Treat[j,1] + rnorm(1) * co_Treat[j,2]
       }
 
       # if(!is.na(knots)){

@@ -40,12 +40,12 @@ nof1.run <- function(nof1, inits = NULL, n.chains = 3, max.run = 100000, setsize
   #   }
   # }
 
-  for(i in Treat.order[-1]){
+  for(i in Treat.name){
     pars.save <- c(pars.save, paste0("beta_", i))
   }
 
   data <- list(Y = Y)
-  for(i in Treat.order[-1]){
+  for(i in Treat.name){
     data[[paste0("Treat_", i)]] <- nof1[[paste0("Treat_", i)]]
   }
 

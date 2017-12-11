@@ -23,7 +23,7 @@ nof1.normal.rjags <- function(nof1){
                  "\n\t\tm[i] <- mu[i] #+ rho * epsilon[i]",
                  "\n\t\tmu[i] <- alpha")
 
-  for(i in Treat.order[-1]){
+  for(i in Treat.name){
     code <- paste0(code, " + beta_", i, "*Treat_", i, "[i]")
   }
 
@@ -45,7 +45,7 @@ nof1.normal.rjags <- function(nof1){
                  "\n\t#rho ~ ", rho.prior[[1]], "(", rho.prior[[2]], ",", rho.prior[[3]], ")"
                  )
 
-  for(i in Treat.order[-1]){
+  for(i in Treat.name){
     code <- paste0(code, "\n\tbeta_", i, " ~ ", beta.prior[[1]], "(", beta.prior[[2]], ",", beta.prior[[3]], ")")
   }
 
@@ -72,7 +72,7 @@ nof1.binomial.rjags <- function(nof1){
                  "\n\tfor (i in 1:", nobs, ") {",
                  "\n\t\tlogit(p[i]) <- alpha")
 
-  for(i in Treat.order[-1]){
+  for(i in Treat.name){
     code <- paste0(code, " + beta_", i, "*Treat_", i, "[i]")
   }
 
@@ -87,12 +87,12 @@ nof1.binomial.rjags <- function(nof1){
                  "\n\t}",
                  "\n\talpha ~ ", alpha.prior[[1]], "(", alpha.prior[[2]], ",", alpha.prior[[3]], ")")
 
-  for(i in Treat.order[-1]){
+  for(i in Treat.name){
     code <- paste0(code, "\n\tbeta_", i, " ~ ", beta.prior[[1]], "(", beta.prior[[2]], ",", beta.prior[[3]], ")")
   }
   
   code <- paste0(code, "\n\tp_", Treat.order[1], " <- ilogit(alpha)")
-  for(i in Treat.order[-1]){
+  for(i in Treat.name){
     code <- paste0(code, "\n\tp_", i, " <- ilogit(alpha + beta_", i, ")")
   }
   
@@ -124,7 +124,7 @@ nof1.poisson.rjags <- function(nof1){
                  "\n\tfor (i in 1:", nobs, ") {",
                  "\n\t\tlog(lambda[i]) <- alpha") # + epsilon[i]")
 
-  for(i in Treat.order[-1]){
+  for(i in Treat.name){
     code <- paste0(code, " + beta_", i, "*Treat_", i, "[i]")
   }
 
@@ -146,7 +146,7 @@ nof1.poisson.rjags <- function(nof1){
                  "\n\talpha ~ ", alpha.prior[[1]], "(", alpha.prior[[2]], ",", alpha.prior[[3]], ")",
                  "\n\t#rho ~ ", rho.prior[[1]], "(", rho.prior[[2]], ",", rho.prior[[3]], ")")
 
-  for(i in Treat.order[-1]){
+  for(i in Treat.name){
     code <- paste0(code, "\n\tbeta_", i, " ~ ", beta.prior[[1]], "(", beta.prior[[2]], ",", beta.prior[[3]], ")")
   }
 
@@ -178,7 +178,7 @@ nof1.ordinal.rjags <- function(nof1){
                    "\n\t\tfor(r in 1:", ncat-1, ") {",
                    "\n\t\t\tlogit(Q[i,r]) <- -c[r]") # + epsilon[i]")
 
-    for(i in Treat.order[-1]){
+    for(i in Treat.name){
       code <- paste0(code, " + beta_", i, "*Treat_", i, "[i]")
     }
 
@@ -207,7 +207,7 @@ nof1.ordinal.rjags <- function(nof1){
                    "\n\tdc[1] ~ ", c1.prior[[1]], "(", c1.prior[[2]], ",", c1.prior[[3]], ")",
                    "\n\t#rho ~ ", rho.prior[[1]], "(", rho.prior[[2]], ",", rho.prior[[3]], ")")
 
-    for(i in Treat.order[-1]){
+    for(i in Treat.name){
       code <- paste0(code, "\n\tbeta_", i, " ~ ", beta.prior[[1]], "(", beta.prior[[2]], ",", beta.prior[[3]], ")")
     }
 
