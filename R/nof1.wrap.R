@@ -156,7 +156,7 @@ calculate_p_threshold <- function(samples, response){
       base_vs_scd <- list(greater_than_threshold = round(mean(samples[,"beta_A"] > upper, na.rm = TRUE)*100),
                           lower_than_threshold = round(mean(samples[,"beta_A"] < lower, na.rm = TRUE)*100))
       base_vs_scd <- rapply(base_vs_scd, change, how = "replace")
-    } else if(response %in% c("binomial", "poisson")){
+    } else if(response %in% c("ordinal", "poisson")){
       base_vs_scd <- list(greater_than_threshold = round(mean(samples[,"RR_baseline_A"] > upper, na.rm = TRUE)*100),
                           lower_than_threshold = round(mean(samples[,"RR_baseline_A"] < lower, na.rm = TRUE)*100))
       base_vs_scd <- rapply(base_vs_scd, change, how = "replace")
@@ -171,7 +171,7 @@ calculate_p_threshold <- function(samples, response){
       base_vs_mscd <- list(greater_than_threshold = round(mean(samples[,"beta_B"] > upper, na.rm = TRUE)*100),
                           lower_than_threshold = round(mean(samples[,"beta_B"] < lower, na.rm = TRUE)*100))
       base_vs_mscd <- rapply(base_vs_mscd, change, how = "replace")
-    } else if(response %in% c("binomial", "poisson")){
+    } else if(response %in% c("ordinal", "poisson")){
       base_vs_mscd <- list(greater_than_threshold = round(mean(samples[,"RR_baseline_B"] > upper, na.rm = TRUE)*100),
                            lower_than_threshold = round(mean(samples[,"RR_baseline_B"] < lower, na.rm = TRUE)*100))
       base_vs_mscd <- rapply(base_vs_mscd, change, how = "replace")
@@ -185,7 +185,7 @@ calculate_p_threshold <- function(samples, response){
       mscd_vs_scd <- list(greater_than_threshold = round(mean(samples[,"beta_A"] - samples[,"beta_B"] > upper, na.rm = TRUE)*100),
                            lower_than_threshold = round(mean(samples[,"beta_A"] - samples[,"beta_B"] < lower, na.rm = TRUE)*100))
       mscd_vs_scd <- rapply(mscd_vs_scd, change, how = "replace")
-    } else if(response %in% c("binomial", "poisson")){
+    } else if(response %in% c("ordinal", "poisson")){
       mscd_vs_scd <- list(greater_than_threshold = round(mean( 1/samples[,"RR_A_B"] > upper, na.rm = TRUE)*100),
                            lower_than_threshold = round(mean( 1/samples[,"RR_A_B"] < lower, na.rm = TRUE)*100))
       mscd_vs_scd <- rapply(mscd_vs_scd, change, how = "replace")
