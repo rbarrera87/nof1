@@ -24,7 +24,7 @@ nof1.run <- function(nof1, inits = NULL, n.chains = 3, max.run = 100000, setsize
     }
   } else if(response == "poisson"){
     for(i in Treat.order){
-      pars.save <- c(pars.save, paste0("gamma_", i))  
+      pars.save <- c(pars.save, paste0("lambda_", i))  
     }
   }
   
@@ -35,9 +35,6 @@ nof1.run <- function(nof1, inits = NULL, n.chains = 3, max.run = 100000, setsize
     }  
   }
     
-    
-  
-
   if(response == "normal"){
     pars.save <- c(pars.save, "logprec")
   }

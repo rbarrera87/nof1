@@ -76,9 +76,9 @@ inv_logit <- function(a){
   1/(1+exp(-a))
 }
 
-find_raw_mean <- function(Y, Treat, baseline, response){
+find_raw_mean <- function(Y, Treat, response){
 
-  raw_mean <- c(mean(Y[Treat == baseline], na.rm = TRUE), mean(Y[Treat == "A"], na.rm = TRUE), mean(Y[Treat == "B"], na.rm = TRUE))
+  raw_mean <- c(mean(Y[Treat == "baseline"], na.rm = TRUE), mean(Y[Treat == "A"], na.rm = TRUE), mean(Y[Treat == "B"], na.rm = TRUE))
   raw_mean[is.nan(raw_mean)] <- NA
   raw_mean
 }
@@ -99,7 +99,7 @@ find_mean_difference <- function(samples, response, Treat.order){
   coef_name <- if(response == "binomial"){
     "p"
   } else if(response == "poisson"){
-    "gamma"
+    "lambda"
   } else if(response == "normal"){
     "beta"
   }
@@ -206,7 +206,7 @@ summarize_nof1 <- function(nof1, result){
   with(c(nof1, result),{
 
     samples <- do.call(rbind, samples)
-    raw_mean <- find_raw_mean(Y, Treat, baseline, response)
+    raw_mean <- find_raw_mean(Y, Treat, response)
     rounded_raw_mean <- round_number(raw_mean, response)
 
     diff <- find_mean_difference(samples, response, Treat.order)
