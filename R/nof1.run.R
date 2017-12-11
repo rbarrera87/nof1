@@ -16,7 +16,7 @@ nof1.run <- function(nof1, inits = NULL, n.chains = 3, max.run = 100000, setsize
 
   with(nof1, {
 
-  cons.save <- pars.save <- ifelse(response == "ordinal", "c", "alpha")
+  pars.save <- ifelse(response == "ordinal", "c", "alpha")
 
   if(response == "binomial"){
     for(i in Treat.order){
@@ -47,7 +47,6 @@ nof1.run <- function(nof1, inits = NULL, n.chains = 3, max.run = 100000, setsize
 
   for(i in Treat.name){
     pars.save <- c(pars.save, paste0("beta_", i))
-    conv.save <- c(conv.save, paste0("beta_", i))
   }
 
   data <- list(Y = Y)
