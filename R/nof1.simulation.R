@@ -1,9 +1,5 @@
 # simulation for testing purposes
 
-inv_logit <- function(a){
-  exp(a)/(1 + exp(a))
-}
-
 #' Ordinal simulation
 #'
 #' @export
