@@ -10,7 +10,7 @@ nof1.ordinal.simulation <- function(Base.size = 100, Treat.size = 100, alpha = 0
   Treat <- c(Treat, rep(c("B", "A", "B", "A"), each = Treat.size))
   nobs <- length(Treat)
   
-  Y <- epsilon <- mu <- rep(NA, nobs)
+  Y <- mu <- rep(NA, nobs)
   
   q <- matrix(0, nrow = length(Treat), ncol = ncat - 1)
   p <- matrix(0, nrow = nobs, ncol = ncat)
@@ -49,7 +49,7 @@ nof1.binomial.simulation <- function(Base.size = 14, Treat.size = 56, alpha = 0.
   Treat <- c(Treat, rep(c("B", "A", "B", "A"), each = Treat.size))
   nobs <- length(Treat)
   
-  Y <- epsilon <- mu <- p <- rep(NA, nobs)
+  Y <-  mu <- p <- rep(NA, nobs)
     
   for(i in 1:nobs){
   
@@ -80,7 +80,7 @@ nof1.poisson.simulation <- function(Base.size = 14, Treat.size = 56, alpha = 1, 
   Treat <- c(Treat, rep(c("B", "A", "B", "A"), each = Treat.size))
   nobs <- length(Treat)
   
-  Y <- epsilon <- mu <- rep(NA, nobs)
+  Y <- mu <- rep(NA, nobs)
     
   for(i in 1:nobs){
       
@@ -105,7 +105,7 @@ nof1.normal.simulation <- function(Base.size = 2, Treat.size = 8, prec = 0.5, al
   Treat <- c(Treat, rep(c("B", "A", "B", "A"), each = Treat.size))
   nobs <- length(Treat)
   
-  Y <- epsilon <- mu <- rep(NA, nobs)
+  Y <- mu <- rep(NA, nobs)
   
   for(i in 1:nobs){
     
