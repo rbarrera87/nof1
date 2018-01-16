@@ -318,7 +318,7 @@ wrap <- function(data, metadata){
                    enough_stool_frequency = check_enough_data(read_data$Treatment, read_data$stool_frequency),
                    enough_pain_interference = check_enough_data(read_data$Treatment_weekly, read_data$pain_interference),
                    enough_gi_symptoms = check_enough_data(read_data$Treatment_weekly, read_data$gi_symptoms),
-                   user_id = 325,
+                   user_id = metadata$user_id,
                    timestamp_trialist_completed = Sys.time(),
                    trialist_version_id = 2,
                    trialist_version_date = "12/04/2017",
