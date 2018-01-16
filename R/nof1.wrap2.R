@@ -80,10 +80,13 @@ wrap2 <- function(data, metadata){
     return(paste("afib run error: ", error))
   })
 
-  metadata <- list(successful_input_reading = check_success(read_data),
+  metadata <- list(
+                   successful_input_reading = check_success(read_data),
                    successful_run_afib = check_success(afib),
                    enough_afib = check_enough_data2(read_data$Treat, read_data$Y),
-                   user_id = 325,
+                   user_id = metadata$user_id,
+                   trigger = metadata$trigger,
+                   design = metadata$design,
                    timestamp_sammy_completed = Sys.time(),
                    sammy_version_id = 1,
                    sammy_version_date = "8/15/2017",
