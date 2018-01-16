@@ -6,7 +6,7 @@
     "user_id": 300000,
     "trigger": "coffee",
     "design": "ABABAB",
-    "timestamp_sammy_completed": "2018-01-16 22:52:07",
+    "timestamp_sammy_completed": "2018-01-16 23:00:46",
     "sammy_version_id": 1,
     "sammy_version_date": "8/15/2017",
     "sammy_version_note": ""
@@ -16,6 +16,6 @@
       "control": 26,
       "trigger": 37
     },
-    "prob_afib_more_likely_with_trigger": 76
+    "prob_afib_more_likely_with_trigger": 77
   }
 } 
