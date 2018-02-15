@@ -23,9 +23,19 @@ time_series_plot2 <- function(nof1, time = NULL, timestamp = NULL, timestamp.for
   data <- data.frame(Y = as.numeric(nof1$Y), Treat = gsub("\\_", " ", nof1$Treat), time_difference = time_difference)
   data2 <- aggregate(nof1$Y, list(Treat = gsub("\\_", " ", nof1$Treat)), mean)
     
-  ggplot(data, aes(x=time_difference, Y, fill = Treat)) + geom_bar(stat = "identity")  + facet_grid(. ~ Treat) + theme_bw() +  labs(x = "Time", y = "Stress") + scale_y_continuous(limits=c(0,nof1$ncat),oob = rescale_none) + theme(legend.position = "none") + 
-    geom_hline(data = data2, aes(yintercept = x), color="blue") +  ggtitle("Likely An Effect") + theme(plot.title = element_text(hjust = 0.5))
+  ggplot(data, aes(x=time_difference, Y, fill = Treat)) + geom_bar(stat = "identity")  + facet_grid(. ~ Treat) + theme_bw() + labs(x = "Time", y = "Stress") + scale_y_continuous(limits=c(0,nof1$ncat),oob = rescale_none) + theme(legend.position = "none") + 
+    geom_hline(data = data2, aes(yintercept = x), color="blue") + theme(plot.title = element_text(hjust = 0.5)) + 
+    scale_y_continuous(label=function(x){
+      value <- ""
+      if(x == 1) {
+        value <- "Low"
+      } else {
+        value <- "High"  
+      } 
+      return(value)
+    })
   
+      
 
 }
 
