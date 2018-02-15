@@ -20,9 +20,10 @@ time_series_plot2 <- function(nof1, time = NULL, timestamp = NULL, timestamp.for
     }  
   }
   
+  
   #time_series_plot(nof1, timestamp = panal$context.timestamp)
   
-  data <- data.frame(Y = as.numeric(nof1$Y), Treat = nof1$Treat, time_difference = time_difference)
+  data <- data.frame(Y = as.numeric(nof1$Y), Treat = gsub("\\_", " ", nof1$Treat), time_difference = time_difference)
   data2 <- aggregate(nof1$Y, list(Treat = nof1$Treat), mean)
     
   ggplot(data, aes(x=time_difference, Y, fill = Treat)) + geom_bar(stat = "identity")  + facet_grid(. ~ Treat) + theme_bw() +  labs(x = "Time", y = "Stress") + scale_y_continuous(limits=c(0,nof1$ncat),oob = rescale_none) + theme(legend.position = "none") + 

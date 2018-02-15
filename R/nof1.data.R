@@ -22,9 +22,11 @@ nof1.data <- function(Y, Treat, baseline = "baseline", ncat = NULL, response = N
     stop("baseline treatment name is not in Treat")
   }
   
-  if(length(strsplit(Treat, " ")[[1]]) != 1){
-    stop("Treatment names cannot contain space")
-  }
+  Treat <- gsub(" ", "\\_", Treat)
+  
+  # if(length(strsplit(Treat, " ")[[1]]) != 1){
+  #   stop("Treatment names cannot contain space")
+  # }
   
   Treat.name <- unique(Treat)
   Treat.name <- Treat.name[Treat.name != baseline]
