@@ -25,7 +25,7 @@ time_series_plot2 <- function(nof1, time = NULL, timestamp = NULL, timestamp.for
     
   ggplot(data, aes(x=time_difference, Y, fill = Treat)) + geom_bar(stat = "identity")  + facet_grid(. ~ Treat) + theme_bw() + labs(x = "Time", y = "Stress") + theme(legend.position = "none") + 
     geom_hline(data = data2, aes(yintercept = x), color="blue") + theme(plot.title = element_text(hjust = 0.5)) + 
-    scale_y_continuous(limits = c(0, nof1$ncat, oob = rescale_none, label=function(x){
+    scale_y_continuous(limits = c(0, nof1$ncat), oob = rescale_none, label=function(x){
       value <- ""
       if(x == 1) {
         value <- "Low"
