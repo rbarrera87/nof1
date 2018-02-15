@@ -1,14 +1,44 @@
+#' time series plot across different interventions
+#' 
+#' @param nof1 nof1 object created using nof1.data
+#' @export
+
+time_series_plot2 <- function(nof1, time = NULL, timestamp = NULL, timestamp.format = "%m/%d/%Y %H:%M"){
+  
+  if(!is.null(time)){
+    time_difference <- time
+  } else if(is.null(timestamp)){
+    time_difference <- 1:length(nof1$Y)
+  } else if(!is.null(timestamp)){
+    first_timestamp <- strptime(timestamp[1], timestamp.format)
+    
+    time_difference <- rep(NA, length(timestamp))
+    time_difference[1] <- 1 
+    for(i in 2:length(timestamp)){
+      second_timestamp <- strptime(timestamp[i], timestamp.format)
+      time_difference[i] <- round(1 + as.numeric(difftime(second_timestamp, first_timestamp, units = "days")))
+    }  
+  }
+  
+  #time_series_plot(nof1, timestamp = panal$context.timestamp)
+  
+  data <- data.frame(Y = as.numeric(nof1$Y), Treat = nof1$Treat, time_difference = time_difference)
+  data2 <- aggregate(nof1$Y, list(Treat = nof1$Treat), mean)
+    
+  ggplot(data, aes(x=time_difference, Y, fill = Treat)) + geom_bar(stat = "identity")  + facet_grid(. ~ Treat) + theme_bw() +  labs(x = "Time", y = "Stress") + scale_y_continuous(limits=c(0,nof1$ncat),oob = rescale_none) + theme(legend.position = "none") + 
+    geom_hline(data = data2, aes(yintercept = x), color="blue") +  ggtitle("Likely An Effect") + theme(plot.title = element_text(hjust = 0.5))
+  
+
+}
+
+
+
 #' Frequency plot for raw data
 #'
 #' @param nof1 nof1 object created using nof1.data
 #' @export
 
 frequency_plot <- function(nof1, xlab = NULL, title = NULL){
-  
-  # a <- nof1.normal.simulation()
-  # a <- nof1.poisson.simulation()
-  # a <- nof1.ordinal.simulation()
-  # nof1 <- nof1.data(a$Y, a$Treat, ncat = 5, response = "ordinal")
   
   if(nof1$response %in% c("binomial", "ordinal")){
     data <- aggregate(nof1$Y, list(Y = nof1$Y, Treat = nof1$Treat), length)
