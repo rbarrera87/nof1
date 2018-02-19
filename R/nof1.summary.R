@@ -5,35 +5,44 @@
 
 time_series_plot2 <- function(nof1, time = NULL, timestamp = NULL, timestamp.format = "%m/%d/%Y %H:%M"){
   
-  if(!is.null(time)){
-    time_difference <- time
-  } else if(is.null(timestamp)){
-    time_difference <- 1:length(nof1$Y)
-  } else if(!is.null(timestamp)){
-    first_timestamp <- strptime(timestamp[1], timestamp.format)
-    
-    time_difference <- rep(NA, length(timestamp))
-    time_difference[1] <- 1 
-    for(i in 2:length(timestamp)){
-      second_timestamp <- strptime(timestamp[i], timestamp.format)
-      time_difference[i] <- round(1 + as.numeric(difftime(second_timestamp, first_timestamp, units = "days")))
-    }  
-  }
+  # if(!is.null(time)){
+  #   time_difference <- time
+  # } else if(is.null(timestamp)){
+  #   time_difference <- 1:length(nof1$Y)
+  # } else if(!is.null(timestamp)){
+  #   first_timestamp <- strptime(timestamp[1], timestamp.format)
+  #   
+  #   time_difference <- rep(NA, length(timestamp))
+  #   time_difference[1] <- 1 
+  #   for(i in 2:length(timestamp)){
+  #     second_timestamp <- strptime(timestamp[i], timestamp.format)
+  #     time_difference[i] <- round(1 + as.numeric(difftime(second_timestamp, first_timestamp, units = "days")))
+  #   }  
+  # }
   
-  data <- data.frame(Y = as.numeric(nof1$Y), Treat = gsub("\\_", " ", nof1$Treat), time_difference = time_difference)
-  data2 <- aggregate(nof1$Y, list(Treat = gsub("\\_", " ", nof1$Treat)), mean)
+  date <- as.Date(timestamp, timestamp.format)
+  
+  data <- data.frame(Y = as.numeric(nof1$Y), Treatment = gsub("\\_", " ", nof1$Treat), date = date)
+  data2 <- aggregate(nof1$Y, list(Treatment = gsub("\\_", " ", nof1$Treat)), mean)
     
-  ggplot(data, aes(x=time_difference, Y, fill = Treat)) + geom_bar(stat = "identity")  + facet_grid(. ~ Treat) + theme_bw() + labs(x = "Time", y = "Stress") + theme(legend.position = "none") + 
-    geom_hline(data = data2, aes(yintercept = x), color="blue") + theme(plot.title = element_text(hjust = 0.5)) + 
-    scale_y_continuous(limits = c(0, nof1$ncat), oob = rescale_none, label=function(x){
-      value <- ""
-      if(x == 1) {
-        value <- "Low"
-      } else {
-        value <- "High"  
-      } 
-      return(value)
-    })
+  ggplot(data, aes(x=date, Y, fill = Treatment)) + geom_bar(stat = "identity")  + facet_grid(. ~ Treatment) + 
+    theme_bw() + 
+    theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + 
+    labs(x = "Date", y = "Stress") + #theme(legend.position = "none") +
+    geom_hline(data = data2, aes(yintercept = x, linetype = "Mean"), color="black") + theme(plot.title = element_text(hjust = 0.5)) + 
+    scale_y_continuous(limits = c(0, nof1$ncat), oob = rescale_none, label= c("Low", "", "", "", "", "High")) + 
+    scale_fill_manual(values=c("#adc2eb", "#ffb380")) +
+    scale_linetype_manual(name = "Summary", values = 1, guide = guide_legend(override.aes = list(color = c("black"))))
+    
+    #theme(aspect.ratio = 0.5)+
+    #theme(plot.margin=grid::unit(c(0,0,0,0), "mm"))
+    #coord_fixed(ratio=1)
+    #scale_fill_brewer(palette="Spectral")
+  
+  #theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + labs(x = "Date", y = "Stress") + theme(legend.position = "none") + 
+  
+                         
+                         
 #  + scale_y_continuous(limits=c(0,nof1$ncat),oob = rescale_none) 
   
 }
