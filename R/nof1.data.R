@@ -23,6 +23,7 @@ nof1.data <- function(Y, Treat, baseline = "baseline", ncat = NULL, response = N
   }
   
   Treat <- gsub(" ", "\\_", Treat)
+  baseline <- gsub(" ", "\\_", baseline)
   
   # if(length(strsplit(Treat, " ")[[1]]) != 1){
   #   stop("Treatment names cannot contain space")

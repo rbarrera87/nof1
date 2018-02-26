@@ -4,12 +4,14 @@
 #'
 #' @export
 
-nof1.ordinal.simulation2 <- function(alpha = 0, beta_A = -0.1, cut = c(0,0.5,1.5,2), ncat = 5){
+nof1.ordinal.simulation2 <- function(alpha = 0, beta_B = -0.1, cut = c(-0.5, 0.3, 0.5, 0.8, 1), ncat = 5){
+                                     
+                                     #cut = c(-0.5,-0.4,-0.2,-0.1,0.1, 0.2, 0.7, 0.9, 1, 1.1, 1.3), ncat = 11){
   
   inv_logit <- function(a){
     1/(1+exp(-a))
   }
-  
+
   Treat <-  rep(c("A", "B", "A", "B", "A", "B"), each = 3)
   nobs <- length(Treat)
   
@@ -21,8 +23,8 @@ nof1.ordinal.simulation2 <- function(alpha = 0, beta_A = -0.1, cut = c(0,0.5,1.5
   for(i in 1:nobs){
     
     mu[i] <- alpha
-    if(Treat[i] == "A"){
-      mu[i] <- mu[i] + beta_A
+    if(Treat[i] == "B"){
+      mu[i] <- mu[i] + beta_B
     } 
     
     for(r in 1:(ncat-1)){

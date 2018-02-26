@@ -3,7 +3,7 @@
 #' @param nof1 nof1 object created using nof1.data
 #' @export
 
-time_series_plot2 <- function(nof1, time = NULL, timestamp = NULL, timestamp.format = "%m/%d/%Y %H:%M"){
+time_series_plot2 <- function(nof1, time = NULL, timestamp = NULL, timestamp.format = "%m/%d/%Y %H:%M", Outcome.name = ""){
   
   # if(!is.null(time)){
   #   time_difference <- time
@@ -25,26 +25,14 @@ time_series_plot2 <- function(nof1, time = NULL, timestamp = NULL, timestamp.for
   data <- data.frame(Y = as.numeric(nof1$Y), Treatment = gsub("\\_", " ", nof1$Treat), date = date)
   data2 <- aggregate(nof1$Y, list(Treatment = gsub("\\_", " ", nof1$Treat)), mean)
     
-  ggplot(data, aes(x=date, Y, fill = Treatment)) + geom_bar(stat = "identity")  + facet_grid(. ~ Treatment) + 
-    theme_bw() + 
+  ggplot(data, aes(x=date, Y, fill = Treatment)) + geom_bar(stat = "identity")  + facet_grid(. ~ Treatment) + theme_bw() + 
     theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + 
-    labs(x = "Date", y = "Stress") + #theme(legend.position = "none") +
+    labs(x = "Date", y = Outcome.name) +
     geom_hline(data = data2, aes(yintercept = x, linetype = "Mean"), color="black") + theme(plot.title = element_text(hjust = 0.5)) + 
-    scale_y_continuous(limits = c(0, nof1$ncat), oob = rescale_none, label= c("Low", "", "", "", "", "High")) + 
+    scale_y_continuous(breaks = 0:nof1$ncat, oob = rescale_none, label = c("Low", rep("", length = nof1$ncat -1), "High")) +
     scale_fill_manual(values=c("#adc2eb", "#ffb380")) +
-    scale_linetype_manual(name = "Summary", values = 1, guide = guide_legend(override.aes = list(color = c("black"))))
+    scale_linetype_manual(name = "", values = 1, guide = guide_legend(override.aes = list(color = c("black"))))
     
-    #theme(aspect.ratio = 0.5)+
-    #theme(plot.margin=grid::unit(c(0,0,0,0), "mm"))
-    #coord_fixed(ratio=1)
-    #scale_fill_brewer(palette="Spectral")
-  
-  #theme(panel.border = element_blank(), panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + labs(x = "Date", y = "Stress") + theme(legend.position = "none") + 
-  
-                         
-                         
-#  + scale_y_continuous(limits=c(0,nof1$ncat),oob = rescale_none) 
-  
 }
 
 
