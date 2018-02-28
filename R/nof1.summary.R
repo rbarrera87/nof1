@@ -27,12 +27,10 @@ time_series_plot2 <- function(nof1, time = NULL, timestamp = NULL, timestamp.for
     
   ggplot(data, aes(x=date, Y, fill = Treatment)) + geom_bar(stat = "identity")  + facet_grid(. ~ Treatment) + theme_bw() + 
     theme(panel.grid.major = element_blank(), panel.grid.minor = element_blank(), axis.line = element_line(colour = "black")) + 
-    labs(x = "Date", y = Outcome.name) +
-    geom_hline(data = data2, aes(yintercept = x, linetype = "Mean"), color="black") + theme(plot.title = element_text(hjust = 0.5)) + 
+    labs(x = "Date", y = Outcome.name) + geom_hline(data = data2, aes(yintercept = x, linetype = "Mean"), color="black") + 
     scale_y_continuous(breaks = 0:nof1$ncat, oob = rescale_none, label = c("Low", rep("", length = nof1$ncat -1), "High")) +
-    scale_fill_manual(values=c("#adc2eb", "#ffb380")) +
-    scale_linetype_manual(name = "", values = 1, guide = guide_legend(override.aes = list(color = c("black"))))
-    
+    scale_fill_manual(values=c("#adc2eb", "#ffb380")) + scale_linetype_manual(name = "", values = 1, guide = guide_legend(override.aes = list(color = c("black"))))
+ 
 }
 
 

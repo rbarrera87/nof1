@@ -25,20 +25,18 @@ nof1.data <- function(Y, Treat, baseline = "baseline", ncat = NULL, response = N
   Treat <- gsub(" ", "\\_", Treat)
   baseline <- gsub(" ", "\\_", baseline)
   
-  # if(length(strsplit(Treat, " ")[[1]]) != 1){
-  #   stop("Treatment names cannot contain space")
-  # }
-  
   Treat.name <- unique(Treat)
   Treat.name <- Treat.name[Treat.name != baseline]
   
   nof1 = list(Y = Y, Treat = Treat, baseline = baseline, ncat = ncat, nobs = nobs, Treat.name = Treat.name, response = response)
 
+  # for correlated model, not used
   if(!is.null(Time)){
     cen.Time <- (Time - mean(Time, na.rm = TRUE)) / sd(Time, na.rm = TRUE)
     nof1$Time = cen.Time
   }
-
+  
+  # for splines, not used
   if(!is.null(knots)){
     cen.knots <- (knots - mean(Time, na.rm = TRUE))/ sd(Time, na.rm = TRUE)
     BS <- bs(cen.Time, knots = cen.knots)
@@ -63,6 +61,3 @@ nof1.data <- function(Y, Treat, baseline = "baseline", ncat = NULL, response = N
   class(nof1) <- "nof1.data"
   nof1
 }
-
-
-

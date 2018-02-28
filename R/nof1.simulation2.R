@@ -1,12 +1,10 @@
 # Simulation setting for WNYC Wellbeing study
-
+#
 #' Ordinal simulation for WNYC
 #'
 #' @export
 
-nof1.ordinal.simulation2 <- function(alpha = 0, beta_B = -0.1, cut = c(-0.5, 0.3, 0.5, 0.8, 1), ncat = 5){
-                                     
-                                     #cut = c(-0.5,-0.4,-0.2,-0.1,0.1, 0.2, 0.7, 0.9, 1, 1.1, 1.3), ncat = 11){
+nof1.ordinal.simulation2 <- function(alpha = 0, beta_B = 1, cut = c(-2,-1.5,-1,-0.5,0, 0.5, 1, 1.5, 2, 2.1, 2.3), ncat = 11){
   
   inv_logit <- function(a){
     1/(1+exp(-a))
